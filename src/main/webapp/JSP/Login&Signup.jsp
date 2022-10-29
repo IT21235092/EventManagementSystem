@@ -8,6 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
+ 
     <header >
         <div class="navbar">
                 <div class = "logo">
@@ -22,14 +23,15 @@
                                 <li><a href="#" class="navItem">SIGN IN</a></li>
                             </ul>
                         </nav>
-                <!-- <div class="btns">
+                 <!-- <div class="btns">
                     <button class="btn" onclick = >Sign Up</button>
                     <button class="btn" onclick = >Log In</button>
-                </div> -->
+                </div>  -->
+            </div> 
         </div>
     </header>
-    
-   <section>
+     
+
     <script type="text/javascript">
         function ShowHideDiv(btnPassport) {
             var dvPassport = document.getElementById("dvPassport");
@@ -88,7 +90,5 @@
 				</form>
 			</div>
 	</div>
-	
-	</section>
 </body>
 </html>

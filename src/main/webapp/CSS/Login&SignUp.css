@@ -1,144 +1,126 @@
-body{
-    
-	margin: 0;
-	padding: 0;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	min-height: 100vh;
-	font-family: 'Jost', sans-serif;
-	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);
-}
+@import url('https://fonts.googleapis.com/css2?family=Rancho&display=swap');
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css");
 
+body
+{
+	/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+	background-color: rgb(248, 248, 248);
+	background-image: url('../Images/back.jpeg');
+}
+  
 .navbar{
 	display:flex;
 	align-items: center;
+    margin-top: -1%;
+    margin-left: -1%;
+    margin-right: -1%;
 	padding: 10px;
+	/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+	background-color: #000;
 	
   }
   
-  nav{
-	flex:1;
-	text-align:right;
-	
+nav{
+    flex:1;
+    text-align:right;
+    
+    
   }
   
   nav ul{
-	display:inline-flex;
-	margin-top: 1px;
+    display:inline-flex;
+     margin-top: 1px;
   }
   
   nav ul li{
-	list-style:none;
-	margin: 0 20px;
-	cursor: pointer;
+    list-style:none;
+    margin: 0 20px;
+    cursor: pointer;
   }
   
   
   .logo img
   {
-	width: 230px;
-	height:auto;
-	margin-left: 10%;
+    width: 230px;
+    height:auto;
+    margin-left: 10%;
   }
   
   .navItem
-  {
-	font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-	color:rgb(230, 233, 236);
-	padding-top: 10px;
-	padding-bottom: 10px;
-	padding-right: 10px;
-	padding-left: 10px;
-	text-decoration: none;
-	font-size: 19px;
-  
-  }
-  
-  .navItem:hover{
-  color: rgb(0, 0, 0);
-  background-color: #fff;
-  margin: 1px 1px;
-  padding: 5px 10px;
-  border-radius:30px ;
-  }
-  
-  .btns
-  {
-	display: flex;
-	margin-left: 50px;
-  }
-  
-  header{
-	position:fixed;
-	/*background-image: url("../photos/navi.png");*/
-	background-color: rgba(0, 0, 0, 0);
-    width: 100%;
-	background-size: cover;
-	z-index: 1;
+{
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color:rgb(230, 233, 236);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  padding-left: 10px;
+  text-decoration: none;
+  font-size: 19px;
+
 }
 
-  .btn {
-	background-color: #ffffff;
-	font-family: Bebas Neue;
-	text-align: center;
-	color: rgb(0, 0, 0);
-	padding-top: 5px;
-	padding-bottom: 6px;
-	padding-right: 10px;
-	padding-left: 10px;
-	font-size: 16px;
-	border-radius: 20px;
-	border: 1px solid #fff;
-	margin-left: 10px;
-  
-  }
-  
+.navItem:hover{
+color: rgb(0, 0, 0);
+background-color: #fff;
+margin: 1px 1px;
+padding: 5px 10px;
+border-radius:30px ;
+} 
+
 .button1
 {
-    width: 120px; 
+    width: 170px; 
+	height: 25px;
     position: relative; 
     right: 90px;
     bottom: 19.5px; 
     background-color: rgba(240, 248, 255, 0); 
-    color: white; 
+    color: #000000; 
     font-size: 14px;
      font-weight: bolder; 
      padding: 2px 1px; 
 }
 
 .active, .button1:hover {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+    background-color: #ff0000;
+    color: rgb(255, 255, 255);
   }
   
 
 .button2
 {
-    width: 120px; 
+    width: 170px; 
+	height: 25px;
     position: relative; 
     left: 100px; 
-    bottom: 60px; 
+    bottom: 65px; 
     background-color: rgba(240, 248, 255, 0); 
-    color: white; 
+    color: #000000; 
     font-size: 14.5px; 
     font-weight: bolder;
      padding: 2px 1px; 
 }
 
 .active, .button2:hover {
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
+	background-color: #ff0000;
+    color: rgb(255, 255, 255);
   }
 .main{
-	width: 350px;
+	width: 450px;
 	height: 730px;
-	background: #fff;
+	background: red;
     
-	overflow: hidden;
+	overflow: hidden; 
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
+	/* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+	background-color: rgb(255, 255, 255);
+	font-family: 'Jost', sans-serif;
+	margin-top: 3%;
+	margin-left: 35%;
+	
 }
 #chk{
 	display: none;
@@ -150,7 +132,8 @@ body{
 	height: 100%;
 }
 label{
-	color: #fff;
+	/* color: #573b8a; */
+	color: #000;
 	font-size: 2.3em;
 	justify-content: center;
 	display: flex;
@@ -160,9 +143,9 @@ label{
 	transition: .5s ease-in-out;
 }
 input{
-	width: 60%;
+	width: 70%;
 	height: 20px;
-	background: #e0dede;
+	background: #eeeded;
 	justify-content: center;
 	display: flex;
 	margin: 20px auto;
@@ -178,7 +161,8 @@ button{
 	justify-content: center;
 	display: block;
 	color: #fff;
-	background: #573b8a;
+	/* background: #573b8a; */
+	background: #000;
 	font-size: 1em;
 	font-weight: bold;
 	margin-top: 20px;
@@ -189,17 +173,20 @@ button{
 	cursor: pointer;
 }
 button:hover{
-	background: #6d44b8;
+	/* background: #6d44b8; */
+	background: #ff0000;
+	color: rgb(255, 255, 255);
 }
 .login{
 	height: 600px;
-	background: #eee;
+	background: #d3d3d3;
 	border-radius: 60% / 10%;
 	transform: translateY(-180px);
 	transition: .8s ease-in-out;
 }
 .login label{
-	color: #573b8a;
+	/* color: #573b8a; */
+	color: rgb(0, 0, 0);
 	transform: scale(.6);
 }
 
@@ -212,4 +199,4 @@ button:hover{
 #chk:checked ~ .signup label{
 	transform: scale(.6);
 }
-
+ 
