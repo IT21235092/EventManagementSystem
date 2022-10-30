@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class CustomerDBUtil {
 	
@@ -12,13 +13,13 @@ public class CustomerDBUtil {
 	{
 		
 		boolean isSuccess = false;
-		String dp = "";
 		
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
 		String user = "root";
 		String pass = "eventmanagement123";
+
 		
-		if (firstName == null && lastName == null)
+		if (firstName == null)
 		{
 			try
 			{

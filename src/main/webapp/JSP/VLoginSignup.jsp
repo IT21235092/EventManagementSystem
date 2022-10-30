@@ -6,10 +6,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="../CSS/Login&SignUp.css">
+	<title>Vendor SignIn</title>
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Login&SignUp.css">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+
+<style>
+
+select
+{
+	width: 75%;
+	height: 40px;
+	background: #eeeded;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	
+}
+
+textarea
+{
+	width: 70%;
+	height: 40px;
+	background: #eeeded;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+}
+
+</style>
+
 </head>
+
+
+
+
 <body>
  
     <header >
@@ -35,22 +73,6 @@
     </header>
      
 
-    <script type="text/javascript">
-        function ShowHideDiv(btnPassport) {
-            var form1 = document.getElementById("form1");
-            form1.style.display = btnPassport.value == "as Organization" ? "block" : "none";
-            form2.style.display = "none";
-        }
-
-        function ShowHideDiv2(btnPassport) {
-            var form1 = document.getElementById("form2");
-            var form2 = document.getElementById("form1");
-            form1.style.display = btnPassport.value == "as User" ? "block" : "none";
-
-           form2.style.display = "none";
-
-        }
-
 
     </script>
 	<div class="main">  	
@@ -60,27 +82,25 @@
 				<form action = "../insert" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
-
-                    
-                    <input type="button" value="as Organization" class="button1" onclick="ShowHideDiv(this)" >
-                    <input type="button" value="as User" class="button2" onclick="ShowHideDiv2(this)" >
-                   
-                  
-                    <div id="form1" style="display: none">
-                       
-                        <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
-                    </div>
-                    <div id="form2" style="display: none">
-                       
-                        <input type="text" name = "firstName" placeholder="First Name" id="txtPassportNumber" />
-                        <input type="text" name = "lastName" placeholder="Last Name" id="txtPassportNumber" />
-                    </div>
+					
+                    <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
 					<input type="text" name="username" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="phone" placeholder="Contact number" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
 					
+		
+				      <select name="types" id="type">
+				        <option value="" disabled selected>Type</option>
+				        <option value="Music">Music</option>
+				        <option value="Food and Drinks">Food and Drinks</option>
+				        <option value="Decorations">Decorations</option>
+				        <option value="Photos">Photos</option>
+				        <option value="Invitation Cards">Invitation Cards</option>
+				        <textarea placeholder='address' maxlength='1000' minlength='100'></textarea>
+				      </select>
 					
+		
 				    <input type="submit" name = "Signup" value = "Signup" id = "submit">
 				</form>
 			</div>
@@ -92,7 +112,9 @@
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
 					<input type = "submit" name = "Login" value = "Login" id = "submit">
-				</form>
+					
+					
+					</form>
 			</div>
 	</div>
 </body>
