@@ -126,7 +126,7 @@
           </div>
           <div class="input-box">
             <span class="details">Attachments:</span>
-            <input type="file" placeholder="Add images of your product" required>
+            <input type="file">
           </div>
         </div>
         <div class="button">
