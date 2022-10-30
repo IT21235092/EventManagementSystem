@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+
+
     
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Slide Navbar</title>
-	<link rel="stylesheet" type="text/css" href="CSS/Login&SignUp.css">
+	<link rel="stylesheet" type="text/css" href="../CSS/Login&SignUp.css">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -55,7 +57,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form action = "insert" method = "post">
+				<form action = "../insert" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
 

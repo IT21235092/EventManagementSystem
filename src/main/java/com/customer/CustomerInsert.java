@@ -17,6 +17,8 @@ public class CustomerInsert extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		String org_name = request.getParameter("Org_Name");
+		String first_name = request.getParameter("firstName");
+		String last_name = request.getParameter("lastName");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String contact = request.getParameter("phone");
@@ -24,11 +26,11 @@ public class CustomerInsert extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = CustomerDBUtil.insertCustomer(org_name, username, email, contact, password);
+		isTrue = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
 		
 		if (isTrue == true)
 		{
-			RequestDispatcher dis = request.getRequestDispatcher( "Cust_dashboard.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Cust_dashboard.jsp");
 			dis.forward(request, response);
 		}
 	}

@@ -8,7 +8,7 @@ import java.sql.Statement;
 public class CustomerDBUtil {
 	
 	
-	public static boolean insertCustomer(String org_name, String userName, String email, String contact, String password)
+	public static boolean insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password)
 	{
 		
 		boolean isSuccess = false;
@@ -18,34 +18,69 @@ public class CustomerDBUtil {
 		String user = "root";
 		String pass = "eventmanagement123";
 		
-		try
+		if (firstName == null && lastName == null)
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url,user,pass);
-			Statement stmt = con.createStatement();
-			
-			String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', true, '"+org_name+"', false , NULL, NULL)";
-			int rs = stmt.executeUpdate(sql);
-			
-			if(rs > 0)
+			try
 			{
-				isSuccess = true;
+				Class.forName("com.mysql.jdbc.Driver");
+				
+				Connection con = DriverManager.getConnection(url,user,pass);
+				Statement stmt = con.createStatement();
+				
+				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', true, '"+org_name+"', false , NULL, NULL)";
+				int rs = stmt.executeUpdate(sql);
+				
+				if(rs > 0)
+				{
+					isSuccess = true;
+				}
+				else
+				{
+					isSuccess = false;
+				}
+				
 			}
-			else
+			catch(Exception e)
 			{
-				isSuccess = false;
+				e.printStackTrace();
 			}
 			
 		}
-		catch(Exception e)
+		else
 		{
-			e.printStackTrace();
+			try
+			{
+				Class.forName("com.mysql.jdbc.Driver");
+				
+				Connection con = DriverManager.getConnection(url,user,pass);
+				Statement stmt = con.createStatement();
+				
+				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', false, NULL, true , '"+firstName+"', '"+lastName+"')";
+				int rs = stmt.executeUpdate(sql);
+				
+				if(rs > 0)
+				{
+					isSuccess = true;
+				}
+				else
+				{
+					isSuccess = false;
+				}
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			
 		}
 		
 		
 		
 		return isSuccess;
+		
+		
 	}
 
 }
