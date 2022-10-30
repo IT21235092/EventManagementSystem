@@ -101,7 +101,7 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "photos/navi.png" alt = "">
+                <img src = "../Images/color.png" alt = "">
                 <span class="admin_name">Kiriharan Mohan</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
@@ -113,7 +113,7 @@
             <input type="checkbox" id="chk" aria-hidden="true">
     
                 <div class="signup">
-                    <form>
+                    <form action="../Add" method = "post" enctype = "multipart/form-data">
                        
                         <label for="chk" aria-hidden="true">Add Event</label>
                         <div class="label1">
@@ -161,11 +161,11 @@
                                         <div class="label6">
                                             <label>Enter Event description</label>
                                             </div>
-                       <textarea id="txta" rows="4" cols="50"></textarea>
+                       <textarea id="txta" name="txtarea" rows="4" cols="50"></textarea>
     
                        
                         
-                        <button>Add Event</button>
+                        <button type="submit">Add Event</button>
                     </form>
                 </div>
 
