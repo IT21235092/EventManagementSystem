@@ -124,6 +124,10 @@
             <span class="details">Price</span>
             <input type="text" placeholder="Price of the service" required>
           </div>
+          <div class="input-box">
+            <span class="details">Attachments:</span>
+            <input type="file" placeholder="Add images of your product" required>
+          </div>
         </div>
         <div class="button">
           <input type="submit" value="Submit">
