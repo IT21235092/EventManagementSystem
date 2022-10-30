@@ -307,6 +307,8 @@ nav .profile-details .admin-name
   padding-top: 100px;
 }
 
+
+
 .home-section .overview-boxes .box
 {
   width: calc(100% / 4 - 15px);
@@ -406,9 +408,27 @@ nav .profile-details .admin-name
 .home-section .event-boxes
 {
   display:flex;
-  justify-content: space-between;
+  justify-content:space-between;
   padding: 30px;
 }
+
+
+.home-section .form-content .container
+{
+  display:flex;
+  padding: 30px;
+}
+
+.home-section .form-content .container .row
+{
+  padding: 10px;
+}
+
+.home-section .form-content .container .col
+{
+  padding: 30px;
+}
+
 
 .home-section .event-boxes .recent-sale
 {
@@ -612,4 +632,70 @@ nav .profile-details .admin-name
    }
 }
 
+/*Settings Content*/
 
+.home-section .form-content .container
+{
+	background-color: black;
+	margin-left: 5%;
+	margin-top: 6%;
+	width: 90%;
+  	display:flex;
+  	align-items:center;
+  	background: #fff;
+  	border-radius: 12px;
+  	justify-content: center;
+  	box-shadow: 0 5px 10px rgb(0,0,0,0);
+}
+.home-section .form-content .avatar-xl img, .col-md-7 {
+    width: 150px;
+    margin-left: -12%;
+    margin-top: 4%;
+}
+
+.home-section .form-content .col-md-7 {
+    width: 150px;
+    margin-left: -8%;
+    margin-top: 6%;
+}
+
+
+
+.home-section .form-content .rounded-circle {
+    border-radius: 50% !important;
+}
+
+.home-section .form-content img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.home-section .form-content .profile
+{
+	display: flex;
+	justify-content: space-between;
+}
+
+.home-section .form-content .text-muted {
+    color: #aeb0b4 !important;
+}
+
+.home-section .form-content .text-muted {
+    font-weight: 300;
+}
+
+.home-section .form-content .form-control {
+    display: block;
+    width: 100%;
+    height: calc(1.5em + 0.75rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4d5154;
+    background-color: #ffffff;
+    background-clip: padding-box;
+    border: 1px solid #eef0f3;
+    border-radius: 0.25rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
