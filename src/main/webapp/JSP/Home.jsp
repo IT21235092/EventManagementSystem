@@ -23,6 +23,13 @@
                             <li><a href="#" class="navItem">SIGN IN</a></li>
                         </ul>
                     </nav>
+                    
+                    <div class = "overlay" id = "divOne">
+                    	<div class  = "wrapper">
+                    		<button>Log In as Customer</button>
+                    		<button>Log In as Vendor</button>
+                    	</div>			
+					</div>
             <!-- <div class="btns">
                 <button class="btn" onclick = >Sign Up</button>
                 <button class="btn" onclick = >Log In</button>
