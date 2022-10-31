@@ -37,7 +37,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="Cust_Settings.jsp">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -83,8 +83,8 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "../Images/color.png" alt = "">
-                <span class="admin_name">Kiriharan Mohan</span>
+                <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
+                <span class="admin_name">${username}</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
         </nav>

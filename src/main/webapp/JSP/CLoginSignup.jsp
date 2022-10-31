@@ -67,11 +67,9 @@
                    
                   
                     <div id="form1" style="display: none">
-                       
                         <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
                     </div>
                     <div id="form2" style="display: none">
-                       
                         <input type="text" name = "firstName" placeholder="First Name" id="txtPassportNumber" />
                         <input type="text" name = "lastName" placeholder="Last Name" id="txtPassportNumber" />
                     </div>

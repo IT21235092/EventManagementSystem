@@ -28,21 +28,40 @@
         <li>
             <i class='bx bx-search' ></i>
             <input type="text" placeholder="Search...">
+        </li>
         <li>
-            <a href="#" class = "colored" >
-                <i class='bx bxs-dashboard colored'></i>
+            <a href="#" >
+                <i class='bx bxs-dashboard'></i>
                 <span class="links_name">Dashboard</span>
             </a>
         </li>
         <li>
             <a href="#">
                 <i class='bx bxs-message-square-add'></i>
-                <span class="links_name">Schedule Meeting</span>
+                <span class="links_name">Create Event</span>
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
-                <i class='bx bx-cog' ></i>
+            <a href="#">
+                <i class='bx bx-star'></i>
+                <span class="links_name">Reviews</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bxs-user'></i>
+                <span class="links_name">Vendors</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class='bx bx-message-dots' ></i>
+                <span class="links_name">ChatBox</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class = "colored" >
+                <i class='bx bx-cog colored' ></i>
                 <span class="links_name">Settings</span>
             </a>
         </li>

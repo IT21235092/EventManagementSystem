@@ -3,18 +3,23 @@ package com.customer;
 public class Customer {
 	
 	private String org_Name;
+	private String firstName;
+	private String lastName;
 	private String username;
 	private String email;
 	private String contact;
 	private String password;
 	
 	// Constructor
-	public Customer(String org_Name, String username, String email, String contact, String password) {
+	public Customer(String org_Name, String firstName, String lastName, String username, String email, String contact, String password) {
 		this.org_Name = org_Name;
 		this.username = username;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.email = email;
 		this.contact = contact;
 		this.password = password;
+		
 	}
 	
 	//Getters and Setters

@@ -9,17 +9,17 @@ import java.util.ArrayList;
 public class CustomerDBUtil {
 	
 	
-	public static boolean insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password)
+	public static ArrayList insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password)
 	{
 		
 		boolean isSuccess = false;
-		
+		ArrayList arr = new ArrayList<>();
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
 		String user = "root";
 		String pass = "eventmanagement123";
 
 		
-		if (firstName == null)
+		if (lastName.equals("") && firstName.equals(""))
 		{
 			try
 			{
@@ -39,6 +39,7 @@ public class CustomerDBUtil {
 				{
 					isSuccess = false;
 				}
+				
 				
 			}
 			catch(Exception e)
@@ -77,9 +78,10 @@ public class CustomerDBUtil {
 			
 		}
 		
+		arr.add(userName);
+		arr.add(isSuccess);
 		
-		
-		return isSuccess;
+		return arr;
 		
 		
 	}
