@@ -28,6 +28,8 @@ public class AdvertisementDButil {
 				String sql = "insert into advertisement values(0, '"+vid+"', '"+price+"', '"+desc+"', NULL)";
 				int rs = stmt.executeUpdate(sql);
 				
+				System.out.println(rs);
+				
 				if(rs > 0)
 				{
 					isSuccess = true;

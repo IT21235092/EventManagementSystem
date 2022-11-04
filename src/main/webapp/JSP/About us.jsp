@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../CSS/Advertisement.css">
+        <link rel="stylesheet" href= "../CSS/About us.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
@@ -97,45 +97,13 @@
         
         </section>
         
-    <!-- -----------------------------------Content-------------------------------------------- -->
-    
-     <div class="container">
-    <div class="title">Create an Advertisement</div>
-    <div class="content">
-      <form action= "../adinsert" method="post">
-        <div class="ad-details">
-          <div class="input-box">
-            <span class="details">Vendor Id</span>
-            <input type="text" name="vid" placeholder="Enter the Vendor Id" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Vendor Name</span>
-            <input type="text" name="name" placeholder="Enter your Name" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Advertisement Title</span>
-            <input type="text" name="title" placeholder="Enter the title of your ad" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Description</span>
-            <textarea placeholder="Product details" name="desc" required></textarea>
-          </div>
-          <div class="input-box">
-            <span class="details">Price</span>
-            <input type="text" placeholder="Price of the service" name="price" required>
-          </div>
-          <div class="input-box">
-            <span class="details">Attachments:</span>
-            <input type="file" name="attach">
-          </div>
+   <!-- ------------------------------------------------------------------- -->
+        <div class= "content">
+        	<h1> About us</h1>
         </div>
-        <div class="button">
-          <input type="submit" value="Submit">
-        </div>
-      </form>
-    </div>
-  </div>
-  
-    </body>
-    
-    </html>
+        
+        
+        
+        </body>
+        
+        </html>
