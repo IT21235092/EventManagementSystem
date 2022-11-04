@@ -79,7 +79,7 @@ textarea
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form action = "../insert" method = "post">
+				<form action = "../insertV" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
 					
@@ -90,14 +90,14 @@ textarea
 					<input type="password" name="pswd" placeholder="Password" required="">
 					
 		
-				      <select name="types" id="type">
+				      <select name="types" id="type" required ="">
 				        <option value="" disabled selected>Type</option>
 				        <option value="Music">Music</option>
 				        <option value="Food and Drinks">Food and Drinks</option>
 				        <option value="Decorations">Decorations</option>
 				        <option value="Photos">Photos</option>
 				        <option value="Invitation Cards">Invitation Cards</option>
-				        <textarea placeholder='address' maxlength='1000' minlength='100'></textarea>
+				        <textarea placeholder='address' maxlength='1000' minlength='100' name = "address" required = ""></textarea>
 				      </select>
 					
 		

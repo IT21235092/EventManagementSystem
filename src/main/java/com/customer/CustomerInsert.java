@@ -1,6 +1,7 @@
 package com.customer;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,6 @@ public class CustomerInsert extends HttpServlet {
 		
 		boolean isSuccess = false;
 		
-		
 		try
 		{
 			arr = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
@@ -48,8 +48,16 @@ public class CustomerInsert extends HttpServlet {
 			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Cust_dashboard.jsp");
 			dis.forward(request, response);
 		}
-	
-		
+		else if ( isSuccess == false)
+		{
+			response.setContentType("text/html");
+			PrintWriter pw=response.getWriter();
+			pw.println("<script type=\"text/javascript\">");
+			pw.println("alert('The userName "+arr.get(0)+" has already been taken. Try another username ');");
+			pw.println("</script>");
+			RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
+			rd.include(request, response);
+		}
 		
 	}
 

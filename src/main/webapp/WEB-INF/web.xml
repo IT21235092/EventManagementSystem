@@ -18,17 +18,29 @@
 	<url-pattern>/insert</url-pattern>
 </servlet-mapping>
          
-         <servlet>
+<servlet>
     <servlet-name>AddEvent</servlet-name>
     <servlet-class>Admin.AddEventControl</servlet-class>
 </servlet>
-
 
 
 <servlet-mapping>
     <servlet-name>AddEvent</servlet-name>
     <url-pattern>/Add</url-pattern>
 </servlet-mapping>
+
+<servlet>
+    <servlet-name>VendorInsert</servlet-name>
+    <servlet-class>com.vendor.VendorInsert</servlet-class>
+</servlet>
+
+
+<servlet-mapping>
+    <servlet-name>VendorInsert</servlet-name>
+    <url-pattern>/insertV</url-pattern>
+</servlet-mapping>
+
+
          
          
 </web-app>

@@ -19,7 +19,6 @@ public class Customer {
 		this.email = email;
 		this.contact = contact;
 		this.password = password;
-		
 	}
 	
 	//Getters and Setters
