@@ -17,5 +17,15 @@
 	<servlet-name>CustomerInsert</servlet-name>
 	<url-pattern>/insert</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>bookeventServlet</servlet-name>
+	<servlet-class>com.customerevent.bookeventServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>bookeventServlet</servlet-name>
+	<url-pattern>/eventInsert</url-pattern>
+</servlet-mapping>
          
 </web-app>
