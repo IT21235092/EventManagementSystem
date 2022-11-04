@@ -55,7 +55,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="Admin_Settings.jsp">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

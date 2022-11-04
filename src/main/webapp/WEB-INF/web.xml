@@ -28,4 +28,17 @@
 	<url-pattern>/eventInsert</url-pattern>
 </servlet-mapping>
          
+         <servlet>
+    <servlet-name>AddEvent</servlet-name>
+    <servlet-class>Admin.AddEventControl</servlet-class>
+</servlet>
+
+
+
+<servlet-mapping>
+    <servlet-name>AddEvent</servlet-name>
+    <url-pattern>/Add</url-pattern>
+</servlet-mapping>
+         
+         
 </web-app>

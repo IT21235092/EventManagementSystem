@@ -155,6 +155,20 @@ input{
 	border-radius: 5px;
 }
 
+select
+{
+	width: 70%;
+	height: 20px;
+	background: #eeeded;
+	justify-content: center;
+	display: flex;
+	margin: 20px auto;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	
+}
 
 .login{
 	height: 600px;

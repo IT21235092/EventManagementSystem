@@ -272,12 +272,10 @@ body
     align-items: center;
     height: 50px;
     min-width: 190px;
-    background: #F5F6FA;
     border: 2px solid #EFEEF1;
-    background: white;
     border-radius: 6px;
     padding: 0 15px 0 2px;
-    color: #000;
+    color: #fff;
     margin-right: 2%;
     cursor: pointer;
 }
@@ -306,8 +304,6 @@ nav .profile-details .admin-name
   position:relative;
   padding-top: 100px;
 }
-
-
 
 .home-section .overview-boxes .box
 {
@@ -408,27 +404,9 @@ nav .profile-details .admin-name
 .home-section .event-boxes
 {
   display:flex;
-  justify-content:space-between;
+  justify-content: space-between;
   padding: 30px;
 }
-
-
-.home-section .form-content .container
-{
-  display:flex;
-  padding: 30px;
-}
-
-.home-section .form-content .container .row
-{
-  padding: 10px;
-}
-
-.home-section .form-content .container .col
-{
-  padding: 30px;
-}
-
 
 .home-section .event-boxes .recent-sale
 {
@@ -509,7 +487,6 @@ nav .profile-details .admin-name
 
 .home-section .addEvent
 {
-  background-image: url("../Images/color.png");
   margin-left: 90%;
   margin-top: 18%;
   padding: 10px;
@@ -632,70 +609,119 @@ nav .profile-details .admin-name
    }
 }
 
-/*Settings Content*/
 
-.home-section .form-content .container
-{
-	background-color: black;
-	margin-left: 5%;
-	margin-top: 6%;
-	width: 90%;
-  	display:flex;
-  	align-items:center;
-  	background: #fff;
-  	border-radius: 12px;
-  	justify-content: center;
-  	box-shadow: 0 5px 10px rgb(0,0,0,0);
+/* ---------------- Content ------------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+.container{
+  max-width: 700px;
+  width: 100%;
+  background-color: #fff;
+  padding: 25px 30px;
+  margin-left: 30%;
+  margin-top: 3%;
+  border-radius: 5px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
 }
-.home-section .form-content .avatar-xl img, .col-md-7 {
-    width: 150px;
-    margin-left: -12%;
-    margin-top: 4%;
+.container .title{
+  font-size: 25px;
+  font-weight: 500;
+  position: relative;
 }
-
-.home-section .form-content .col-md-7 {
-    width: 150px;
-    margin-left: -8%;
-    margin-top: 6%;
+.container .title::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 30px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, #000000, #a49fa7);
 }
-
-
-
-.home-section .form-content .rounded-circle {
-    border-radius: 50% !important;
+.content form .ad-details{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px 0 12px 0;
 }
-
-.home-section .form-content img {
-    vertical-align: middle;
-    border-style: none;
+form .ad-details .input-box{
+  margin-bottom: 15px;
+  width: calc(100% / 2 - 20px);
 }
-
-.home-section .form-content .profile
-{
-	display: flex;
-	justify-content: space-between;
+form .input-box span.details{
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
 }
-
-.home-section .form-content .text-muted {
-    color: #aeb0b4 !important;
+.ad-details .input-box input{
+  height: 45px;
+  width: 100%;
+  outline: none;
+  font-size: 16px;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #ccc;
+  border-bottom-width: 2px;
+  transition: all 0.3s ease;
 }
-
-.home-section .form-content .text-muted {
-    font-weight: 300;
-}
-
-.home-section .form-content .form-control {
-    display: block;
+.ad-details .input-box textarea{
+    height: 45px;
     width: 100%;
-    height: calc(1.5em + 0.75rem + 2px);
-    padding: 0.375rem 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #4d5154;
-    background-color: #ffffff;
-    background-clip: padding-box;
-    border: 1px solid #eef0f3;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    outline: none;
+    font-size: 16px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid #ccc;
+    border-bottom-width: 2px;
+    transition: all 0.3s ease;
+}
+.ad-details .input-box input:focus,
+.ad-details .input-box input:valid{
+  border-color: #9b59b6;
+}
+form .button{
+   height: 45px;
+   margin: 35px 0
+ }
+ form .button input{
+   height: 100%;
+   width: 100%;
+   border-radius: 5px;
+   border: none;
+   color: #fff;
+   font-size: 18px;
+   font-weight: 500;
+   letter-spacing: 1px;
+   cursor: pointer;
+   transition: all 0.3s ease;
+   background: linear-gradient(135deg, #81878b, #000000);
+ }
+ form .button input:hover{
+  /* transform: scale(0.99); */
+  background: linear-gradient(-135deg, #9aa1a5, #1c1b1d);
+  }
+ @media(max-width: 584px){
+ .container{
+  max-width: 100%;
+}
+form .ad-details .input-box{
+    margin-bottom: 15px;
+    width: 100%;
+  }
+  form .category{
+    width: 100%;
+  }
+  .content form .ad-details{
+    max-height: 300px;
+    overflow-y: scroll;
+  }
+  .user-details::-webkit-scrollbar{
+    width: 5px;
+  }
+  }
+  @media(max-width: 459px){
+  .container .content .category{
+    flex-direction: column;
+  }
 }

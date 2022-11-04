@@ -1,6 +1,8 @@
 package com.customer;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -23,16 +25,32 @@ public class CustomerInsert extends HttpServlet {
 		String email = request.getParameter("email");
 		String contact = request.getParameter("phone");
 		String password = request.getParameter("pswd");
+		ArrayList arr = new ArrayList<>();
 		
-		boolean isTrue;
+		boolean isSuccess = false;
 		
-		isTrue = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
 		
-		if (isTrue == true)
+		try
 		{
+			arr = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
+			isSuccess = (boolean) arr.get(1);
+			request.setAttribute("username",  arr.get(0) );
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	
+		if ( isSuccess == true)
+		{
+			
 			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Cust_dashboard.jsp");
 			dis.forward(request, response);
 		}
+	
+		
+		
 	}
 
 }

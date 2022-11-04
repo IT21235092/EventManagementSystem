@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Slide Navbar</title>
+	<title>Customer Sign In</title>
 	<link rel="stylesheet" type="text/css" href="../CSS/Login&SignUp.css">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -67,11 +67,9 @@
                    
                   
                     <div id="form1" style="display: none">
-                       
                         <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
                     </div>
                     <div id="form2" style="display: none">
-                       
                         <input type="text" name = "firstName" placeholder="First Name" id="txtPassportNumber" />
                         <input type="text" name = "lastName" placeholder="Last Name" id="txtPassportNumber" />
                     </div>

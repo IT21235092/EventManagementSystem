@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/dashboard-style.css">
+        <link rel="stylesheet" href="../CSS/Advertisement.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
-        <title> Customer Dashboard | Eventrra</title>
+        <title> Vendor Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
@@ -16,7 +16,7 @@
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
-            <img src = "${pageContext.request.contextPath}/Images/logo.png">
+            <img src = "../Images/logo.png">
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
@@ -33,11 +33,17 @@
         <li>
             <a href="#">
                 <i class='bx bxs-message-square-add'></i>
-                <span class="links_name">Schedule Meeting</span>
+                <span class="links_name">Services</span>
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
+            <a href="#">
+                <i class='bx bx-message-dots' ></i>
+                <span class="links_name">ChatBox</span>
+            </a>
+        </li>
+        <li>
+            <a href="#">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -75,7 +81,7 @@
         }
         }
     </script>
-
+    
     <!-- ---------------------------Middle content---------------- -->
     <section class="home-section">
         <nav>
@@ -83,39 +89,53 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
-                <span class="admin_name">${username}</span>
+                <img src = "../Images/color.png" alt = "">
+                <span class="admin_name">Kiriharan Mohan</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
         </nav>
-
-         <!-- Home content -->
-
-        <div class="home-content">
-            <!-- event-content -->
-            <div class="event-boxes">
-                <div class="recent-sale box">
-                    <div class = "title">Pending Event</div>
-                </div>
-                <!-- right-side -->
-                <div class="top-vendor box">
-                    <div class = "title">Event History</div>
-                    <ul>
-                        <li>
-                            <a href = "#">
-                              <img src = "../Images/color.png" alt = "">
-                              <span class="product-name">Gucci Women's Bag</span>
-                            </a>
-                            <span class="price">$14.66</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        <button class="addEvent">Add Event</button>
-    </section>
-   
-   
+        
+        </section>
+        
+    <!-- -----------------------------------Content-------------------------------------------- -->
+    
+     <div class="container">
+    <div class="title">Create an Advertisement</div>
+    <div class="content">
+      <form action="#">
+        <div class="ad-details">
+          <div class="input-box">
+            <span class="details">Vendor Id</span>
+            <input type="text" placeholder="Enter the Vendor Id" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Vendor Name</span>
+            <input type="text" placeholder="Enter your Name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Advertisement Title</span>
+            <input type="text" placeholder="Enter the title of your ad" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Description</span>
+            <textarea placeholder="Product details" required></textarea>
+          </div>
+          <div class="input-box">
+            <span class="details">Price</span>
+            <input type="text" placeholder="Price of the service" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Attachments:</span>
+            <input type="file">
+          </div>
+        </div>
+        <div class="button">
+          <input type="submit" value="Submit">
+        </div>
+      </form>
+    </div>
+  </div>
+  
     </body>
-
-</html>
+    
+    </html>
