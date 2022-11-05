@@ -129,4 +129,43 @@ public class CustomerDBUtil{
 		return arr;
 	}
 
+	public static List<Customer> getCustomerDetails(int id)
+	{
+		ArrayList<Customer> cus = new ArrayList();
+		
+		
+		try
+		{
+			Connection con = ConnectDatabase.getConnection();
+			Statement stmt = con.createStatement();
+			String sql = "select * from customer where Cust_ID = '"+id+"'";
+			ResultSet rs = stmt.executeQuery(sql);
+			
+			while(rs.next())
+			{
+				int ID = rs.getInt(1);
+				String username = rs.getString(2);
+				String password = rs.getString(3);
+				String email = rs.getString(4);
+				String dp = rs.getString(5);
+				String Contact = rs.getString(6);
+			    boolean org = rs.getBoolean(7);
+			    String org_name = rs.getString(8);
+			    boolean single_cus = rs.getBoolean(9);
+			    String first_Name = rs.getString(10);
+			    String last_Name = rs.getString(11);
+			    
+			    Customer c = new Customer(ID,username,password,email,dp, Contact, org, org_name, single_cus,first_Name,last_Name);
+			    cus.add(c);
+			       
+			}
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		return cus;
+	}
 }

@@ -21,7 +21,7 @@
         </div>
         <ul class="nav-list">
         <li>
-            <i class='bx bx-search' ></i>
+            <i class='bx bx-search'></i>
             <input type="text" placeholder="Search...">
         </li>
         <li>
@@ -37,7 +37,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/JSP/Cust_Settings.jsp">
+            <a href="../Set">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

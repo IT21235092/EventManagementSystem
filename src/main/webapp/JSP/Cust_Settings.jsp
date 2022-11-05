@@ -1,13 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
-     <link rel="stylesheet" href="../CSS/settings.css">
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/settings.css">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title> Admin Dashboard | Eventrra</title>
+    <title> Admin Settings | Eventrra</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -20,7 +21,7 @@
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
-            <img src = "../Images/logo.png">
+            <img src = "${pageContext.request.contextPath}/Images/logo.png">
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
@@ -28,7 +29,7 @@
             <i class='bx bx-search' ></i>
             <input type="text" placeholder="Search...">
         <li>
-            <a href="#" class = "colored" >
+            <a href="${pageContext.request.contextPath}/JSP/Cust_dashboard.jsp" class = "colored" >
                 <i class='bx bxs-dashboard colored'></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -40,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
+            <a href="">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -88,6 +89,8 @@
             <i class='bx bx-chevron-down'></i>
         </div>
     </nav>
+    
+<c:forEach var = "cus" items = "${cusDetails}">
 
 <div class="container">
 <div class="row justify-content-center">
@@ -99,7 +102,7 @@
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Profile</a>
                 </li>
             </ul>
-            <form>
+            <form >
                 <div class="row mt-5 align-items-center">
                     <div class="col-md-3 text-center mb-5">
                         <div class="avatar avatar-xl">
@@ -109,7 +112,7 @@
                     <div class="col">
                         <div class="row align-items-center">
                             <div class="col-md-7">
-                                <h4 class="mb-1">Brown, Asher</h4>
+                                <h4 class="mb-1">${cus.firstName} ${cus.lastName}</h4>
                                 <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
                             </div>
                         </div>
@@ -123,45 +126,34 @@
                 <hr class="my-4" />
                 <div class="form-row">
                     <div class="form-group col-md-6">
-                        <label for="firstname">Firstname</label>
-                        <input type="text" id="firstname" class="form-control" placeholder="Brown" />
+                        <label for="firstname">FirstName</label>
+                        <input type="text" id="firstname" value = '${cus.firstName}' class="form-control"/>
                     </div>
                     <div class="form-group col-md-6">
-                        <label for="lastname">Lastname</label>
-                        <input type="text" id="lastname" class="form-control" placeholder="Asher" />
+                        <label for="lastname">LastName</label>
+                        <input type="text" id="lastname"  value = '${cus.lastName}' class="form-control"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="inputEmail4">Email</label>
-                    <input type="email" class="form-control" id="inputEmail4" placeholder="brown@asher.me" />
+                    <label for="username">Username</label>
+                    <input type="text" class="form-control" value = '${cus.username}' id="username"/>
                 </div>
                 <div class="form-group">
-                    <label for="inputAddress5">Address</label>
-                    <input type="text" class="form-control" id="inputAddress5" placeholder="P.O. Box 464, 5975 Eget Avenue" />
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" value = '${cus.email}' id="email"/>
                 </div>
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="inputCompany5">Company</label>
-                        <input type="text" class="form-control" id="inputCompany5" placeholder="Nec Urna Suscipit Ltd" />
-                    </div>
-                    <div class="form-group col-md-4">
-                        <label for="inputState5">State</label>
-                        <select id="inputState5" class="form-control">
-                            <option selected="">Choose...</option>
-                            <option>...</option>
-                        </select>
-                    </div>
-                    <div class="form-group col-md-2">
-                        <label for="inputZip5">Zip</label>
-                        <input type="text" class="form-control" id="inputZip5" placeholder="98232" />
-                    </div>
+                <div class="form-group">
+                    <label for="email">Contact Number</label>
+                    <input type="email" class="form-control" value = '${cus.phone }' id="phone"/>
                 </div>
+                
+              
                 <hr class="my-4" />
                 <div class="row mb-4">
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword4">Old Password</label>
-                            <input type="password" class="form-control" id="inputPassword5" />
+                            <input type="password" class="form-control" value = '${cus.password}' id="inputPassword5" />
                         </div>
                         <div class="form-group">
                             <label for="inputPassword5">New Password</label>
@@ -188,9 +180,12 @@
         </div>
     </div>
 
+
 </div>
 
 </div>
+
+</c:forEach>
 </section>
 
 <script type="text/javascript">
