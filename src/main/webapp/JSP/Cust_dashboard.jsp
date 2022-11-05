@@ -21,10 +21,6 @@
         </div>
         <ul class="nav-list">
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
-        <li>
             <a href="#" class = "colored" >
                 <i class='bx bxs-dashboard colored'></i>
                 <span class="links_name">Dashboard</span>
@@ -37,7 +33,7 @@
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
+            <a href="http://localhost:8080/EventManagementSystem/InitialSettings">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

@@ -1,4 +1,4 @@
-package com.customer;
+package com.vendor;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -11,12 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/CustomerLogin")
-public class CustomerLogin extends HttpServlet {
+
+@WebServlet("/VendorLogin")
+public class VendorLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		String email = request.getParameter("email");
 		String password = request.getParameter("pswd");
 	    boolean isSuccess = false;
@@ -24,7 +26,7 @@ public class CustomerLogin extends HttpServlet {
 		
 		try 
 		{
-			arr = CustomerDBUtil.validate(email, password);
+			arr = VendorDBUtil.validate(email, password);
 			request.setAttribute("username", arr.get(0));
 			isSuccess = (boolean) arr.get(1);
 			
@@ -36,7 +38,7 @@ public class CustomerLogin extends HttpServlet {
 		
 		if ( isSuccess == true)
 		{
-			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_dashboard.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("JSP/Vendor_dashboard.jsp");
 			dis.forward(request, response);	
 		}
 		else
@@ -46,7 +48,7 @@ public class CustomerLogin extends HttpServlet {
 			pw.println("<script type=\"text/javascript\">");
 			pw.println("alert('Incorrect email or password! Please try again');");
 			pw.println("</script>");
-			RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("JSP/VLoginSignup.jsp");
 			rd.include(request, response);
 		}
 	}

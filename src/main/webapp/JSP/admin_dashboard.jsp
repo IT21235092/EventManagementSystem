@@ -16,14 +16,10 @@
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
-            <img src = "../Images/logo.png">
+            <img src = "${pageContext.request.contextPath}/Images/logo.png">
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
-        <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
         <li>
             <a href="#" class = "colored" >
                 <i class='bx bxs-dashboard colored'></i>
@@ -52,12 +48,6 @@
             <a href="#">
                 <i class='bx bx-message-dots' ></i>
                 <span class="links_name">ChatBox</span>
-            </a>
-        </li>
-        <li>
-            <a href="Admin_Settings.jsp">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Settings</span>
             </a>
         </li>
         </ul>
@@ -101,7 +91,7 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "../Images/color.png" alt = "">
+                <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
                 <span class="admin_name">Kiriharan Mohan</span>
                 <i class='bx bx-chevron-down'></i>
             </div>

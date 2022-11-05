@@ -34,7 +34,7 @@ public class CustomerInsert extends HttpServlet {
 		{
 			arr = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
 			isSuccess = (boolean) arr.get(1);
-			request.setAttribute("username",  arr.get(0) );
+			request.setAttribute("username", arr.get(0));
 		}
 		catch(Exception e)
 		{

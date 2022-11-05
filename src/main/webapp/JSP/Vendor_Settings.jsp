@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +7,7 @@
      <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/settings.css">
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title> Customer Settings | Eventrra</title>
+    <title> Vendor Settings | Eventrra</title>
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -18,7 +17,7 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-    <div class="sidebar">
+     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
             <img src = "${pageContext.request.contextPath}/Images/logo.png">
@@ -26,10 +25,7 @@
         </div>
         <ul class="nav-list">
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        <li>
-            <a href="${pageContext.request.contextPath}/JSP/Cust_dashboard.jsp" >
+            <a href="${pageContext.request.contextPath}/JSP/Vendor_dashboard.jsp"  >
                 <i class='bx bxs-dashboard'></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -37,12 +33,18 @@
         <li>
             <a href="#">
                 <i class='bx bxs-message-square-add'></i>
-                <span class="links_name">Schedule Meeting</span>
+                <span class="links_name">Services</span>
             </a>
         </li>
         <li>
-            <a href="" class = "colored" >
-                <i class='bx bx-cog  colored' ></i>
+            <a href="#">
+                <i class='bx bx-message-dots' ></i>
+                <span class="links_name">ChatBox</span>
+            </a>
+        </li>
+        <li>
+            <a href="#"  class = "colored">
+                <i class='bx bx-cog colored' ></i>
                 <span class="links_name">Settings</span>
             </a>
         </li>
@@ -124,27 +126,37 @@
                     </div>
                 </div>
                 <hr class="my-4" />
-                <div class="form-row">
-                    <div class="form-group col-md-6">
-                        <label for="firstname">FirstName</label>
-                        <input type="text" id="firstname" name = "firstname" value = '${cus.firstName}' class="form-control"/>
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label for="lastname">LastName</label>
-                        <input type="text" id="lastname" name = "lastname" value = '${cus.lastName}' class="form-control"/>
-                    </div>
+                 <div class="form-group">
+                    <label for="organization">Organization</label>
+                    <input type="text" class="form-control" name = "username" id="organization"/>
                 </div>
+
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" name = "username" value = '${cus.username}' id="username"/>
+                    <input type="text" class="form-control" name = "username" id="username"/>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name = "email" value = '${cus.email}' id="email"/>
+                    <input type="email" class="form-control" name = "email"  id="email"/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Contact Number</label>
-                    <input type="text" class="form-control" name = "phone" value = '${cus.phone }' id="phone"/>
+                    <input type="text" class="form-control" name = "phone" id="phone"/>
+                </div>
+                 <div class="form-group">
+                    <label for="type">Type</label>
+                    <select name="types" class = "form-control" id="type" required ="">
+				        <option value="" disabled selected>Type</option>
+				        <option value="Music">Music</option>
+				        <option value="Food and Drinks">Food and Drinks</option>
+				        <option value="Decorations">Decorations</option>
+				        <option value="Photos">Photos</option>
+				        <option value="Invitation Cards">Invitation Cards</option>
+				      </select>
+                </div>
+                <div class="form-group">
+                    <label for="address">Location</label>
+                    <textarea placeholder='address' class = "form-control" maxlength='1000' minlength='100' name = "address" required = ""></textarea>
                 </div>
                 
               
