@@ -1,4 +1,4 @@
-package com.customer;
+package com.vendor;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

@@ -16,7 +16,7 @@
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
-            <img src = "../Images/logo.png">
+            <img src = "${pageContext.request.contextPath}/Images/logo.png">
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
@@ -90,7 +90,7 @@
             </div>
             <div class="profile-details">
                 <img src = "../Images/color.png" alt = "">
-                <span class="admin_name">Kiriharan Mohan</span>
+                <span class="admin_name">${username}</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
         </nav>

@@ -37,7 +37,7 @@ public class AdServlet extends HttpServlet {
 		
 		try
 		{
-			arr = AdvertisementDButil.insertAdvertisement(vid, name, title, desc, price, attach);
+			isSuccess = AdvertisementDButil.insertAdvertisement(vid, name, title, desc, price, attach);
 			isSuccess = (boolean) arr.get(1);
 		}
 		catch(Exception e)

@@ -37,7 +37,7 @@
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
+            <a href="${pageContext.request.contextPath}/JSP/Cust_Settings.jsp">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

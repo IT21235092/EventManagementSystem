@@ -8,38 +8,31 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vendor.ConnectDatabase;
+
 public class CustomerDBUtil{
 	
-	public static boolean checkUserName(Connection con, String userName) throws SQLException
-	{
-		Statement stmt = con.createStatement();
-		String sql = "select * from customer where Username = '"+userName+"'";
-		ResultSet rs = stmt.executeQuery(sql);
-		
-		if ( !rs.next() )
-			return false;
-		
-		return true;
-	}
 	
 	public static ArrayList insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password) throws SQLException
 	{
 		
-		boolean isSuccess = false, validUserName = false;
+		boolean isSuccess = false;
 		ArrayList arr = new ArrayList<>();
 		Connection con = ConnectDatabase.getConnection();
 		
-		validUserName = checkUserName(con, userName);
+		Statement stmtCheck = con.createStatement();
+		String sqlCheck = "select * from customer where Username = '"+userName+"'";
+		ResultSet rsCheck = stmtCheck.executeQuery(sqlCheck);
 		
-		if (validUserName == false)
+		if (rsCheck.next())
 		{
 			arr.add(userName);
 			arr.add(isSuccess);
-			
 			return arr;
 		}
 		
 		
+			
 		if (lastName.equals("") && firstName.equals(""))
 		{
 			try
@@ -102,10 +95,13 @@ public class CustomerDBUtil{
 	}
 	
 	
-	public static String validate(String email, String password) throws SQLException
+	public static ArrayList validate(String email, String password) throws SQLException
 	{
 		
 		String Username = "";
+		boolean isSuccess = false;
+		ArrayList arr = new ArrayList();
+		
 		Connection con = ConnectDatabase.getConnection();
 		
 		try
@@ -118,8 +114,8 @@ public class CustomerDBUtil{
 			if(rs.next())
 			{
 				Username = rs.getString(2);
+				isSuccess = true;
 			}
-			
 		}
 		catch(Exception e)
 		{
@@ -127,9 +123,10 @@ public class CustomerDBUtil{
 		}
 		
 		//validate
+		arr.add(Username);
+		arr.add(isSuccess);
 		
-		
-		return Username;
+		return arr;
 	}
 
 }

@@ -53,7 +53,7 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form action = "../insert" method = "post">
+				<form action = "${pageContext.request.contextPath}/insert" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
 
@@ -81,7 +81,7 @@
 			
 
 			<div class="login">
-				<form action = "../CustomerLogin" method = "post">
+				<form action = "${pageContext.request.contextPath}/CustomerLogin" method = "post">
 					<label for="chk" aria-hidden="true">Login</label>
 					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
