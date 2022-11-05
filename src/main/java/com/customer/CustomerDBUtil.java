@@ -133,7 +133,6 @@ public class CustomerDBUtil{
 	{
 		ArrayList<Customer> cus = new ArrayList();
 		
-		
 		try
 		{
 			Connection con = ConnectDatabase.getConnection();
@@ -167,5 +166,32 @@ public class CustomerDBUtil{
 			e.printStackTrace();
 		}
 		return cus;
+	}
+	
+	
+	public static boolean updateCustomer(String first_name,String  last_name, String username, String email, String contact, String password)
+	{
+		boolean isSuccess = false;
+		
+		try
+		{
+			Connection con = ConnectDatabase.getConnection();
+			Statement stmt = con.createStatement();
+			String sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', First_Name = '"+first_name+"', Last_name = '"+last_name+"' where Cust_ID = 5";
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs  > 0)
+			{
+				isSuccess = true;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		
+		return isSuccess;
 	}
 }

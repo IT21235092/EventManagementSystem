@@ -21,10 +21,6 @@
         </div>
         <ul class="nav-list">
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
-        <li>
             <a href="#" class = "colored" >
                 <i class='bx bxs-dashboard colored'></i>
                 <span class="links_name">Dashboard</span>
@@ -89,7 +85,7 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "../Images/color.png" alt = "">
+                <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
                 <span class="admin_name">${username}</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
