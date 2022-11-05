@@ -51,14 +51,13 @@
 
 
 <servlet>
-	<servlet-name>Create_Advertisement</servlet-name>
-	<servlet-class>Vendor.AdServlet</servlet-class>
-</servlet>
-
+		<servlet-name>Create_Advertisement</servlet-name>
+		<servlet-class>Vendor.AdServlet</servlet-class>
+	</servlet>
+	
 <servlet-mapping>
-	<servlet-name>Advertisement insert</servlet-name>
-	<url-pattern>/adinsert</url-pattern>
+	<servlet-name>Create_Advertisement</servlet-name>
+	<url-pattern>/ad</url-pattern>
 </servlet-mapping>
-
 
 </web-app>

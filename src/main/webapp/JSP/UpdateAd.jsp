@@ -15,6 +15,16 @@
     </head>
 
     <body>
+    
+    <%
+		int adid = int.parseInt(request.getParameter("aid"));
+		int vid = Int.parseInt(request.getParameter("vid"));
+		float price = Float.parseFloat(request.getParameter("price"));
+		String desc = request.getParameter("des");
+		String atta = request.getParameter("attach");
+	%>
+	
+	
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
@@ -106,21 +116,26 @@
     <div class="content">
       <form action= "../ad" method="post">
         <div class="ad-details">
+        <div class="input-box">
+             <span class="details">Ad ID</span>
+            <input type="text" name="adid" value="<%= adid %>" readonly>
+          </div>
           <div class="input-box">
-            <span class="details">Title</span>
-            <input type="text" name="name" placeholder="Enter your Name" required>
+             <span class="details">Vendor ID</span>
+            <input type="text" name="vid" value="<%= vid %>" readonly>
+          </div>
+            <div class="input-box">
+            <span class="details">Price</span>
+            <input type="text" placeholder="Price of the service" name="price" required value="<%= price%>">
           </div>
           <div class="input-box">
             <span class="details">Description</span>
-            <textarea placeholder="Product details" name="desc" required></textarea>
+            <textarea placeholder="Product details" name="desc" required value= "<%= desc%>"></textarea>
           </div>
-          <div class="input-box">
-            <span class="details">Price</span>
-            <input type="text" placeholder="Price of the service" name="price" required>
-          </div>
+        
           <div class="input-box">
             <span class="details">Attachments:</span>
-            <input type="file" name="attach">
+            <input type="file" name="attach" value="<%= atta %>">
           </div>
         </div>
         <div class="button">
