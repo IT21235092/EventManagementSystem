@@ -11,7 +11,41 @@
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
+    <style>
+    	.dropdown-content
+    	{
+			  display: none;
+			  position: absolute;
+			  background-color: #000;
+			  min-width: 180px;
+			  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+			  z-index: 1;
+			  margin-left: -10%;
+			  
+		}
 
+		.dropdown-content a 
+		{
+		  color: white;
+		  padding: 12px 16px;
+		  text-decoration: none;
+		  display: block;
+		}
+
+		.dropdown-content a:hover 
+		{
+			background-color: #000;
+		}
+		
+		.dropdown:hover .dropdown-content
+		{
+		 	display: block;
+		}
+    	
+    
+    </style>
+    
+    	
     <body>
     <div class="sidebar">
         <div class="logo-details">
@@ -39,7 +73,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -87,7 +121,12 @@
             <div class="profile-details">
                 <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
                 <span class="admin_name">${username}</span>
-                <i class='bx bx-chevron-down'></i>
+                 <div class = "dropdown">
+                	<i class='bx bx-chevron-down dropdown'></i>
+		                 <div class="dropdown-content">
+							    <a href="#">Log out</a>
+		  				</div>
+                </div>
             </div>
         </nav>
 

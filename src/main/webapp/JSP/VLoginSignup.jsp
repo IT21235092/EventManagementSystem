@@ -80,7 +80,7 @@ textarea
 					<input type="text" name="username" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="phone" placeholder="Contact number" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="">
 					
 		
 				      <select name="types" id="type" required ="">
