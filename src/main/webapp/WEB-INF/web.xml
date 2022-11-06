@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+
+
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
@@ -56,9 +58,31 @@
 </servlet>
 
 <servlet-mapping>
-	<servlet-name>Advertisement insert</servlet-name>
+	<servlet-name>Create_Advertisement</servlet-name>
 	<url-pattern>/adinsert</url-pattern>
 </servlet-mapping>
+
+<servlet>
+	<servlet-name>EventDelete</servlet-name>
+	<servlet-class>Admin.EventDelete</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>EventDelete</servlet-name>
+	<url-pattern>/delete</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>UpdateEvent</servlet-name>
+    <servlet-class>Admin.UpdateEventServlet</servlet-class>
+</servlet>
+
+
+<servlet-mapping>
+    <servlet-name>UpdateEvent</servlet-name>
+    <url-pattern>/Update</url-pattern>
+</servlet-mapping>
+
 
 
 </web-app>

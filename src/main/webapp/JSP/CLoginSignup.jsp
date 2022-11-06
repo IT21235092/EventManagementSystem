@@ -20,7 +20,7 @@
                                 <li> <a href="${pageContext.request.contextPath}/JSP/Home.jsp" class="navItem">HOME</a></li>
                                 <li> <a href="#"class="navItem">EVENTS</a></li>
                                 <li> <a href="#"class="navItem">GALLERY</a></li>
-                                <li> <a href="#" class="navItem">ABOUT US</a></li>
+                               <li> <a href="#" class="navItem">ABOUT US</a></li>
                                 <li><a href="#" class="navItem">SIGN IN</a></li>
                             </ul>
                         </nav>
@@ -53,41 +53,71 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
-				<form action = "../insert" method = "post">
-                    
-					<label for="chk" aria-hidden="true">Sign up</label>
+				<form>
+                    <label for="chk" aria-hidden="true" style="margin-bottom: 40%;">Login</label>
+                    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+                            <div class="content">
+                            <div class="content__container">
+                                <p class="content__container__text">
+                                Hello
+                                </p>
+                                
+                                <ul class="content__container__list">
+                                <li class="content__container__list__item" style="color:cadetblue">LOVERS !</li>
+                                <li class="content__container__list__item" style="color:coral">VIEWERS !</li>
+                                <li class="content__container__list__item" style="color:darkcyan">USERS  !</li>
+                                <li class="content__container__list__item" style="color:darkslateblue">KIRI  !</li>
+                                </ul>
+                            </div>
+                            </div>
+                    <input type="email" name="email" placeholder="Email" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					
+					<button >Login</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form>
+
+
+                    <label for="chk" aria-hidden="true">Sign up</label>
 
                     
                     <input type="button" value="as Organization" class="button1" onclick="ShowHideDiv(this)" >
                     <input type="button" value="as User" class="button2" onclick="ShowHideDiv2(this)" >
-                   
-                  
-                    <div id="form1" style="display: none">
-                        <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
+                    <!-- <input type="button" value="No" onclick="ShowHideDiv(this)" > -->
+                    
+                    
+                    <div id="dvPassport" style="display: none">
+                       
+                        <input type="text" placeholder="Organization name" id="txtPassportNumber" />
                     </div>
-                    <div id="form2" style="display: none">
-                        <input type="text" name = "firstName" placeholder="First Name" id="txtPassportNumber" />
-                        <input type="text" name = "lastName" placeholder="Last Name" id="txtPassportNumber" />
+                    <div id="dvPassport2" style="display: none">
+                       
+                        <input type="text" placeholder="First Name" id="txtPassportNumber" />
+                        <input type="text" placeholder="Last Name" id="txtPassportNumber" />
                     </div>
-					<input type="text" name="username" placeholder="User name" required="">
+					<input type="text" name="txt" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="phone" placeholder="Contact number" required="">
-					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required="" >
-					
-					
-				    <input type="submit" name = "Signup" value = "Signup" id = "submit">
-				</form>
-			</div>
-			
-
-			<div class="login">
-				<form action = "../CustomerLogin" method = "post">
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
-					<input type = "submit" name = "Login" value = "Login" id = "submit">
+					
+					
+					<button>Sign up</button>
 				</form>
 			</div>
+
+
+
+
+                        
+
+
+
+
+
 	</div>
 </body>
 

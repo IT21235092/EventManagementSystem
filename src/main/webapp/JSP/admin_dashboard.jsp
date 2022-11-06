@@ -31,7 +31,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
+    
+        	
+            <a href="http://localhost:8080/EventManagementSystem/AddEventControl2">
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Create Event</span>
             </a>

@@ -1,10 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    
-    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-    
-  
-    
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -116,24 +111,29 @@
         </nav>
 
          <!-- Home content -->
+         
+         <%
+         		String name = request.getParameter("txt");
+         		String desc = request.getParameter("txtdes");
+         %>
 
          <div class="main">  	
             <input type="checkbox" id="chk" aria-hidden="true">
     
-             <div class="signup">
-               <form action="${pageContext.request.contextPath}/Add" method = "post" >
+                <div class="signup">
+                    <form action="${pageContext.request.contextPath}/Update" method = "post" >
                        
-                        <label for="chk" aria-hidden="true">Add Event</label>
-                        <div class="label1">
-                            <label>Enter Category Name</label>
+                        <label for="chk" aria-hidden="true">Update Event</label>
+                        <div class="label1" style="margin-left:-170px;">
+                            <label>Category Name</label>
                             </div>
-                        <input type="text" id="in1" name="txt" placeholder="Enter Category name" required="">
+                        <input type="text" id="in1" name="txt" value="<%=name %>" readonly>
                         <div class="label2">
-                            <label>Enter Image</label>
+                            <label>Update Image</label>
                             </div>
                         <input type="file" id="in1" accept="image/png, image/jpeg, image/jpg" name="event_image" class="box">
                         <div class="label3">
-                            <label>Enter Service types</label>
+                            <label>Update Service types</label>
                             </div>
                             <div class="label4" >
                                 
@@ -142,9 +142,9 @@
                                 </div>
                                
                         
-                        	<div class="label5" >
+                        <div class="label5" >
                                 
-                            	Food and Drinks  <input type="checkbox" id="s2" name="s1" value="Food and Drinks">
+                            Food and Drinks  <input type="checkbox" id="s2" name="s1" value="Food and Drinks">
                             
                             </div>
     
@@ -152,122 +152,32 @@
                                 
                                 Photos  <input type="checkbox" id="s2" name="s1" value="Photos">
                                 
-                           </div>
+                                </div>
     
-                           <div class="label5" >
+                                <div class="label5" >
                                 
-                                Invitation Cards  <input type="checkbox" id="s2" name="s1" value="Invitation Card">
+                                    Invitation Cards  <input type="checkbox" id="s2" name="s1" value="Invitation Card">
                                     
-                           </div>
+                                    </div>
     
-                            <div class="label5" >
+                                    <div class="label5" >
                                 
-                                Decoration  <input type="checkbox" id="s2" name="s1" value="Decoration">
+                                        Decoration  <input type="checkbox" id="s2" name="s1" value="Decoration">
                                         
-                           </div>
+                                        </div>
     
-                            <div class="label6">
-                            <label>Enter Event description</label>
-                            </div>
-                       			<textarea id="txta" name="txtarea" rows="4" cols="50"></textarea>
+                                        <div class="label6">
+                                            <label>Update Event description</label>
+                                            </div>
+                       <textarea id="txta" name="txtarea" rows="4" cols="50"><%=desc %></textarea>
     
                        
                         
-                        <button type="submit">Add Event</button>
+                        <button type="submit">Update Event</button>
                     </form>
                 </div>
         </div>
          
-
-
-
-<div class="tbl">
-         <h1>
-            Events
-          </h1>
-          <p>
-            Detailed view of Events and there Services
-          </p>
-          
-            <table>
-              <thead>
-                <tr>
-                  
-                  <th style="text-align:center;">
-                    Name
-                  </th>
-                  <th style="text-align:center;"> 
-                    Image
-                  </th>
-                  <th style="text-align:center;">
-                    Services
-                  </th>
-                  <th style="text-align:center;">
-                    Description
-                  </th>
-                
-                  <th style="text-align:center;">
-					Action
-                  </th>
-                </tr>
-              </thead>
-       
-              <tbody>
-              
-                	
-                  <c:forEach var = "ftch" items = "${adfetch}">
-                  
-                  <tr>
-                  <td style="width: 10%; text-align:center;">
-                    ${ftch.name }
-                  </td>
-                  <td style="width: 15%; text-align:center;">
-                   .
-                  </td>
-             
-                  <td style="width: 10%; text-align:center;">
-                  <br>
-                  <br>
-                <c:forEach var = "typ" items = "${ftch.typ}">
-                
-                	 ${typ}  <br> 
-                 
-                 </c:forEach>
-                  </td>
-                  
-                  <td style="width: 40%; text-align:center; ">
-                    ${ftch.desc }
-                  </td>
-                  
-                  <td style="width: 5%;" >
-                    <form method = 'post' action ='${pageContext.request.contextPath}/JSP/UpdateEvent.jsp'>
-                    <input type="hidden"  name="txt" value="${ftch.name}">
-                    <input type="hidden"  name="txtdes" value="${ftch.desc}">
-                    <button type ='submit' style="margin-left : 50px; margin-right : 50px;">Update</button>
-                     </form>
-                    <br>
-                    <form method = 'post' action ='${pageContext.request.contextPath}/delete'>
-                    <input type="hidden"  name="txt" value="${ftch.name}">
-                    <button type ='submit' style="margin-left : 50px; margin-right : 50px;">Delete</button>
-                      
-                     </form>
-                  </td>
-                  </tr>
-                  
-                  </c:forEach>
-               
-                
-                
-              </tbody>
-            </table>
-            
-            
-</div>
-
-          
-
-
-
 
    
     </body>
