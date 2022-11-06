@@ -3,6 +3,7 @@ package com.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,44 +12,49 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/CustomerLogin")
-public class CustomerLogin extends HttpServlet {
+
+@WebServlet("/Settings")
+public class Settings extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		String first_name = request.getParameter("firstname");
+		String last_name = request.getParameter("lastname");
+		String username = request.getParameter("username");
 		String email = request.getParameter("email");
-		String password = request.getParameter("pswd");
-	    boolean isSuccess = false;
-		ArrayList arr = new ArrayList();
+		String contact = request.getParameter("phone");
+		String password = request.getParameter("inputPassword4");
 		
-		try 
+        boolean isSuccess = false;
+		
+		try
 		{
-			arr = CustomerDBUtil.validate(email, password);
-			request.setAttribute("username", arr.get(0));
-			isSuccess = (boolean) arr.get(1);
-			
+			isSuccess = CustomerDBUtil.updateCustomer(first_name, last_name, username, email, contact, password);
 		}
 		catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		
+	
 		if ( isSuccess == true)
 		{
-			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_dashboard.jsp");
-			dis.forward(request, response);	
+			
+			RequestDispatcher dis = request.getRequestDispatcher( "/InitialSettings");
+			dis.forward(request, response);
 		}
-		else
+		else if ( isSuccess == false)
 		{
 			response.setContentType("text/html");
 			PrintWriter pw=response.getWriter();
 			pw.println("<script type=\"text/javascript\">");
-			pw.println("alert('Incorrect email or password! Please try again');");
+			pw.println("alert('Incorrect details have been entered!!! Please try again');");
 			pw.println("</script>");
-			RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("JSP/Cust_Settings.jsp");
 			rd.include(request, response);
 		}
+		
 	}
 
 }

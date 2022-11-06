@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class AdvertisementDButil {
 	
 	
-	public static ArrayList insertAdvertisement(int vid, String name, String title, String desc, float price, String attach)
+	public static boolean insertAdvertisement(int vid, String name, String title, String desc, float price, String attach)
 	{
 		
 		boolean isSuccess = false;
-		ArrayList arr = new ArrayList<>();
+		ArrayList<Advertisement> arr = new ArrayList<>();
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
 		String user = "root";
 		String pass = "eventmanagement123";
@@ -47,12 +47,9 @@ public class AdvertisementDButil {
 			}
 			
 		
-		arr.add(price);
-		arr.add(desc);
-		arr.add(attach);
-		arr.add(isSuccess);
+	
 		
-		return arr;
+		return isSuccess;
 		
 		
 		

@@ -83,6 +83,9 @@
 
 
                     <label for="chk" aria-hidden="true">Sign up</label>
+				<form action = "${pageContext.request.contextPath}/insert" method = "post">
+                    
+					<label for="chk" aria-hidden="true">Sign up</label>
 
                     
                     <input type="button" value="as Organization" class="button1" onclick="ShowHideDiv(this)" >
@@ -102,6 +105,18 @@
 					<input type="text" name="txt" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="phone" placeholder="Contact number" required="">
+					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required="" >
+					
+					
+				    <input type="submit" name = "Signup" value = "Signup" id = "submit">
+				</form>
+			</div>
+			
+
+			<div class="login">
+				<form action = "${pageContext.request.contextPath}/CustomerLogin" method = "post">
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Email" required="">
 					<input type="password" name="pswd" placeholder="Password" required="">
 					
 					
