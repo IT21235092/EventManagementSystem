@@ -17,6 +17,7 @@ public class CustomerDBUtil{
 	{
 		
 		boolean isSuccess = false;
+		int cust_Id = 0;
 		ArrayList arr = new ArrayList<>();
 		Connection con = ConnectDatabase.getConnection();
 		
@@ -26,6 +27,7 @@ public class CustomerDBUtil{
 		
 		if (rsCheck.next())
 		{
+			arr.add(cust_Id);
 			arr.add(userName);
 			arr.add(isSuccess);
 			return arr;
@@ -42,9 +44,16 @@ public class CustomerDBUtil{
 				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', true, '"+org_name+"', false , NULL, NULL)";
 				int rs = stmt.executeUpdate(sql);
 				
+				
+				
 				if(rs > 0)
 				{
 					isSuccess = true;
+					sql = "select * from customer where Username = '"+userName+"'";
+					ResultSet rs1 = stmt.executeQuery(sql);
+					
+					cust_Id = rs1.getInt(1);
+				
 				}
 				else
 				{
@@ -71,6 +80,15 @@ public class CustomerDBUtil{
 				if(rs > 0)
 				{
 					isSuccess = true;
+					
+					sql = "select * from customer where Username = '"+userName+"'";
+					ResultSet rs1 = stmt.executeQuery(sql);
+					
+					if(rs1.next())
+					{
+						cust_Id = rs1.getInt(1);
+					}
+					
 				}
 				else
 				{
@@ -85,7 +103,7 @@ public class CustomerDBUtil{
 			
 			
 		}
-		
+		arr.add(cust_Id);
 		arr.add(userName);
 		arr.add(isSuccess);
 		
@@ -99,6 +117,7 @@ public class CustomerDBUtil{
 	{
 		
 		String Username = "";
+		int custId = 0;
 		boolean isSuccess = false;
 		ArrayList arr = new ArrayList();
 		
@@ -113,6 +132,7 @@ public class CustomerDBUtil{
 			
 			if(rs.next())
 			{
+				custId = rs.getInt(1);
 				Username = rs.getString(2);
 				isSuccess = true;
 			}
@@ -123,6 +143,7 @@ public class CustomerDBUtil{
 		}
 		
 		//validate
+		arr.add(custId);
 		arr.add(Username);
 		arr.add(isSuccess);
 		
@@ -169,7 +190,7 @@ public class CustomerDBUtil{
 	}
 	
 	
-	public static boolean updateCustomer(String first_name,String  last_name, String username, String email, String contact, String password)
+	public static boolean updateCustomer(int id, String first_name,String  last_name, String username, String email, String contact, String password)
 	{
 		boolean isSuccess = false;
 		
@@ -177,7 +198,7 @@ public class CustomerDBUtil{
 		{
 			Connection con = ConnectDatabase.getConnection();
 			Statement stmt = con.createStatement();
-			String sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', First_Name = '"+first_name+"', Last_name = '"+last_name+"' where Cust_ID = 5";
+			String sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', First_Name = '"+first_name+"', Last_name = '"+last_name+"' where Cust_ID = '"+id+"'";
 			int rs = stmt.executeUpdate(sql);
 			
 			if(rs  > 0)

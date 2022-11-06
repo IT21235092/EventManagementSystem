@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +16,7 @@
 	<script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" rel="stylesheet">
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.bundle.min.js"></script>
+	<link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
 </head>
 <body>
      <div class="sidebar">
@@ -85,14 +87,22 @@
         <div class="sidebar-button">
             <span class="dashboard">Dashboard</span>
         </div>
-        <div class="profile-details">
-            <img src = "../Images/color.png" alt = "">
-            <span class="admin_name">Kiriharan Mohan</span>
-            <i class='bx bx-chevron-down'></i>
-        </div>
+       <div class="container">
+            <div class="half">
+              <label for="profile2" class="profile-dropdown">
+                <input type="checkbox" id="profile2">
+                <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
+                <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
+                <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
+                <ul>
+                  <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                </ul>
+              </label>
+            </div>
+          </div>
     </nav>
     
-<c:forEach var = "cus" items = "${cusDetails}">
+<c:forEach var = "ven" items = "${venDetails}">
 
 <div class="container">
 <div class="row justify-content-center">
@@ -104,7 +114,7 @@
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="false">Profile</a>
                 </li>
             </ul>
-            <form action = "http://localhost:8080/EventManagementSystem/Settings" method = "post">
+            <form action = "http://localhost:8080/EventManagementSystem/Settings2" method = "post">
                 <div class="row mt-5 align-items-center">
                     <div class="col-md-3 text-center mb-5">
                         <div class="avatar avatar-xl">
@@ -114,7 +124,7 @@
                     <div class="col">
                         <div class="row align-items-center">
                             <div class="col-md-7">
-                                <h4 class="mb-1">${cus.firstName} ${cus.lastName}</h4>
+                                <h4 class="mb-1"></h4>
                                 <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
                             </div>
                         </div>
@@ -128,25 +138,25 @@
                 <hr class="my-4" />
                  <div class="form-group">
                     <label for="organization">Organization</label>
-                    <input type="text" class="form-control" name = "username" id="organization"/>
+                    <input type="text" class="form-control" name = "organization" value = '${ven.getOrg_Name()}' id="organization"/>
                 </div>
 
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" class="form-control" name = "username" id="username"/>
+                    <input type="text" class="form-control" name = "username" value = '${ven.getUsername()}' id="username"/>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" class="form-control" name = "email"  id="email"/>
+                    <input type="email" class="form-control" name = "email"  value = '${ven.getEmail()}' id="email"/>
                 </div>
                 <div class="form-group">
                     <label for="phone">Contact Number</label>
-                    <input type="text" class="form-control" name = "phone" id="phone"/>
+                    <input type="text" class="form-control" name = "phone" value = '${ven.getContact_no()}' id="phone"/>
                 </div>
                  <div class="form-group">
                     <label for="type">Type</label>
-                    <select name="types" class = "form-control" id="type" required ="">
-				        <option value="" disabled selected>Type</option>
+                    <select name="types" class = "form-control" id="type">
+				        <option value="" disabled selected>${ven.getType()}</option>
 				        <option value="Music">Music</option>
 				        <option value="Food and Drinks">Food and Drinks</option>
 				        <option value="Decorations">Decorations</option>
@@ -156,7 +166,7 @@
                 </div>
                 <div class="form-group">
                     <label for="address">Location</label>
-                    <textarea placeholder='address' class = "form-control" maxlength='1000' minlength='100' name = "address" required = ""></textarea>
+                    <textarea placeholder='address' class = "form-control" maxlength='1000' minlength='100' name = "address" value = '${ven.getLocation()}'></textarea>
                 </div>
                 
               
@@ -165,7 +175,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword4">Old Password</label>
-                            <input type="password" class="form-control" name = "inputPassword4" value = '${cus.password}' id="inputPassword5" />
+                            <input type="password" class="form-control" name = "inputPassword4" value = '${ven.getPassword()}' id="inputPassword5" />
                         </div>
                         <div class="form-group">
                             <label for="inputPassword5">New Password</label>
@@ -204,4 +214,169 @@
 
 </script>
 </body>
+<style>
+.profile-dropdown
+			{
+			  left: 75%;
+			  top: 1%;
+			  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+			  display: inline-block;
+			  position:absolute;
+			  background: #f2f2f2;
+			  width: 22%;
+			  font-weight: bold;
+			  font-size: 1.3rem;
+			  border-radius: 3px;
+			  -webkit-user-select: none;
+			  /* Chrome all / Safari all */
+			  -moz-user-select: none;
+			  /* Firefox all */
+			  -ms-user-select: none;
+			  /* IE 10+ */
+			  user-select: none;
+			  /* Likely future */
+			}
+		
+			.profile-dropdown * {
+			  -webkit-user-select: none;
+			  /* Chrome all / Safari all */
+			  -moz-user-select: none;
+			  /* Firefox all */
+			  -ms-user-select: none;
+			  /* IE 10+ */
+			  user-select: none;
+			  /* Likely future */
+			}
+			.profile-dropdown input[type=checkbox] {
+			  display: none;
+			}
+			.profile-dropdown input[type=checkbox]:checked ~ ul {
+			  display: block;
+			  animation: pulse 0.5s;
+			}
+			.profile-dropdown input[type=checkbox]:checked ~ img {
+			  background: orange;
+			}
+			.profile-dropdown input[type=checkbox]:checked ~ label {
+			  background: orange;
+			}
+			.profile-dropdown input[type=checkbox]:checked ~ label i {
+			  color: #f2f2f2;
+			}
+			.profile-dropdown input[type=checkbox]:checked ~ label:after {
+			  content: "";
+			  position: absolute;
+			  top: 100%;
+			  right: calc(50% - 10px);
+			  display: block;
+			  border-style: solid;
+			  border-width: 7px 10px 0 10px;
+			  border-color: orange transparent transparent transparent;
+			  width: 0;
+			  height: 0;
+			}
+			.profile-dropdown img {
+			  display: inline-block;
+			  background: #d9d9d9;
+			  height: 2.5rem;
+			  vertical-align: middle;
+			  margin-right: 1rem;
+			  margin: 0.5rem 0.75rem 0.5rem 0.5rem;
+			  border-radius: 50%;
+			}
+			.profile-dropdown span {
+			  display: inline-block;
+			  vertical-align: sub;
+			  width: 125px;
+			  margin-right: 2rem;
+			  overflow: hidden;
+			  white-space: nowrap;
+			  text-overflow: ellipsis;
+			  color: black;
+			}
+			.profile-dropdown ul {
+			  display: none;
+			  list-style: none;
+			  padding: 0;
+			  marrgin: 0;
+			  background: #fff;
+			  position: absolute;
+			  top: 100%;
+			  right: 0;
+			  width: 100%;
+			  border-radius: 3px;
+			}
+			.profile-dropdown ul li a {
+			  display: block;
+			  padding: 0.75rem 1rem;
+			  text-decoration: none;
+			  color: #737373;
+			  font-size: 1rem;
+			}
+			.profile-dropdown ul li a i {
+			  font-size: 1.3rem;
+			  vertical-align: middle;
+			  margin: 0 0.75rem 0 -0.25rem;
+			}
+			.profile-dropdown ul li a:hover {
+			  background: #e5e5e5;
+			}
+			.profile-dropdown ul li:first-child a:hover {
+			  border-radius: 3px 3px 0 0;
+			}
+			.profile-dropdown ul li:last-child a:hover {
+			  border-radius: 0 0 3px 3px;
+			}
+			/* .profile-dropdown > label {
+			  position: relative;
+			  height: 3.5rem;
+			  display: block;
+			  text-decoration: none;
+			  background: transparent;
+			  color: #333;
+			  box-sizing: border-box;
+			  padding: 0.9rem;
+			  float: right;
+			  border-radius: 0 3px 3px 0;
+			}
+			 */
+			.profile-dropdown > label i {
+			  color: #000;
+			  font-size: 1.75rem;
+			}
+			
+			.profile-dropdown:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+			
+			h1 {
+			  text-align: center;
+			  font-size: 3rem;
+			  color: rgba(0, 0, 0, 0.5);
+			  text-transform: uppercase;
+			  margin: 2rem 0 0;
+			  letter-spacing: 0.5rem;
+			}
+			
+			.container {
+			  width: 80%;
+			  margin: 4rem auto 2rem;
+			}
+			.container .half {
+			  width: 50%;
+			  float: left;
+			  margin-bottom: 2rem;
+			}
+			.container:after {
+			  content: "";
+			  display: table;
+			  clear: both;
+			}
+
+
+
+
+</style>
 </html>

@@ -126,7 +126,7 @@
             </div>
                     <nav>
                         <ul>
-                            <li> <a href="#" class="navItem">HOME</a></li>
+                            <li> <a href="Home.jsp" class="navItem">HOME</a></li>
                             <li> <a href="#"class="navItem">EVENTS</a></li>
                             <li> <a href="#"class="navItem">GALLERY</a></li>
                             <li> <a href="#" class="navItem">ABOUT US</a></li>
