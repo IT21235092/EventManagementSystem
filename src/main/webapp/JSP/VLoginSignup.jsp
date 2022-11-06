@@ -90,7 +90,7 @@ textarea
 				        <option value="Decorations">Decorations</option>
 				        <option value="Photos">Photos</option>
 				        <option value="Invitation Cards">Invitation Cards</option>
-				        <textarea placeholder='address' maxlength='1000' minlength='100' name = "address" required = ""></textarea>
+				        <textarea placeholder='address' maxlength='1000' minlength='10' name = "address" required = ""></textarea>
 				      </select>
 					
 		

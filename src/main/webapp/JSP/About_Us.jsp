@@ -1,21 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
 
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="ISO-8859-1">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About Us card || Learning robo</title>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>About Us || EVENTRRA</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../CSS/About us.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://kit.fontawesome.com/dbed6b6114.js"></script>
-        
+        <link rel="stylesheet" href="../CSS/About_Us.css">
+        <script src="https://kit.fontawesome.com/dbed6b6114.js""></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    
-    
-    <style>
+        
+         <style>
+         
     	.black_overlay {
 		  display: none;
 		  position: absolute;
@@ -98,13 +97,12 @@
 
     
     </style>
-</head>
-
-
-
-    <body>
     
-    <div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></a>
+    </head>
+    
+    
+    <body>
+     <div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></a>
 	  <h1>Sign In As</h1>
 	  <button class="button-50" role="button" id = "myButton1">Customer</button>
 	  <button class="button-50" role="button" id = "myButton2">Vendor</button>
@@ -144,18 +142,16 @@
 					</div>
         </div> 
 </header>
-  
-        
-        <section class="about-sec">
-            <div class = "contimage">
+        <section>
+            <div class = "image">
                <img src="https://cdn.pixabay.com/photo/2017/08/26/23/37/business-2684758__340.png">
             </div>
 
-            <div class = "abtcontent">
+            <div class = "content">
                 <h2>About Us</h2>
-                <span>line here</span>
+                <span><!-- line here --></span>
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis aspernatur voluptas inventore ab voluptates nostrum minus illo laborum harum laudantium earum ut, temporibus fugiat sequi explicabo facilis unde quos corporis!</p>
-               
+                
                 <ul class = "icons">
                     <li>
                         <i class = "fa fa-twitter"></i>
@@ -173,5 +169,21 @@
             </div>
         </section><br><br>
         
+         <footer>
+    <img class="logo1" src="../Images/logo.png" >
+    <p id="cprt">Copyright © 2022 Eventrra. Website design & management by Team 1.</p>
+    <div class="social-container">
+        <ul class="social-icons">
+            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        </ul>
+    </div>    
+    
+
+</footer>
+        
     </body>
 </html>
+    
