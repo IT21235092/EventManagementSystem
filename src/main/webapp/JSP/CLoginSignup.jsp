@@ -82,7 +82,7 @@
 				<form>
 
 
-                    <label for="chk" aria-hidden="true">Sign up</label>
+                    
 				<form action = "${pageContext.request.contextPath}/insert" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
