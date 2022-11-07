@@ -250,9 +250,9 @@
                             <ul>
                                 <li> <a href="${pageContext.request.contextPath}/JSP/Home.jsp" class="navItem">HOME</a></li>
                                 <li> <a href="#"class="navItem">EVENTS</a></li>
-                                <li> <a href="#"class="navItem">GALLERY</a></li>
-                               <li> <a href="#" class="navItem">ABOUT US</a></li>
-                                <li><a href="#" class="navItem">SIGN IN</a></li>
+                                <li> <a href="${pageContext.request.contextPath}/JSP/Gallery1.jsp"class="navItem">GALLERY</a></li>
+                               <li> <a href="${pageContext.request.contextPath}/JSP/About_Us.jsp" class="navItem">ABOUT US</a></li>
+                                <li><a href="" class="navItem">SIGN IN</a></li>
                             </ul>
                         </nav>
             </div> 
