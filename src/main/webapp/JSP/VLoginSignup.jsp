@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/Login&SignUp.css">
 <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 
+
 <style>
 
 select
@@ -56,8 +57,8 @@ textarea
                             <ul>
                                 <li> <a href="${pageContext.request.contextPath}/JSP/Home.jsp" class="navItem">HOME</a></li>
                                 <li> <a href="#"class="navItem">EVENTS</a></li>
-                                <li> <a href="#"class="navItem">GALLERY</a></li>
-                                <li> <a href="#" class="navItem">ABOUT US</a></li>
+                                <li> <a href="${pageContext.request.contextPath}/JSP/Gallery1.jsp"class="navItem">GALLERY</a></li>
+                                <li> <a href="${pageContext.request.contextPath}/JSP/About_Us.jsp" class="navItem">ABOUT US</a></li>
                                 <li><a href="#" class="navItem">SIGN IN</a></li>
                             </ul>
                         </nav>
@@ -80,7 +81,7 @@ textarea
 					<input type="text" name="username" placeholder="User name" required="">
 					<input type="email" name="email" placeholder="Email" required="">
                     <input type="text" name="phone" placeholder="Contact number" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
+					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="">
 					
 		
 				      <select name="types" id="type" required ="">

@@ -13,28 +13,29 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/CustomerInsert")
-public class CustomerInsert extends HttpServlet {
+
+@WebServlet("/Settings1")
+public class Settings1 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		
-		String org_name = request.getParameter("Org_Name");
-		String first_name = request.getParameter("firstName");
-		String last_name = request.getParameter("lastName");
+		String first_name = request.getParameter("firstname");
+		String last_name = request.getParameter("lastname");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String contact = request.getParameter("phone");
-		String password = request.getParameter("pswd");
-		ArrayList arr = new ArrayList<>();
+		String password = request.getParameter("inputPassword4");
 		
-		boolean isSuccess = false;
+		HttpSession session = request.getSession();
+		int id  = Integer.parseInt(session.getAttribute("Id").toString());
+	
+		
+        boolean isSuccess = false;
 		
 		try
 		{
-			arr = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
-			isSuccess = (boolean) arr.get(2);
+			isSuccess = CustomerDBUtil.updateCustomer(id, first_name, last_name, username, email, contact, password);
 		}
 		catch(Exception e)
 		{
@@ -44,11 +45,8 @@ public class CustomerInsert extends HttpServlet {
 	
 		if ( isSuccess == true)
 		{
-			HttpSession session = request.getSession();
-			session.setAttribute("username", arr.get(1));
-			session.setAttribute("Id", arr.get(0));
 			
-			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Cust_dashboard.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher( "/InitialSettings1");
 			dis.forward(request, response);
 		}
 		else if ( isSuccess == false)
@@ -56,9 +54,9 @@ public class CustomerInsert extends HttpServlet {
 			response.setContentType("text/html");
 			PrintWriter pw=response.getWriter();
 			pw.println("<script type=\"text/javascript\">");
-			pw.println("alert('The userName "+arr.get(1)+" has already been taken. Try another username ');");
+			pw.println("alert('Incorrect details have been entered!!! Please try again');");
 			pw.println("</script>");
-			RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
+			RequestDispatcher rd=request.getRequestDispatcher("JSP/Cust_Settings.jsp");
 			rd.include(request, response);
 		}
 		

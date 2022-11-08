@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 @WebServlet("/VendorLogin")
@@ -27,8 +28,7 @@ public class VendorLogin extends HttpServlet {
 		try 
 		{
 			arr = VendorDBUtil.validate(email, password);
-			request.setAttribute("username", arr.get(0));
-			isSuccess = (boolean) arr.get(1);
+			isSuccess = (boolean) arr.get(2);
 			
 		}
 		catch(Exception e)
@@ -38,6 +38,10 @@ public class VendorLogin extends HttpServlet {
 		
 		if ( isSuccess == true)
 		{
+			HttpSession session = request.getSession();
+			session.setAttribute("username", arr.get(1));
+			session.setAttribute("Id", arr.get(0));
+			
 			RequestDispatcher dis = request.getRequestDispatcher("JSP/Vendor_dashboard.jsp");
 			dis.forward(request, response);	
 		}

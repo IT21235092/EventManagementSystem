@@ -34,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="http://localhost:8080/EventManagementSystem/InitialSettings1">
+            <a href="#">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -84,7 +84,7 @@
               <label for="profile2" class="profile-dropdown">
                 <input type="checkbox" id="profile2">
                 <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
-                <span><h5><% out.println(session.getAttribute("username").toString()); %></h5></span>
+                <span><h5>Hello</h5></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
                   <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
@@ -93,45 +93,51 @@
             </div>
           </div>
             
-            <%-- <div class="profile-details">
-                <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
-                <span class="admin_name"><% out.println(session.getAttribute("username").toString()); %></span>
-                <div class = "dropdown">
-                	<i class='bx bx-chevron-down'></i>
-                </div>
-            </div>
-                <div class="dropdown-content">
-				    <a href="#">Log out</a>
- 				</div> --%>
-        </nav>
-        
-        
 
          <!-- Home content -->
-
-        <div class="home-content">
-            <!-- event-content -->
-            <div class="event-boxes">
-                <div class="recent-sale box">
-                    <div class = "title">Pending Event</div>
-                </div>
-                <!-- right-side -->
-                <div class="top-vendor box">
-                    <div class = "title">Event History</div>
-                    <ul>
-                        <li>
-                            <a href = "#">
-                              <img src = "../Images/color.png" alt = "">
-                              <span class="product-name">Gucci Women's Bag</span>
-                            </a>
-                            <span class="price">$14.66</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            </div>
-        <button class="addEvent">Add Event</button>
+         
+     
+       
     </section>
+    
+        <div class="container1 p-0">
+        <div class="card px-4">
+            <p class="h8 py-3">Payment Details</p>
+            <div class="row gx-3">
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Person Name</p>
+                        <input class="form-control mb-3" type="text" placeholder="Name" value="Barry Allen">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Card Number</p>
+                        <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">Expiry</p>
+                        <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="d-flex flex-column">
+                        <p class="text mb-1">CVV/CVC</p>
+                        <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="btn btn-primary mb-3">
+                        <span class="ps-3">Pay $243</span>
+                        <span class="fas fa-arrow-right"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
    
    
     </body>
@@ -140,7 +146,7 @@
 			.profile-dropdown
 			{
 			  left: 75%;
-			  top: 2%;
+			  top: 15%;
 			  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 			  display: inline-block;
 			  position:absolute;
@@ -297,6 +303,104 @@
 			  display: table;
 			  clear: both;
 			}
+			
+			@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap');
+
+				* {
+				    margin: 0;
+				    padding: 0;
+				    box-sizing: border-box;
+				    font-family: 'Montserrat', sans-serif;
+				}
+				
+				
+				.card {
+				    max-width: 500px;
+				    margin: auto;
+				    color: black;
+				    border-radius: 20px;
+				    padding: 8px;
+				}
+				
+				p {
+				    margin: 0px;
+				}
+				
+				.col-12, .col-6
+				{
+				   padding: 6px;
+				}
+				
+				.container1 {
+				   margin-top: 5%;
+				   background: #fff;
+				   width: 35%;
+				   margin-left: 33%;
+				   height: 200%;
+				   border-radius: 8px;
+				}
+				
+				
+				.container1 .h8 {
+				    font-size: 30px;
+				    font-weight: 800;
+				    text-align: center;
+				}
+				
+				.btn.btn-primary {
+				    width: 100%;
+				    height: 70px;
+				    display: flex;
+				    align-items: center;
+				    justify-content: space-between;
+				    padding: 0 15px;
+				    background-image: linear-gradient(to right, #77A1D3 0%, #79CBCA 51%, #77A1D3 100%);
+				    border: none;
+				    transition: 0.5s;
+				    background-size: 200% auto;
+				
+				}
+				
+				
+				.btn.btn.btn-primary:hover {
+				    background-position: right center;
+				    color: #fff;
+				    text-decoration: none;
+				}
+				
+				
+				
+				.btn.btn-primary:hover .fas.fa-arrow-right {
+				    transform: translate(15px);
+				    transition: transform 0.2s ease-in;
+				}
+				
+				.form-control {
+				    color: white;
+				    background-color: #223C60;
+				    border: 2px solid transparent;
+				    height: 60px;
+				    padding-left: 20px;
+				    vertical-align: middle;
+				    width: 100%;
+				}
+				
+				.form-control:focus {
+				    color: white;
+				    background-color: #0C4160;
+				    border: 2px solid #2d4dda;
+				    box-shadow: none;
+				}
+				
+				.text {
+				    font-size: 14px;
+				    font-weight: 600;
+				}
+				
+				::placeholder {
+				    font-size: 14px;
+				    font-weight: 600;
+				}
 
 
     
