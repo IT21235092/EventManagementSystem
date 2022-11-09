@@ -17,6 +17,7 @@ public class VendorDBUtil {
 	{
 		
 		boolean isSuccess = false;
+		int vendorId = 0;
 		ArrayList arr = new ArrayList<>();
 		Connection con = ConnectDatabase.getConnection();
 		
@@ -26,8 +27,10 @@ public class VendorDBUtil {
 		
 		if (rsCheck.next())
 		{
+			arr.add(vendorId);
 			arr.add(userName);
 			arr.add(isSuccess);
+			
 			return arr;
 		}
 		
@@ -41,6 +44,10 @@ public class VendorDBUtil {
 				
 				if(rs > 0)
 				{
+					sql = "select * from customer where Username = '"+userName+"'";
+					ResultSet rs1 = stmt.executeQuery(sql);
+					
+					vendorId = rs1.getInt(1);
 					isSuccess = true;
 				}
 				else
@@ -56,9 +63,10 @@ public class VendorDBUtil {
 			}
 			
 		
-		
+		arr.add(vendorId);
 		arr.add(userName);
 		arr.add(isSuccess);
+		
 		
 		return arr;
 		

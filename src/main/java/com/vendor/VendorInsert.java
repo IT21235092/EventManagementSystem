@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.customer.CustomerDBUtil;
 
@@ -26,6 +27,7 @@ public class VendorInsert extends HttpServlet {
 		String pswd= request.getParameter("pswd");
 		String types = request.getParameter("types");
 		String address = request.getParameter("address");
+		HttpSession session = request.getSession();
 		ArrayList arr = new ArrayList<>();
 		
 		
@@ -35,8 +37,8 @@ public class VendorInsert extends HttpServlet {
 		try
 		{
 			arr = VendorDBUtil.insertVendor(org_name, userName , email, phone, pswd, types, address);
-			isSuccess = (boolean) arr.get(1);
-			request.setAttribute("username",  arr.get(0) );
+			isSuccess = (boolean) arr.get(2);
+			request.setAttribute("username",  arr.get(1) );
 		}
 		catch(Exception e)
 		{
@@ -46,7 +48,8 @@ public class VendorInsert extends HttpServlet {
 	
 		if ( isSuccess == true)
 		{
-			
+			session.setAttribute("username", arr.get(1));
+			session.setAttribute("Id", arr.get(0));
 			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Vendor_dashboard.jsp");
 			dis.forward(request, response);
 		}
