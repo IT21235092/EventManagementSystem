@@ -18,6 +18,7 @@ public class InitialSettings1 extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		HttpSession session = request.getSession();
+		String custType = session.getAttribute("customerType").toString();
 		int id  = Integer.parseInt(session.getAttribute("Id").toString());
 	    System.out.println(id);
 	
@@ -32,8 +33,19 @@ public class InitialSettings1 extends HttpServlet {
 			e.printStackTrace();
 		}
 		
-		RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_Settings.jsp");
-		dis.forward(request, response);
+		if ( custType.equalsIgnoreCase("Cus"))
+		{
+			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_Settings.jsp");
+			dis.forward(request, response);
+		}
+		else
+		{
+
+			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_Settings2.jsp");
+			dis.forward(request, response);
+		}
+		
+		
 	}
 
 }

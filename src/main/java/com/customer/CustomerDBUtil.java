@@ -13,12 +13,13 @@ import com.vendor.ConnectDatabase;
 public class CustomerDBUtil{
 	
 	
-	public static ArrayList insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password) throws SQLException
+	public static ArrayList<Object> insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password) throws SQLException
 	{
 		
 		boolean isSuccess = false;
 		int cust_Id = 0;
-		ArrayList arr = new ArrayList<>();
+		String custType = "";
+		ArrayList<Object> arr = new ArrayList<>();
 		Connection con = ConnectDatabase.getConnection();
 		
 		Statement stmtCheck = con.createStatement();
@@ -30,6 +31,7 @@ public class CustomerDBUtil{
 			arr.add(cust_Id);
 			arr.add(userName);
 			arr.add(isSuccess);
+			arr.add(custType);
 			return arr;
 		}
 		
@@ -43,7 +45,7 @@ public class CustomerDBUtil{
 				
 				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', true, '"+org_name+"', false , NULL, NULL)";
 				int rs = stmt.executeUpdate(sql);
-				
+				custType = "Org";
 				
 				
 				if(rs > 0)
@@ -76,6 +78,7 @@ public class CustomerDBUtil{
 				
 				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', false, NULL, true , '"+firstName+"', '"+lastName+"')";
 				int rs = stmt.executeUpdate(sql);
+				custType = "Cus";
 				
 				if(rs > 0)
 				{
@@ -106,20 +109,21 @@ public class CustomerDBUtil{
 		arr.add(cust_Id);
 		arr.add(userName);
 		arr.add(isSuccess);
-		
+		arr.add(custType);
 		return arr;
 		
 		
 	}
 	
 	
-	public static ArrayList validate(String email, String password) throws SQLException
+	public static ArrayList<Object> validate(String email, String password) throws SQLException
 	{
 		
 		String Username = "";
 		int custId = 0;
-		boolean isSuccess = false;
-		ArrayList arr = new ArrayList();
+		String custType = "";
+		boolean isSuccess = false, isOrg = false;
+		ArrayList<Object> arr = new ArrayList<Object>();
 		
 		Connection con = ConnectDatabase.getConnection();
 		
@@ -134,6 +138,7 @@ public class CustomerDBUtil{
 			{
 				custId = rs.getInt(1);
 				Username = rs.getString(2);
+				isOrg = rs.getBoolean(7);
 				isSuccess = true;
 			}
 		}
@@ -142,10 +147,17 @@ public class CustomerDBUtil{
 			e.printStackTrace();
 		}
 		
-		//validate
+		
 		arr.add(custId);
 		arr.add(Username);
 		arr.add(isSuccess);
+		
+		if ( isOrg == true)
+			custType = "Org";
+		else
+			custType = "Cus";
+		
+		arr.add(custType);
 		
 		return arr;
 	}
@@ -190,7 +202,7 @@ public class CustomerDBUtil{
 	}
 	
 	
-	public static boolean updateCustomer(int id, String first_name,String  last_name, String username, String email, String contact, String password)
+	public static boolean updateCustomer(int id, String Org_Name, String first_name,String  last_name, String username, String email, String contact, String password)
 	{
 		boolean isSuccess = false;
 		
@@ -198,7 +210,12 @@ public class CustomerDBUtil{
 		{
 			Connection con = ConnectDatabase.getConnection();
 			Statement stmt = con.createStatement();
-			String sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', First_Name = '"+first_name+"', Last_name = '"+last_name+"' where Cust_ID = '"+id+"'";
+			String sql = "";
+			
+			if (Org_Name == null)
+				sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', First_Name = '"+first_name+"', Last_name = '"+last_name+"' where Cust_ID = '"+id+"'";
+			else
+				sql = "update customer SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', Org_Name = '"+Org_Name+"' where Cust_ID = '"+id+"'";
 			int rs = stmt.executeUpdate(sql);
 			
 			if(rs  > 0)

@@ -20,8 +20,11 @@ public class Settings1 extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		
+		
 		String first_name = request.getParameter("firstname");
 		String last_name = request.getParameter("lastname");
+		String org_name = request.getParameter("Organization");
 		String username = request.getParameter("username");
 		String email = request.getParameter("email");
 		String contact = request.getParameter("phone");
@@ -35,7 +38,7 @@ public class Settings1 extends HttpServlet {
 		
 		try
 		{
-			isSuccess = CustomerDBUtil.updateCustomer(id, first_name, last_name, username, email, contact, password);
+			isSuccess = CustomerDBUtil.updateCustomer(id, org_name, first_name, last_name, username, email, contact, password);
 		}
 		catch(Exception e)
 		{
