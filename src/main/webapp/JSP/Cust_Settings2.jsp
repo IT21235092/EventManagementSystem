@@ -214,7 +214,8 @@
                         </ul>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Change</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-primary delete">Delete Account</button>
             </form>
         </div>
     </div>
@@ -394,6 +395,11 @@
 			  clear: both;
 			}
 
+			.delete
+			{
+			  margin-top: -8%;
+			  margin-left: 70%;
+			}
 
 
 

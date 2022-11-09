@@ -62,9 +62,7 @@
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
-        <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
+       
         <li>
             <a href="${pageContext.request.contextPath}/JSP/Cust_dashboard.jsp" >
                 <i class='bx bxs-dashboard'></i>
@@ -220,8 +218,10 @@
                         </ul>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Save Change</button>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+                <button type="submit" class="btn btn-primary delete">Delete Account</button>
             </form>
+            	
         </div>
     </div>
 
@@ -400,6 +400,11 @@
 			  clear: both;
 			}
 
+			.delete
+			{
+			  margin-top: -8%;
+			  margin-left: 70%;
+			}
 
 
 

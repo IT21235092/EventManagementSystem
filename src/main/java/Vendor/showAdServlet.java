@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/showAdServlet")
 public class showAdServlet extends HttpServlet {
@@ -17,12 +18,12 @@ public class showAdServlet extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		int id = Integer.parseInt(session.getAttribute("Id").toString());
 		
 		try {
-			List<Advertisement> showDetails= AdvertisementDButil.getAdvertisementDetails(5);
+			List<Advertisement> showDetails = AdvertisementDButil.getAdvertisementDetails(id);
 			request.setAttribute("showDetails", showDetails);
-			
-			System.out.println(showDetails);
 			
 			
 		} 

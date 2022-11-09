@@ -38,7 +38,7 @@ public class CustomerLogin extends HttpServlet {
 		if ( isSuccess == true)
 		{
 			HttpSession session = request.getSession();
-			session.setAttribute("customerType", arr.get(2));
+			session.setAttribute("customerType", arr.get(3));
 			session.setAttribute("username", arr.get(1));
 			session.setAttribute("Id", arr.get(0));
 			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_dashboard.jsp");
