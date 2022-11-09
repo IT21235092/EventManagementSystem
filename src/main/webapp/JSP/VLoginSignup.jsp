@@ -13,6 +13,20 @@
 
 <style>
 
+ .signup label{
+	/* color: #573b8a; */
+	color: #000;
+	font-size: 2.3em;
+	justify-content: center;
+
+	display: flex;
+	margin: 50px;
+	margin-bottom: 20%;
+	font-weight: bold;
+	cursor: pointer;
+	transition: .5s ease-in-out;
+}
+
 select
 {
 	width: 75%;
@@ -27,6 +41,21 @@ select
 	border-radius: 5px;
 	
 }
+
+.content {
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	width: 50%;
+	transform: translate(-50%, -50%);
+	height: 160px;
+	overflow: hidden;
+	font-family: "Lato", sans-serif;
+	font-size: 20px;
+	font-weight:bolder;
+	line-height: 40px;
+	color: black;
+  }
 
 textarea
 {
@@ -63,52 +92,65 @@ textarea
                             </ul>
                         </nav>
             </div> 
-        </div>
     </header>
      
-
-
-    </script>
 	<div class="main">  	
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 			<div class="signup">
+				<form action = "${pageContext.request.contextPath}/VendorLogin" method = "post">
+					<label for="chk" aria-hidden="true">Login</label>
+					
+					<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+                            <div class="content">
+                            <div class="content__container">
+                                <p class="content__container__text">
+                                Hello
+                                </p>
+                                
+                                <ul class="content__container__list">
+                                <li class="content__container__list__item" style="color:cadetblue">LOVERS !</li>
+                                <li class="content__container__list__item" style="color:coral">VIEWERS !</li>
+                                <li class="content__container__list__item" style="color:darkcyan">USERS  !</li>
+                                <li class="content__container__list__item" style="color:darkslateblue">Eventeers!</li>
+                                </ul>
+                            </div>
+                            </div>
+					<input type="email" name="email" placeholder="Email" required>
+					<input type="password" name="pswd" placeholder="Password" required>
+					<input type = "submit" name = "Login" value = "Login" id = "submit">
+				</form>
+				
+			</div>
+			
+
+			<div class="login">
 				<form action = "${pageContext.request.contextPath}/insertV" method = "post">
                     
 					<label for="chk" aria-hidden="true">Sign up</label>
 					
                     <input type="text" placeholder="Organization name" id="txtPassportNumber" name = "Org_Name"/>
-					<input type="text" name="username" placeholder="User name" required="">
-					<input type="email" name="email" placeholder="Email" required="">
-                    <input type="text" name="phone" placeholder="Contact number" required="">
-					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="">
+					<input type="text" name="username" placeholder="User name" required>
+					<input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Contact number" required>
+					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
 					
 		
-				      <select name="types" id="type" required ="">
+				      <select name="types" id="type" required>
 				        <option value="" disabled selected>Type</option>
 				        <option value="Music">Music</option>
 				        <option value="Food and Drinks">Food and Drinks</option>
 				        <option value="Decorations">Decorations</option>
 				        <option value="Photos">Photos</option>
 				        <option value="Invitation Cards">Invitation Cards</option>
-				        <textarea placeholder='address' maxlength='1000' minlength='10' name = "address" required = ""></textarea>
+				        <textarea placeholder='address' maxlength='1000' minlength='10' name = "address" required></textarea>
 				      </select>
 					
 		
 				    <input type="submit" name = "Signup" value = "Signup" id = "submit">
 				</form>
-			</div>
-			
-
-			<div class="login">
-				<form action = "${pageContext.request.contextPath}/VendorLogin" method = "post">
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					<input type = "submit" name = "Login" value = "Login" id = "submit">
-					
-					
-					</form>
+				
 			</div>
 	</div>
 </body>

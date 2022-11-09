@@ -41,7 +41,7 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/InitialSettings2">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

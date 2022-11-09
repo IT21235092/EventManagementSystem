@@ -337,27 +337,6 @@
 				    <input type="submit" name = "Signup" value = "Signup" id = "submit">
 				</form>
 			</div>
-			
-
-			<div class="login">
-				<form action = "${pageContext.request.contextPath}/CustomerLogin" method = "post">
-					<label for="chk" aria-hidden="true">Login</label>
-					<input type="email" name="email" placeholder="Email" required="">
-					<input type="password" name="pswd" placeholder="Password" required="">
-					
-					
-					<button>Sign up</button>
-				</form>
-			</div>
-
-
-
-
-                        
-
-
-
-
 
 	</div>
 </body>
