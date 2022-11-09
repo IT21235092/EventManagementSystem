@@ -22,7 +22,7 @@ public class showAdServlet extends HttpServlet {
 		int id = Integer.parseInt(session.getAttribute("Id").toString());
 		
 		try {
-			List<Advertisement> showDetails = AdvertisementDButil.getAdvertisementDetails(id);
+			List<Advertisement> showDetails = AdvertisementDBUtil.getAdvertisementDetails(id);
 			request.setAttribute("showDetails", showDetails);
 			
 			

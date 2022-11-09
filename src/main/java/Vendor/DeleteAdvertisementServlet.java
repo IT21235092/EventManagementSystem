@@ -21,7 +21,7 @@ public class DeleteAdvertisementServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("aid"));
 		boolean isTrue;
 		
-		isTrue = AdvertisementDButil.deleteAdvertisement(id);
+		isTrue = AdvertisementDBUtil.deleteAdvertisement(id);
 		
 		if (isTrue == true) {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
@@ -29,7 +29,7 @@ public class DeleteAdvertisementServlet extends HttpServlet {
 		}
 		else {
 			
-			List<Advertisement> adDetails = AdvertisementDButil.getAdvertisementDetails(id);
+			List<Advertisement> adDetails = AdvertisementDBUtil.getAdvertisementDetails(id);
 			request.setAttribute("adDetails", adDetails);
 			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("unsuccess.jsp");

@@ -26,18 +26,18 @@ public class UpdateAdvertisement extends HttpServlet {
 		
 		boolean isTrue;
 		
-		isTrue = AdvertisementDButil.UpdateAdvertisement(aid, vid, title, price, desc, attach);
+		isTrue = AdvertisementDBUtil.UpdateAdvertisement(aid, vid, title, price, desc, attach);
 		
 		if(isTrue == true) {
 			
-			List<Advertisement> adDetails = AdvertisementDButil.getAdvertisementDetails(aid);
+			List<Advertisement> adDetails = AdvertisementDBUtil.getAdvertisementDetails(aid);
 			request.setAttribute("adDetails", adDetails);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
 			dis.forward(request, response);
 		}
 		else {
-			List<Advertisement> adDetails = AdvertisementDButil.getAdvertisementDetails(aid);
+			List<Advertisement> adDetails = AdvertisementDBUtil.getAdvertisementDetails(aid);
 			request.setAttribute("adDetails", adDetails);
 			
 			RequestDispatcher dis = request.getRequestDispatcher("unsuccess.jsp");

@@ -30,7 +30,7 @@ public class AdServlet extends HttpServlet {
 		
 		try
 		{
-			isSuccess = AdvertisementDButil.insertAdvertisement(id,title,price,desc);
+			isSuccess = AdvertisementDBUtil.insertAdvertisement(id,title,price,desc);
 			
 			if ( isSuccess == true)
 			{
