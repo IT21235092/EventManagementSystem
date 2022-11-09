@@ -103,9 +103,10 @@
                     <div class="event-details">
                     
                     <c:forEach var="adv" items="${showDetails}">
-                   
+                    
                    			${adv.adId}
-                            ${adv.Vendor_ID}
+                            ${adv.getVendor_ID()}
+           
                             ${adv.title}
                             ${adv.price}
                             ${adv.desc}

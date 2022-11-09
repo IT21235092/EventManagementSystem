@@ -16,16 +16,21 @@ public class showAdServlet extends HttpServlet {
 
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		
 		try {
 			List<Advertisement> showDetails= AdvertisementDButil.getAdvertisementDetails(5);
 			request.setAttribute("showDetails", showDetails);
 			
-			RequestDispatcher rd = request.getRequestDispatcher("AdDetails.jsp");
-			rd.forward(request, response);
+			System.out.println(showDetails);
+			
+			
 		} 
 		catch (Exception e) {
 			e.printStackTrace();
 		}
+		RequestDispatcher rd = request.getRequestDispatcher("JSP/services.jsp");
+		rd.forward(request, response);
 	
 	}
 }

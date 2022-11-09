@@ -29,7 +29,7 @@
             </a>
         </li>
         <li>
-            <a href="http://localhost:8090//EventManagementSystem/src/main/java/Vendor/showAdServlet.java">
+            <a href="http://localhost:8090/EventManagementSystem/showAdServlet">
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Services</span>
             </a>
