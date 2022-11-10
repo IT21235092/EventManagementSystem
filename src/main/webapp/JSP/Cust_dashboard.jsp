@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" session="true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -28,9 +29,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bxs-message-square-add'></i>
-                <span class="links_name">Schedule Meeting</span>
+            <a href="${pageContext.request.contextPath}/getFeedback">
+                <i class='bx bxs-edit'></i>
+                <span class="links_name">Feedback</span>
             </a>
         </li>
         <li>
@@ -114,6 +115,8 @@
             <div class="event-boxes">
                 <div class="recent-sale box">
                     <div class = "title">Pending Event</div>
+                    
+                    
                 </div>
                 <!-- right-side -->
                 <div class="top-vendor box">
@@ -123,6 +126,8 @@
                             <a href = "#">
                               <img src = "../Images/color.png" alt = "">
                               <span class="product-name">Gucci Women's Bag</span>
+                              
+                              <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
                             </a>
                             <span class="price">$14.66</span>
                         </li>
@@ -130,7 +135,8 @@
                 </div>
             </div>
             </div>
-        <button class="addEvent">Add Event</button>
+            <a href="${pageContext.request.contextPath}/JSP/bookEvent.jsp"><button class="addEvent">Add Event</button></a>
+        
     </section>
    
    

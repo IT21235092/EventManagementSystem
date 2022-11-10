@@ -408,12 +408,15 @@ nav .profile-details .admin-name
   display:flex;
   justify-content: space-between;
   padding: 30px;
+  width:1000px;
 }
 
 .home-section .event-boxes .recent-sale
 {
-  width: 65%;
+	margin-left: 150px;
+  width: 900px;
   background: #fff;
+  resize:none;
   border-radius: 12px;
   box-sizing: 0 5px 10px rgba(0,0,0,0.1);
   padding: 20px;
@@ -432,6 +435,7 @@ nav .profile-details .admin-name
 {
   font-size: 24px;
   font-weight: 500;
+  text-align:center;
 }
 
 .home-section .event-boxes .box .topic
@@ -495,6 +499,7 @@ nav .profile-details .admin-name
   padding: 10px;
   color: #fff;
   cursor: pointer;
+  height:20px;
 } 
 
 /* Responsive media query */
@@ -625,29 +630,20 @@ form {
     text-align: center;
   }
   
-  .txt,
-  input[type="button"],
-  input[type="password"],
-  input[type="date"],
-  input[type="datetime"],
-  input[type="email"],
-  input[type="number"],
-  input[type="search"],
-  input[type="tel"],
-  input[type="time"],
-  input[type="url"],
-  textarea,
-  select {
+  
+  input[type="button"]
+  {
+  	border-radius: 5px;
     background: rgba(255,255,255,0.1);
     border: none;
     font-size: 16px;
     height: auto;
-    margin: 0;
+    margin-left: 540px;
     outline: 0;
     padding: 15px;
-    width: 100%;
-    background-color: #e8eeef;
-    color: #8a97a0;
+    width: 200px;
+    background-color:black;
+    color:white;
     box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
     margin-bottom: 30px;
   }
@@ -665,22 +661,23 @@ form {
   
   button {
   	text-decoration:none;
-    width: 60%;
-	height: 40px;
+    padding: 5%;
 	margin: 10px auto;
-	justify-content: center;
-	display: block;
 	color: #fff;
 	/* background: #573b8a; */
 	background: #000;
 	font-size: 1em;
-	font-weight: bold;
-	margin-top: 20px;
 	outline: none;
 	border: none;
 	border-radius: 5px;
 	transition: .2s ease-in;
 	cursor: pointer;
+	
+  }
+  
+  button:hover{
+  background-color:white;
+  color:black;
   }
   
   
@@ -688,7 +685,7 @@ form {
   text-decoration:none;
   }
   
-  button:hover{
+  input[type="button"]:hover{
   	background:red;
   }
   
@@ -729,12 +726,32 @@ form {
   @media screen and (min-width: 480px) {
   
     form {
-      max-width: 480px;
+      max-width: 700px;
     }
   
   }
   
-  
-  
 
 
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto;
+  background-color: rgb(255, 255, 255);
+   
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid ;
+  padding: 20px;
+  font-size: 14px;
+  text-align: center;
+   max-width: 400px;
+   margin:10px;
+}
+
+th, td {
+  text-align:center;
+  padding:5px;
+  background: rgb(201,198,255);
+  background: linear-gradient(90deg, rgba(201,198,255,0.20258525773590685) 0%, rgba(230,230,255,0.20258525773590685) 51%, rgba(151,237,255,0.20258525773590685) 100%);
+}
