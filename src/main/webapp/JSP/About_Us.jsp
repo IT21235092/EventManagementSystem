@@ -150,7 +150,11 @@
             <div class = "content">
                 <h2>About Us</h2>
                 <span><!-- line here --></span>
-                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nobis aspernatur voluptas inventore ab voluptates nostrum minus illo laborum harum laudantium earum ut, temporibus fugiat sequi explicabo facilis unde quos corporis!</p>
+                <p>
+                In a period where we are progressively overwhelmed with data and it's trying to get a message over, 'EVENTRRA' adopts an insightful and aesthetic strategy to create critical encounters that work up feelings, discussions, and shareable minutes.
+
+'EVENTRRA' has some expertise in delivering inventive, advanced, and bleeding-edge events, utilizing a center conviction that narrating drives our innovative methodology. Established by pioneers in the diversion and event generation industry with broad specialized aptitude.
+                </p>
                 
                 <ul class = "icons">
                     <li>

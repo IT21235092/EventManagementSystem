@@ -100,39 +100,59 @@
             </div>
           </div>
         </nav>
+        
+        </section>
 
-         <!-- Home content -->
-
-			showDetails
-	
-            <!-- event-content -->
-            <div class="event-boxes">
-                <div class="recent-sale box">
-                    <div class = "title">Recent Orders</div>
-                    <div class="event-details">
+        <!--  Display details  -->
+	    <h1>Your Advertisements</h1>
+	    <br><br>
+	        
+        <table>
+        
+        <thead>
+        <tr>
+        	<th>Advertisement ID</th>
+        	<th>Vendor ID</th>
+        	<th>Title</th>
+        	<th>Price</th>
+        	<th>Description</th>
+        	<th>Attachment</th>
+        	<th>Status</th>
+        	<th></th>
+        	<th></th>
+        </tr>
+        </thead>
                     
-                    <c:forEach var="adv" items="${showDetails}">
-                    
-                   			${adv.adId}
-                            ${adv.getVendor_ID()}
-           
-                            ${adv.title}
-                            ${adv.price}
-                            ${adv.desc}
-                            ${adv.attach}
-                            ${adv.sts}
-                     </c:forEach>     
-                    </div>
-                </div>
-                <!-- right-side -->
-             
-            </div>
-    </section>
-
-   
+        <c:forEach var="adv" items="${showDetails}">
+    
+        <c:set var= "AdID" value="${adv.adId}"/>    
+        <c:set var= "vID" value="${adv.getVendor_ID()}"/>
+        <c:set var= "title" value="${adv.title}"/>
+        <c:set var= "price" value="${adv.price}"/>
+        <c:set var= "desc" value="${adv.desc}"/>
+        <c:set var= "attach" value="${adv.attach}}"/>
+        <c:set var= "sts" value="${adv.sts}}"/>
+        
+        <tbody>
+        <tr>
+            <td>${adv.adId}</td>
+            <td>${adv.getVendor_ID()}</td>
+            <td>${adv.title}</td>
+            <td>${adv.price}</td>
+            <td>${adv.desc}</td>
+            <td>${adv.attach}</td>
+            <td>${adv.sts}</td>
+            <td><input type="submit" name="update" value="Edit"></td>
+            <td><input type="submit" name="delete" value="Delete"></td>
+        </tr>
+        </tbody>
+        </c:forEach>
+        </table>
+      
     </body>
     
      <style>
+     
 			.profile-dropdown
 			{
 			  left: 75%;
@@ -246,19 +266,7 @@
 			.profile-dropdown ul li:last-child a:hover {
 			  border-radius: 0 0 3px 3px;
 			}
-			/* .profile-dropdown > label {
-			  position: relative;
-			  height: 3.5rem;
-			  display: block;
-			  text-decoration: none;
-			  background: transparent;
-			  color: #333;
-			  box-sizing: border-box;
-			  padding: 0.9rem;
-			  float: right;
-			  border-radius: 0 3px 3px 0;
-			}
-			 */
+		
 			.profile-dropdown > label i {
 			  color: #000;
 			  font-size: 1.75rem;
@@ -293,9 +301,50 @@
 			  display: table;
 			  clear: both;
 			}
-
-
-    
-    </style>
+			
+			table
+			{
+				border-spacing: 1; 
+				border-collapse: collapse; 
+				background:white;
+				border-radius:6px;
+				overflow:hidden;
+				max-width:800px; 
+				width:100%;
+				margin:0 auto;
+				position:relative;
+				
+			}
+			
+			tbody th, td {
+ 				 padding-left:8px;
+			}
+			
+			tbody tr {
+				height:48px; 
+				border-bottom:1px solid #E3F1D5 ;
+			}
+			
+			thead tr { 
+			    height:60px;
+			    background:DarkSlateGrey;
+			    font-size:16px;
+			    color: white;
+  			}
+  			
+  			tbody td {
+  				text-align: center;
+  				color: black;
+  				font-weight: 500;
+  				background: LightGrey;
+  			}
+  			
+  			tbody input {
+  				padding: 4px;
+  				background-color: black;
+  				color: white;
+  			}
+  			
+  	</style>
 
 </html>

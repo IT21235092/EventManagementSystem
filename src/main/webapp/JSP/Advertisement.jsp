@@ -109,7 +109,7 @@
      <div class="container">
     <div class="title">Create an Advertisement</div>
     <div class="content">
-      <form action= "http://localhost:8080/EventManagementSystem/AdServlet" method="post">
+      <form action= "http://localhost:8090/EventManagementSystem/AdServlet" method="post">
         <div class="ad-details">
           <div class="input-box">
             <span class="details">Advertisement Title</span>
