@@ -1,5 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" session="true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	<%@page import="java.sql.ResultSet"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.Connection"%>
+    
+    
+     <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+    
+    %>
+   
+	
 <!DOCTYPE html>
 <html>
     <head>
@@ -92,66 +124,90 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form action="#" method="post">
+      <form action="${pageContext.request.contextPath}/eventvenInsert" method="post">
         <h1> Book Event </h1>
-        
-        <!-- <fieldset>
-          
-          <legend><span class="number">1</span> Event details</legend>
-          
-          <label for="type">Select Event type:</label>
-  		  <select name="type" id="type" class="txt" required>
-    		<option value="wedding">Wedding</option>
-    		<option value="birthday">Birthday Party</option>
-   			<option value="concert">Concert</option>
-  		  </select>
-        
-          <label for="name">Event Name:</label>
-          <input type="text" id="name" name="event_name" class="txt" required>
-        
-          <label for="number">Number of Guests:</label>
-          <input type="number" id="num" name="num" required min="30" max="400">
-       
-          <label for="date">Event Date:</label>
-          <input type="date" id="edate" name="edate" required>
-        <br>
-          
-          
-        </fieldset> -->
         <fieldset>  
         
           <legend><span class="number">2</span> Event Services</legend>
           
           <label><b>Fixed services:</b></label>
           <ul>
-          	<li>Venue</li>
-          	<li>Sound and Lighting</li>
+          	<li>Venue - Rs. 55000</li>
+          	<li>Sound and Lighting - Rs. 30000</li>
           	
           </ul>
           
           <br>
           
           <label><b>Select additional services:</b></label>
+          
+          <c:forEach var="ser" items="${serDetails}">
+          
           <ul>
-          	<li>Food and Drinks
-          		<a href="#" class="button">
-          		<button id="vbtn">--Select Vendor--</button>
-          		</a>
-          	</li>
-          		<li>Music
-          		<a href="#" class="button">
-          		<button id="vbtn">--Select Vendor--</button>
-          		</a>
-          	</li>
-          		<li>Photos
-          		<a href="#" class="button">
-          		<button id="vbtn">--Select Vendor--</button>
-          		</a>
-          	</li>
+          	<li> ${ser.key} <br>
+          	<a href="${pageContext.request.contextPath}/JSP/${ser.key}.jsp?service=${ser.key}" class="button">
+          	<input id="type" value="${ser.value}" type="button" >
+          	<input type="hidden" id="ad">
+          	<input type="hidden" id="ven">
+          	
+          	<% 
+          		try{
+        	 		con = DriverManager.getConnection(url, user, pass);
+        	 	 	stmt = con.createStatement();
+        	  
+        	  		String sql = "select Event_ID from event ORDER BY Event_ID DESC LIMIT 1";
+        			rs = stmt.executeQuery(sql);
+        			
+        			while(rs.next()){%>
+        			<input type="hidden" id="eid" value="<%= rs.getInt("Event_ID")%>">
+        				
+        			<%}
+          		}
+          	 catch(Exception e){
+          		 e.printStackTrace();
+          	 }
+        		
+        		
+        	%>
+          	
+          	
+          </a>
+          		
+          </li>
           </ul>
           
+         
           
           
+          </c:forEach>
+          
+          	<input type="hidden" id="paid" name="paid" value="<%= session.getAttribute("paid") %>">
+          	<input type="hidden" id="pvid" name="pvid" value="<%= session.getAttribute("pvid") %>">
+          	<input type="hidden" id="pp" name="pp" value="<%= session.getAttribute("pp") %>">
+          	
+          	<input type="hidden" id="maid" name="maid" value="<%= session.getAttribute("maid") %>">
+          	<input type="hidden" id="mvid" name="mvid" value="<%= session.getAttribute("mvid") %>">
+          	
+          	<input type="hidden" id="daid" name="daid" value="<%= session.getAttribute("daid") %>">
+          	<input type="hidden" id="dvid" name="dvid" value="<%= session.getAttribute("dvid") %>">
+          	
+            <input type="hidden" id="iaid" name="iaid" value="<%= session.getAttribute("iaid") %>">
+          	<input type="hidden" id="ivid" name="ivid" value="<%= session.getAttribute("ivid") %>">
+            
+          	<input type="hidden" id="faid" name="faid" value="<%= session.getAttribute("faid") %>">
+          	<input type="hidden" id="fvid" name="fvid" value="<%= session.getAttribute("fvid") %>">
+         	
+          <%
+          	
+          	int tot = 85000;
+          	int p1 = 0;
+          	int p2 = 0, p3 = 0, p4 = 0, p5 = 0;
+          	
+          	
+          	 
+          	out.print("Total Price: Rs."+tot); 
+          	
+          %>
           
          </fieldset> 
        

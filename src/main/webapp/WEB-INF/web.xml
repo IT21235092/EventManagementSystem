@@ -157,6 +157,50 @@
 	<url-pattern>/getVendors</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>addEventServlet</servlet-name>
+	<servlet-class>com.customerevent.addEventServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addEventServlet</servlet-name>
+	<url-pattern>/addEvent</url-pattern>
+</servlet-mapping>
+
+<!-- for services -->
+
+
+<servlet>
+	<servlet-name>addServiceServlet</servlet-name>
+	<servlet-class>com.customerevent.addServiceServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addServiceServlet</servlet-name>
+	<url-pattern>/addService</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>addServiceServlet2</servlet-name>
+	<servlet-class>com.customerevent.addServiceServlet2</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addServiceServlet2</servlet-name>
+	<url-pattern>/addService2</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>addServiceServlet3</servlet-name>
+	<servlet-class>com.customerevent.addServiceServlet3</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addServiceServlet3</servlet-name>
+	<url-pattern>/addService3</url-pattern>
+</servlet-mapping>
+
 
 </web-app>
 

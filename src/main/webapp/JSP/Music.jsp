@@ -1,5 +1,35 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" session = "true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	<%@page import="java.sql.ResultSet"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+    
+    %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -49,6 +79,15 @@
 
     <!-- JavaScript -->
     <script>
+	// When the user clicks on <div>, open the popup
+	function myFunction() {
+ 	 var popup = document.getElementById("myPopup");
+  	popup.classList.toggle("show");
+	}
+	</script>
+    
+    
+    <script>
         let sidebar = document.querySelector(".sidebar");
         let closeBtn = document.querySelector("#btn");
         let searchBtn = document.querySelector(".bx-search");
@@ -92,53 +131,52 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form action="#" method="post">
-        <h1> Music </h1>
+      <form action="../addService2" method="post">
+        <h1> Music</h1>
         
-        <!-- <fieldset>
-          
-          <legend><span class="number">1</span> Event details</legend>
-          
-          <label for="type">Select Event type:</label>
-  		  <select name="type" id="type" class="txt" required>
-    		<option value="wedding">Wedding</option>
-    		<option value="birthday">Birthday Party</option>
-   			<option value="concert">Concert</option>
-  		  </select>
-        
-          <label for="name">Event Name:</label>
-          <input type="text" id="name" name="event_name" class="txt" required>
-        
-          <label for="number">Number of Guests:</label>
-          <input type="number" id="num" name="num" required min="30" max="400">
-       
-          <label for="date">Event Date:</label>
-          <input type="date" id="edate" name="edate" required>
-        <br>
-          
-          
-        </fieldset> -->
         <fieldset>  
         
-          <legend><span class="number">1</span> Select Vendor</legend>
+          <legend><span class="number">3</span> Select Vendor</legend>
+          
+           <div class="grid-container">
+          <% 
+          try{
+        	  con = DriverManager.getConnection(url, user, pass);
+        	  stmt = con.createStatement();
+        	  
+        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Music'";
+        		rs = stmt.executeQuery(sql5);
+        		
+        		while(rs.next()) {
+        		%>
+        			
+        			<div class="grid-item">
+        			<input type="radio" id = "aid" value="<%= rs.getInt("Ad_ID")%>" name="aid" required>
+        			<%= rs.getString("Org_name")%><br>
+        			<%= rs.getDouble("Price")%><br>
+        			<%= rs.getString("Description")%><br>
+        			<%= rs.getString("Location")%>
+        			<input  type = "hidden" id="vid" name="vid" value="<%= rs.getInt("Vendor_ID") %>">
+        	    
+        	    </div>
+        		 <% } 
+          }
+          catch(Exception e){
+        	  e.printStackTrace();
+          }
           
           
-          <div class="grid-container">
-  <div class="grid-item">Vendor 1</div>
-  <div class="grid-item">Vendor 2</div>
-  <div class="grid-item">Vendor 3</div>  
-  <div class="grid-item">Vendor 4</div>
-  <div class="grid-item">Vendor 5</div>
-  <div class="grid-item">Vendor 6</div>
- 
-</div>
+          %>
+    	</div>
+          
+          
           
           
           
          </fieldset>
        
         <a href="" class="button">
-        <button type="submit">Next</button>
+        <button type="submit">Add</button>
         </a>
         
        </form>
