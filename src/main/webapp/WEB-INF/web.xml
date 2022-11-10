@@ -93,4 +93,70 @@
 	<servlet-name>Set2</servlet-name>
 	<url-pattern>/Set2</url-pattern>
 </servlet-mapping>
+
+
+
+
+<!-- feedback -->
+<servlet>
+	<servlet-name>InsertFeedback</servlet-name>
+	<servlet-class>com.feedback.InsertFeedback</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>InsertFeedback</servlet-name>
+	<url-pattern>/addFeedback</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>GetFeedback</servlet-name>
+	<servlet-class>com.feedback.GetFeedback</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>GetFeedback</servlet-name>
+	<url-pattern>/getFeedback</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>UpdateFeedback</servlet-name>
+	<servlet-class>com.feedback.UpdateFeedback</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>UpdateFeedback</servlet-name>
+	<url-pattern>/updateFeedback</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>DeleteFeedback</servlet-name>
+	<servlet-class>com.feedback.DeleteFeedback</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>DeleteFeedback</servlet-name>
+	<url-pattern>/deleteFeedback</url-pattern>
+</servlet-mapping>
+<servlet>
+	<servlet-name>bookVendorServlet</servlet-name>
+	<servlet-class>com.customerevent.bookVendorServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>bookVendorServlet</servlet-name>
+	<url-pattern>/eventvenInsert</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>vendorServlet</servlet-name>
+	<servlet-class>com.customerevent.vendorServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>vendorServlet</servlet-name>
+	<url-pattern>/getVendors</url-pattern>
+</servlet-mapping>
+
+
 </web-app>
+
