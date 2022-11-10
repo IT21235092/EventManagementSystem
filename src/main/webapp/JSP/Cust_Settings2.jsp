@@ -72,9 +72,9 @@
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bxs-message-square-add'></i>
-                <span class="links_name">Schedule Meeting</span>
+            <a href="${pageContext.request.contextPath}/getFeedback">
+                <i class='bx bxs-edit'></i>
+                <span class="links_name">Feedback</span>
             </a>
         </li>
         <li>

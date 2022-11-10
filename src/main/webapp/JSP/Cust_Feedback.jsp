@@ -24,12 +24,9 @@
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
+        
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
-        <li>
-            <a href="#"  >
+            <a href="${pageContext.request.contextPath}/JSP/Cust_dashboard.jsp"  >
                 <i class='bx bxs-dashboard '></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -41,7 +38,7 @@
             </a>
         </li>
         <li>
-            <a href="Cust_Settings.jsp">
+            <a href="http://localhost:8080/EventManagementSystem/InitialSettings1">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>
@@ -136,7 +133,7 @@
         			
         			<td style="text-align:center;">
         			<a href="${fupdate}">
-        			<button>Update</button>
+        			<button>Edit</button>
         			</a>
         			</td>
         			
