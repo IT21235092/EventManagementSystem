@@ -121,7 +121,7 @@
             <input type="checkbox" id="chk" aria-hidden="true">
     
              <div class="signup">
-               <form action="${pageContext.request.contextPath}/Add" method = "post" >
+               <form action="${pageContext.request.contextPath}/Add" method = "post">
                        
                         <label for="chk" aria-hidden="true">Add Event</label>
                         <div class="label1">

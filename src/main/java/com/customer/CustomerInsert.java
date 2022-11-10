@@ -29,6 +29,7 @@ public class CustomerInsert extends HttpServlet {
 		String password = request.getParameter("pswd");
 		ArrayList arr = new ArrayList<>();
 		
+		
 		boolean isSuccess = false;
 		
 		try
