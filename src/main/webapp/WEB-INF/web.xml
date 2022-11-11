@@ -201,6 +201,26 @@
 	<url-pattern>/addService3</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>addServiceServlet4</servlet-name>
+	<servlet-class>com.customerevent.addServiceServlet4</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addServiceServlet4</servlet-name>
+	<url-pattern>/addService4</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>addServiceServlet5</servlet-name>
+	<servlet-class>com.customerevent.addServiceServlet5</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>addServiceServlet5</servlet-name>
+	<url-pattern>/addService5</url-pattern>
+</servlet-mapping>
+
 
 </web-app>
 

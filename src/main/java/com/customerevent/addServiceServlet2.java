@@ -22,6 +22,7 @@ public class addServiceServlet2 extends HttpServlet {
 		
 		int aid = Integer.parseInt(request.getParameter("aid"));
 		int vid = Integer.parseInt(request.getParameter("vid"));
+		double price = Double.parseDouble(request.getParameter("price"));
 		
 		String type = (String) request.getAttribute("Type");
 
@@ -44,9 +45,13 @@ public class addServiceServlet2 extends HttpServlet {
 			hm.put("Music", value);
 			
 			session.setAttribute("serDetails", hm);
+	
 			
-			session.setAttribute("maid", aid);
-			session.setAttribute("mvid", vid);
+			request.getSession().setAttribute("maid", aid);
+			request.getSession().setAttribute("mvid", vid);
+			request.getSession().setAttribute("mp", price) ;
+			
+			
 			
 		}
 		catch(Exception e) {

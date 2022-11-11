@@ -21,12 +21,12 @@ public class addEventServlet extends HttpServlet {
 		String name = request.getParameter("name");
 		int num = Integer.parseInt(request.getParameter("num"));
 		String date = request.getParameter("edate");
-		
+		int cid = Integer.parseInt(request.getParameter("cid"));
 		
 		boolean isTrue;
 		
 		try {
-			isTrue = EventDBUtil.insertEvent(type, name, num, date);
+			isTrue = EventDBUtil.insertEvent(type, name, num, date, cid);
 			
 			if(isTrue == true) {
 				

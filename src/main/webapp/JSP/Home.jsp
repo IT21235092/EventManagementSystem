@@ -4,7 +4,7 @@
 <html>
 <head>
     <title>Home page</title>
-    <link rel="stylesheet" href="../CSS/Home.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/Home.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     
     

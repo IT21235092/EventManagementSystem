@@ -149,17 +149,26 @@
           	<input id="type" value="${ser.value}" type="button" >
           	<input type="hidden" id="ad">
           	<input type="hidden" id="ven">
+          
+          	
           	
           	<% 
           		try{
         	 		con = DriverManager.getConnection(url, user, pass);
         	 	 	stmt = con.createStatement();
         	  
-        	  		String sql = "select Event_ID from event ORDER BY Event_ID DESC LIMIT 1";
+        	  		String sql = "select Event_ID from event where cust_ID = '"+session.getAttribute("Id")+"' ORDER BY Event_ID DESC LIMIT 1 ";
         			rs = stmt.executeQuery(sql);
         			
         			while(rs.next()){%>
         			<input type="hidden" id="eid" value="<%= rs.getInt("Event_ID")%>">
+        			
+        			<% session.setAttribute("eid",rs.getInt("Event_ID") ); %>
+
+        			
+        			
+        			
+        			
         				
         			<%}
           		}
@@ -181,33 +190,28 @@
           
           </c:forEach>
           
+          
           	<input type="hidden" id="paid" name="paid" value="<%= session.getAttribute("paid") %>">
           	<input type="hidden" id="pvid" name="pvid" value="<%= session.getAttribute("pvid") %>">
           	<input type="hidden" id="pp" name="pp" value="<%= session.getAttribute("pp") %>">
           	
           	<input type="hidden" id="maid" name="maid" value="<%= session.getAttribute("maid") %>">
           	<input type="hidden" id="mvid" name="mvid" value="<%= session.getAttribute("mvid") %>">
+          	<input type="hidden" id="mp" name="mp" value="<%= session.getAttribute("mp") %>">
           	
           	<input type="hidden" id="daid" name="daid" value="<%= session.getAttribute("daid") %>">
           	<input type="hidden" id="dvid" name="dvid" value="<%= session.getAttribute("dvid") %>">
+          	<input type="hidden" id="dp" name="dp" value="<%= session.getAttribute("dp") %>">
           	
             <input type="hidden" id="iaid" name="iaid" value="<%= session.getAttribute("iaid") %>">
           	<input type="hidden" id="ivid" name="ivid" value="<%= session.getAttribute("ivid") %>">
+          	<input type="hidden" id="ip" name="dp" value="<%= session.getAttribute("ip") %>">
             
           	<input type="hidden" id="faid" name="faid" value="<%= session.getAttribute("faid") %>">
           	<input type="hidden" id="fvid" name="fvid" value="<%= session.getAttribute("fvid") %>">
+          	<input type="hidden" id="fp" name="fp" value="<%= session.getAttribute("fp") %>">
          	
-          <%
-          	
-          	int tot = 85000;
-          	int p1 = 0;
-          	int p2 = 0, p3 = 0, p4 = 0, p5 = 0;
-          	
-          	
-          	 
-          	out.print("Total Price: Rs."+tot); 
-          	
-          %>
+          
           
          </fieldset> 
        
