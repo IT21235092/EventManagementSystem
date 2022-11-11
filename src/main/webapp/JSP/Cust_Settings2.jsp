@@ -183,7 +183,7 @@
                 </div>
                 <div class="form-group">
                     <label for="phone">Contact Number</label>
-                    <input type="text" class="form-control" name = "phone" value = '${cus.phone }' id="phone"/>
+                    <input type="text" class="form-control" name = "phone" value = '${cus.phone }' id="phone" pattern = "[0-9]{10}" title="Enter a 10 digit number"/>
                 </div>
                 
               
@@ -192,16 +192,45 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword4">Old Password</label>
-                            <input type="password" class="form-control" name = "inputPassword4" value = '${cus.password}' id="inputPassword5" />
+                            <input type="password" class="form-control" name = "inputPassword4" id="inputPassword4" />
                         </div>
                         <div class="form-group">
                             <label for="inputPassword5">New Password</label>
-                            <input type="password" class="form-control" name = "inputPassword5" id="inputPassword5" />
+                            <input type="password" class="form-control" name = "inputPassword5" id="inputPassword5" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
                         </div>
                         <div class="form-group">
                             <label for="inputPassword6">Confirm Password</label>
-                            <input type="password" class="form-control"  name = "inputPassword6" id="inputPassword6" />
+                            <input type="password" class="form-control"  name = "inputPassword6" id="inputPassword6" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" />
+                            <p id="validate-status"></p>
                         </div>
+                        
+                        <script>
+                        
+                        $(document).ready(function() {
+                        	  $("#inputPassword6").keyup(validate);
+                        	});
+
+
+                        	function validate() {
+                        	  var password1 = $("#inputPassword5").val();
+                        	  var password2 = $("#inputPassword6").val();
+                        	  console.log("hello")
+                        	  console.log(password1);
+                        	  console.log(password1);
+                        	  
+                        	  
+                        	 
+                        	    if(password1 == password2) {
+                        	       $("#validate-status").text("Passwords match");        
+                        	    }
+                        	    else {
+                        	       $("#validate-status").text("Passwords do not match");  
+                        	    }
+                        	    
+                        	}
+                        
+                        	
+                        </script>
                     </div>
                     <div class="col-md-6">
                         <p class="mb-2">Password requirements</p>
@@ -210,7 +239,7 @@
                             <li>Minimum 8 character</li>
                             <li>At least one special character</li>
                             <li>At least one number</li>
-                            <li>Can’t be the same as a previous password</li>
+                            <li>Cannot be the same as a previous password</li>
                         </ul>
                     </div>
                 </div>

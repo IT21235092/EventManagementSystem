@@ -12,6 +12,12 @@ import com.vendor.ConnectDatabase;
 
 public class CustomerDBUtil{
 	
+
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	private static ResultSet rs1 = null;
+	
 	
 	public static ArrayList<Object> insertCustomer(String org_name,String firstName, String lastName, String userName, String email, String contact, String password) throws SQLException
 	{
@@ -20,12 +26,15 @@ public class CustomerDBUtil{
 		int cust_Id = 0;
 		String custType = "";
 		ArrayList<Object> arr = new ArrayList<>();
-		Connection con = ConnectDatabase.getConnection();
+		con = DBConnect.getConnection();
 		
 		Statement stmtCheck = con.createStatement();
 		String sqlCheck = "select * from customer where Username = '"+userName+"'";
+		String sqlCheck2 = "select * from customer where Email = '"+email+"'";
 		ResultSet rsCheck = stmtCheck.executeQuery(sqlCheck);
+		System.out.println("Hello");
 		
+		// Validating inserted details
 		if (rsCheck.next())
 		{
 			arr.add(cust_Id);
@@ -35,26 +44,40 @@ public class CustomerDBUtil{
 			return arr;
 		}
 		
+		ResultSet rsCheck2 = stmtCheck.executeQuery(sqlCheck2);
+		
+		if(rsCheck2.next())
+		{
+			cust_Id = -1;
+			arr.add(cust_Id);
+			arr.add(email);
+			arr.add(isSuccess);
+			arr.add(custType);
+			return arr;
+		}
 		
 			
 		if (lastName.equals("") && firstName.equals(""))
 		{
 			try
 			{
-				Statement stmt = con.createStatement();
+				stmt = con.createStatement();
 				
 				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', true, '"+org_name+"', false , NULL, NULL)";
 				int rs = stmt.executeUpdate(sql);
 				custType = "Org";
 				
-				
 				if(rs > 0)
 				{
 					isSuccess = true;
 					sql = "select * from customer where Username = '"+userName+"'";
-					ResultSet rs1 = stmt.executeQuery(sql);
+					rs1 = stmt.executeQuery(sql);
 					
-					cust_Id = rs1.getInt(1);
+					if(rs1.next())
+					{
+						cust_Id = rs1.getInt(1);
+					}
+					
 				
 				}
 				else
@@ -74,7 +97,7 @@ public class CustomerDBUtil{
 		{
 			try
 			{
-				Statement stmt = con.createStatement();
+				stmt = con.createStatement();
 				
 				String sql = "insert into customer values(0,'"+userName+"', '"+password+"', '"+email+"', NULL, '"+contact+"', false, NULL, true , '"+firstName+"', '"+lastName+"')";
 				int rs = stmt.executeUpdate(sql);
@@ -85,7 +108,7 @@ public class CustomerDBUtil{
 					isSuccess = true;
 					
 					sql = "select * from customer where Username = '"+userName+"'";
-					ResultSet rs1 = stmt.executeQuery(sql);
+					rs1 = stmt.executeQuery(sql);
 					
 					if(rs1.next())
 					{
@@ -125,14 +148,14 @@ public class CustomerDBUtil{
 		boolean isSuccess = false, isOrg = false;
 		ArrayList<Object> arr = new ArrayList<Object>();
 		
-		Connection con = ConnectDatabase.getConnection();
+		con = DBConnect.getConnection();
 		
 		try
 		{
 			
-			Statement stmt = con.createStatement();
+			stmt = con.createStatement();
 			String sql = "select * from customer where Email ='"+email+"' and password = '" +password+ "'";
-			ResultSet rs = stmt.executeQuery(sql);
+			rs = stmt.executeQuery(sql);
 			
 			if(rs.next())
 			{
@@ -168,10 +191,10 @@ public class CustomerDBUtil{
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			String sql = "select * from customer where Cust_ID = '"+id+"'";
-			ResultSet rs = stmt.executeQuery(sql);
+		    rs = stmt.executeQuery(sql);
 			
 			while(rs.next())
 			{
@@ -208,8 +231,8 @@ public class CustomerDBUtil{
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			String sql = "";
 			
 			if (Org_Name == null)

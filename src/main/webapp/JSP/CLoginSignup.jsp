@@ -328,10 +328,10 @@
                         <input type="text" placeholder="First Name" id="firstName" name = "firstName" />
                         <input type="text" placeholder="Last Name" id="lastName" name = "lastName" />
                     </div>
-					<input type="text" name="username" placeholder="User name" required="" >
-					<input type="email" name="email" placeholder="Email" required="" >
-                    <input type="text" name="phone" placeholder="Contact number" required="">
-					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"required="" >
+					<input type="text" name="username" placeholder="User name" required>
+					<input type="email" name="email" placeholder="Email" required>
+                    <input type="text" name="phone" placeholder="Contact number" pattern = "[0-9]{10}" title="Enter a 10 digit number"required>
+					<input type="password" name="pswd" placeholder="Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 					
 					
 				    <input type="submit" name = "Signup" value = "Signup" id = "submit">

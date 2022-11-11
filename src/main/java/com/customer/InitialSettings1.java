@@ -20,7 +20,6 @@ public class InitialSettings1 extends HttpServlet {
 		HttpSession session = request.getSession();
 		String custType = session.getAttribute("customerType").toString();
 		int id  = Integer.parseInt(session.getAttribute("Id").toString());
-	    System.out.println(id);
 	
 		try 
 		{

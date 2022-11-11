@@ -31,11 +31,14 @@ public class CustomerInsert extends HttpServlet {
 		
 		
 		boolean isSuccess = false;
+		int cust_Id = 0;
 		
 		try
 		{
 			arr = CustomerDBUtil.insertCustomer(org_name, first_name, last_name, username, email, contact, password);
+			System.out.println( arr.get(0));
 			isSuccess = (boolean) arr.get(2);
+			cust_Id = (int) arr.get(0);
 		}
 		catch(Exception e)
 		{
@@ -48,22 +51,39 @@ public class CustomerInsert extends HttpServlet {
 			HttpSession session = request.getSession();
 			session.setAttribute("customerType", arr.get(3));
 			session.setAttribute("username", arr.get(1));
-			session.setAttribute("Id", arr.get(0));
+			session.setAttribute("Id", cust_Id);
 			
 			RequestDispatcher dis = request.getRequestDispatcher( "JSP/Cust_dashboard.jsp");
 			dis.forward(request, response);
 		}
 		else if ( isSuccess == false)
 		{
-			response.setContentType("text/html");
-			PrintWriter pw=response.getWriter();
-			pw.println("<script type=\"text/javascript\">");
-			pw.println("alert('The userName "+arr.get(1)+" has already been taken. Try another username ');");
-			pw.println("</script>");
-			RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
-			rd.include(request, response);
+			
+			if ( cust_Id == -1)
+			{
+				 String message = "Email " + (String)arr.get(1);
+				 alert(message, request, response);
+			}
+			else
+			{
+				String message = "User Name " + (String)arr.get(1);
+				alert(message, request, response);
+			}
+			
 		}
 		
+	}
+	
+	
+	private void alert(String message, HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException
+	{
+		response.setContentType("text/html");
+		PrintWriter pw=response.getWriter();
+		pw.println("<script type=\"text/javascript\">");
+		pw.println("alert('The " + message +" has already been taken. Please use an alternative ');");
+		pw.println("</script>");
+		RequestDispatcher rd=request.getRequestDispatcher("JSP/CLoginSignup.jsp");
+		rd.include(request, response);
 	}
 
 }
