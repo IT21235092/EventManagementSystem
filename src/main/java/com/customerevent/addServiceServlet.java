@@ -27,13 +27,13 @@ public class addServiceServlet extends HttpServlet {
 		
 		
 		int aid = Integer.parseInt(request.getParameter("aid"));
-		int vid = Integer.parseInt(request.getParameter("vid"));
-		double price = Double.parseDouble(request.getParameter("price"));
+		
 		
 		String type = (String) request.getAttribute("Type");
 
 		HttpSession session = request.getSession();
 		
+		request.removeAttribute("paid");
 		
 		HashMap<String,String> hm = new HashMap<>();
 		
@@ -55,8 +55,7 @@ public class addServiceServlet extends HttpServlet {
 			
 			
 			request.getSession().setAttribute("paid", aid);
-			request.getSession().setAttribute("pvid", vid);
-			request.getSession().setAttribute("pp", price) ;
+			
 			
 			
 		}

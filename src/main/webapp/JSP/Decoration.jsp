@@ -132,7 +132,7 @@
                <div class="row">
     <div class="col-md-12">
       <form action="../addService3" method="post">
-        <h1> Music</h1>
+        <h1> Decoration</h1>
         
         <fieldset>  
         
@@ -156,8 +156,7 @@
         			<%= rs.getDouble("Price")%><br>
         			<%= rs.getString("Description")%><br>
         			<%= rs.getString("Location")%>
-        			<input  type = "hidden" id="vid" name="vid" value="<%= rs.getInt("Vendor_ID") %>">
-        			<input  type = "hidden" id="price" name="price" value="<%= rs.getDouble("Price") %>">
+        			
         			
         			<input  type = "hidden" id="eid" name="eid" value="<%= session.getAttribute("eid") %>">
         	    

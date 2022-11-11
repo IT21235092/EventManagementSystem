@@ -31,24 +31,15 @@ public class bookeventServlet extends HttpServlet {
 		
 		if(session.getAttribute("serDetails") == null) {
 			
-			/* boolean isTrue; */
+			
 			
 			String type = request.getParameter("type");
 			System.out.println(type);
-			/*
-			 * String name = request.getParameter("name"); int num =
-			 * Integer.parseInt(request.getParameter("num")); String date =
-			 * request.getParameter("edate");
-			 * 
-			 * String service = request.getParameter("service");
-			 */
+			
 			
 			HashMap<String,String> hm = new HashMap<>();
 			
-				
-				/*isTrue = EventDBUtil.insertEvent(type, name, num, date);
-				
-				if (isTrue == true) {*/
+			
 					try {
 					
 					
@@ -66,7 +57,7 @@ public class bookeventServlet extends HttpServlet {
 					catch(Exception e) {
 						e.printStackTrace();
 					}
-					/* } */
+					
 				
 		}
 		

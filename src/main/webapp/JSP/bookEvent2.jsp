@@ -192,24 +192,19 @@
           
           
           	<input type="hidden" id="paid" name="paid" value="<%= session.getAttribute("paid") %>">
-          	<input type="hidden" id="pvid" name="pvid" value="<%= session.getAttribute("pvid") %>">
-          	<input type="hidden" id="pp" name="pp" value="<%= session.getAttribute("pp") %>">
+          	
           	
           	<input type="hidden" id="maid" name="maid" value="<%= session.getAttribute("maid") %>">
-          	<input type="hidden" id="mvid" name="mvid" value="<%= session.getAttribute("mvid") %>">
-          	<input type="hidden" id="mp" name="mp" value="<%= session.getAttribute("mp") %>">
+          
           	
           	<input type="hidden" id="daid" name="daid" value="<%= session.getAttribute("daid") %>">
-          	<input type="hidden" id="dvid" name="dvid" value="<%= session.getAttribute("dvid") %>">
-          	<input type="hidden" id="dp" name="dp" value="<%= session.getAttribute("dp") %>">
+          
           	
             <input type="hidden" id="iaid" name="iaid" value="<%= session.getAttribute("iaid") %>">
-          	<input type="hidden" id="ivid" name="ivid" value="<%= session.getAttribute("ivid") %>">
-          	<input type="hidden" id="ip" name="dp" value="<%= session.getAttribute("ip") %>">
+          
             
           	<input type="hidden" id="faid" name="faid" value="<%= session.getAttribute("faid") %>">
-          	<input type="hidden" id="fvid" name="fvid" value="<%= session.getAttribute("fvid") %>">
-          	<input type="hidden" id="fp" name="fp" value="<%= session.getAttribute("fp") %>">
+      
          	
           
           

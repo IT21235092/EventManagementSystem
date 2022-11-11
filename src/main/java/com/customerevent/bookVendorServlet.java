@@ -24,34 +24,29 @@ public class bookVendorServlet extends HttpServlet {
 
 		// photos
 		String paid = request.getParameter("paid");
-		String pvid = request.getParameter("pvid");
-		String pp = request.getParameter("pp");
+		
 
 		// Music
 		String maid = request.getParameter("maid");
-		String mvid = request.getParameter("mvid");
-		String mp = request.getParameter("mp");
-
+		
 		// Decorations
 		String daid = request.getParameter("daid");
-		String dvid = request.getParameter("dvid");
-		String dp = request.getParameter("dp");
+		
 
 		// Invitation card
 		String iaid = request.getParameter("iaid");
-		String ivid = request.getParameter("ivid");
-		String ip = request.getParameter("ip");
+		
 
 		// Food and drinks
 		String faid = request.getParameter("faid");
-		String fvid = request.getParameter("fvid");
-		String fp = request.getParameter("fp");
+		
 		
 		if (paid.toString() != null) {
 			
 			try {
-				EventDBUtil.insertEventVendor(eid, paid, pvid);
-				EventDBUtil.updatePrice(pp,eid);
+				EventDBUtil.insertEventVendor(eid, paid);
+				EventDBUtil.updatePrice(paid,eid);
+				
 			}catch(Exception e) {
 				
 			}
@@ -63,8 +58,9 @@ public class bookVendorServlet extends HttpServlet {
 			
 			try {
 				
-				EventDBUtil.insertEventVendor1(eid,maid,mvid );
-				EventDBUtil.updatePrice(mp,eid);
+				EventDBUtil.insertEventVendor1(eid,maid);
+				EventDBUtil.updatePrice(maid,eid);
+				
 				
 			}catch(Exception e) {
 				
@@ -77,8 +73,8 @@ public class bookVendorServlet extends HttpServlet {
 			
 			try {
 				
-				EventDBUtil.insertEventVendor2(eid,daid,dvid );
-				EventDBUtil.updatePrice(dp,eid);
+				EventDBUtil.insertEventVendor2(eid,daid);
+				EventDBUtil.updatePrice(daid,eid);
 				
 			}catch(Exception e) {
 				
@@ -92,8 +88,8 @@ public class bookVendorServlet extends HttpServlet {
 			  
 			try {
 				
-				EventDBUtil.insertEventVendor3(eid,iaid,ivid );
-				EventDBUtil.updatePrice(ip,eid);
+				EventDBUtil.insertEventVendor3(eid,iaid);
+				EventDBUtil.updatePrice(iaid,eid);
 				
 			}catch(Exception e) {
 				
@@ -106,8 +102,8 @@ public class bookVendorServlet extends HttpServlet {
 			
 			try {
 				
-				EventDBUtil.insertEventVendor4(eid,faid,fvid );
-				EventDBUtil.updatePrice(fp,eid);
+				EventDBUtil.insertEventVendor4(eid,faid);
+				EventDBUtil.updatePrice(faid,eid);
 				
 			}catch(Exception e) {
 				
