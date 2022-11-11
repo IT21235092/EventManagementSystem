@@ -1,9 +1,39 @@
 <%@ page language="java" session = "true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	<%@page import="java.sql.ResultSet"%>
+	<%@page import="java.sql.Statement"%>
+	<%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+    
+    %>
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../CSS/bookevent.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/selectVendor.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
@@ -16,7 +46,7 @@
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
-            <img src = "../Images/logo.png">
+            <img src = "${pageContext.request.contextPath}/Images/logo.png">
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
@@ -49,9 +79,12 @@
 
     <!-- JavaScript -->
     <script>
-    date.max = new Date().toISOString().split("T")[0];
-
-    </script>
+	// When the user clicks on <div>, open the popup
+	function myFunction() {
+ 	 var popup = document.getElementById("myPopup");
+  	popup.classList.toggle("show");
+	}
+	</script>
     
     
     <script>
@@ -89,7 +122,7 @@
                 <span class="dashboard">Dashboard</span>
             </div>
             <div class="profile-details">
-                <img src = "../Images/color.png" alt = "">
+                <img src = "${pageContext.request.contextPath}/Images/color.png" alt = "">
                 <span class="admin_name">Kiriharan Mohan</span>
                 <i class='bx bx-chevron-down'></i>
             </div>
@@ -98,40 +131,56 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form action="../addEvent" method="post">
-        <h1> Book Event </h1>
+      <form action="../addService4" method="post">
+        <h1> Music</h1>
         
-        <fieldset>
+        <fieldset>  
+        
+          <legend><span class="number">3</span> Select Vendor</legend>
           
-          <legend><span class="number">1</span> Event details</legend>
+           <div class="grid-container">
+          <% 
+          try{
+        	  con = DriverManager.getConnection(url, user, pass);
+        	  stmt = con.createStatement();
+        	  
+        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Invitation Cards'";
+        		rs = stmt.executeQuery(sql5);
+        		
+        		while(rs.next()) {
+        		%>
+        			
+        			<div class="grid-item">
+        			<input type="radio" id = "aid" value="<%= rs.getInt("Ad_ID")%>" name="aid" required>
+        			<%= rs.getString("Org_name")%><br>
+        			<%= rs.getDouble("Price")%><br>
+        			<%= rs.getString("Description")%><br>
+        			<%= rs.getString("Location")%>
+        			<input  type = "hidden" id="vid" name="vid" value="<%= rs.getInt("Vendor_ID") %>">
+        			<input  type = "hidden" id="price" name="price" value="<%= rs.getDouble("Price") %>">
+        			
+        			<input  type = "hidden" id="eid" name="eid" value="<%= session.getAttribute("eid") %>">
+        	    
+        	    </div>
+        		 <% } 
+          }
+          catch(Exception e){
+        	  e.printStackTrace();
+          }
           
-          <label for="type">Select Event type:</label>
-  		  <select name="type" id="type" class="txt" required>
-    		<option value="Wedding">Wedding</option>
-    		<option value="Birthday">Birthday Party</option>
-   			<option value="Concert">Concert</option>
-  		  </select>
-        
-          <label for="name">Event Name:</label>
-          <input type="text" id="name" name="name" class="txt" required>
-        
-          <label for="number">Number of Guests:</label>
-          <input type="number" id="num" name="num" required min="30" max="400">
+          
+          %>
+    	</div>
+          
+          
+          
+          
+          
+         </fieldset>
        
-          <label for="date">Event Date:</label>
-          <input type="date" id="edate" name="edate" required  >
-          
-          <input type="hidden" id="cid" name="cid" value="<%= session.getAttribute("Id") %>" >
-          
-          
-        <br>
-          
-          
-        </fieldset>
-     
-        
-        <button type="submit">Next</button>
-        
+        <a href="" class="button">
+        <button type="submit">Add</button>
+        </a>
         
        </form>
         </div>
@@ -144,4 +193,3 @@
    
    
     </body>
-

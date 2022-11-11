@@ -47,7 +47,7 @@ public class EventDBUtil {
 		return cat;
 	}
 	
-	public static boolean insertEvent(String type, String name, int num, String date) {
+	public static boolean insertEvent(String type, String name, int num, String date, int cid) {
 		
 		boolean isSuccess = false;
 		
@@ -57,7 +57,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "insert into event values(0,'"+name+"','"+num+"', '"+type+"', '"+date+"',850000,1)";
+			String sql = "insert into event values(0,'"+name+"','"+num+"', '"+type+"', '"+date+"',85000,'"+cid+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			
@@ -150,9 +150,9 @@ public class EventDBUtil {
 	
 	
 	//Photos
-	public static boolean insertEventVendor(/* String eid, */ String paid, String pvid) {
+	public static boolean insertEventVendor(String eid, String paid, String pvid) {
 		
-		/* int convEid = Integer.parseInt(eid); */
+		int convEid = Integer.parseInt(eid);
 		int convAid = Integer.parseInt(paid);
 		int convVid = Integer.parseInt(pvid);
 		
@@ -163,7 +163,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "insert into event_add values(0, 1,'"+convAid+"', '"+convVid+"')";
+			String sql = "insert into event_add values(0, '"+convEid+"','"+convAid+"', '"+convVid+"')";
 			int rs = stmt.executeUpdate(sql);
 			
 			if(rs > 0)
@@ -187,9 +187,9 @@ public class EventDBUtil {
 	
 	
 	//Music
-		public static boolean insertEventVendor1(/* String eid, */ String maid, String mvid) {
+		public static boolean insertEventVendor1(String eid, String maid, String mvid) {
 			
-			/* int convEid = Integer.parseInt(eid); */
+			int convEid = Integer.parseInt(eid); 
 			int convAid = Integer.parseInt(maid);
 			int convVid = Integer.parseInt(mvid);
 			
@@ -200,7 +200,7 @@ public class EventDBUtil {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
 				
-				String sql = "insert into event_add values(0,1,'"+convAid+"', '"+convVid+"')";
+				String sql = "insert into event_add values(0,'"+convEid+"','"+convAid+"', '"+convVid+"')";
 				int rs = stmt.executeUpdate(sql);
 				
 				if(rs > 0)
@@ -224,9 +224,9 @@ public class EventDBUtil {
 		
 		
 		//Deco
-		public static boolean insertEventVendor2(/* String eid, */ String daid, String dvid) {
+		public static boolean insertEventVendor2(String eid,  String daid, String dvid) {
 			
-			/* int convEid = Integer.parseInt(eid); */
+			int convEid = Integer.parseInt(eid); 
 			int convAid = Integer.parseInt(daid);
 			int convVid = Integer.parseInt(dvid);
 			
@@ -237,7 +237,7 @@ public class EventDBUtil {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
 				
-				String sql = "insert into event_add values(0,1,'"+convAid+"', '"+convVid+"')";
+				String sql = "insert into event_add values(0,'"+convEid+"','"+convAid+"', '"+convVid+"')";
 				int rs = stmt.executeUpdate(sql);
 				
 				if(rs > 0)
@@ -261,9 +261,9 @@ public class EventDBUtil {
 		
 		
 		//Invitation
-		public static boolean insertEventVendor3(/* String eid, */ String iaid, String ivid) {
+		public static boolean insertEventVendor3(String eid,  String iaid, String ivid) {
 			
-			/* int convEid = Integer.parseInt(eid); */
+			int convEid = Integer.parseInt(eid); 
 			int convAid = Integer.parseInt(iaid);
 			int convVid = Integer.parseInt(ivid);
 			
@@ -274,7 +274,7 @@ public class EventDBUtil {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
 				
-				String sql = "insert into event_add values(0,1,'"+convAid+"', '"+convVid+"')";
+				String sql = "insert into event_add values(0,'"+convEid+"','"+convAid+"', '"+convVid+"')";
 				int rs = stmt.executeUpdate(sql);
 				
 				if(rs > 0)
@@ -297,9 +297,9 @@ public class EventDBUtil {
 		}
 		
 		//Food
-		public static boolean insertEventVendor4(/* String eid, */ String faid, String fvid) {
+		public static boolean insertEventVendor4(String eid, String faid, String fvid) {
 			
-			/* int convEid = Integer.parseInt(eid); */
+			int convEid = Integer.parseInt(eid); 
 			int convAid = Integer.parseInt(faid);
 			int convVid = Integer.parseInt(fvid);
 			
@@ -310,7 +310,7 @@ public class EventDBUtil {
 				con = DBConnect.getConnection();
 				stmt = con.createStatement();
 				
-				String sql = "insert into event_add values(0,1,'"+convAid+"', '"+convVid+"')";
+				String sql = "insert into event_add values(0, '"+convEid+"','"+convAid+"', '"+convVid+"')";
 				int rs = stmt.executeUpdate(sql);
 				
 				if(rs > 0)
@@ -382,4 +382,42 @@ public class EventDBUtil {
 		
 	}
 	
+	
+	public static boolean updatePrice(String price, String eid) {
+		
+		double convPrice = Double.parseDouble(price);
+		int convEid = Integer.parseInt(eid); 
+		
+		boolean isSuccess = false;
+		
+		try {
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "Update event set Total_price = (Total_price + '"+convPrice+"') where event_Id = '"+convEid+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0)
+			{
+				isSuccess = true;
+			}
+			else
+			{
+				isSuccess = false;
+			}
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		
+		
+		
+		
+		return isSuccess;
+	}
 }
