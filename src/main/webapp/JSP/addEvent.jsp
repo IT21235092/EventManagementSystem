@@ -114,7 +114,6 @@
                 <i class='bx bx-chevron-down'></i>
             </div>
         </nav>
-
          <!-- Home content -->
 
          <div class="main">  	

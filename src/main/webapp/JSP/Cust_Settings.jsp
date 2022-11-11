@@ -6,6 +6,9 @@
 <head>
     <meta charset="utf-8">
      <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/settings.css">
+     <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/validation.css">
+     
+     
     <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
     <!--  All snippets are MIT license http://bootdey.com/license -->
     <title> Customer Settings | Eventrra</title>
@@ -219,8 +222,20 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                <button type="submit" class="btn btn-primary delete">Delete Account</button>
+                 <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
+            <label for="modal-btn">Open Modal <i class="uil uil-expand-arrows"></i></label> 		
+            <div class="modal">		
+                <div class="modal-wrap">	
+                    <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
+                    <p>Do you want to delete this account ? </p>
+                    <button>Yes</button> 
+                    <br>
+                    <button >No</button>      		
+                </div>	
+            </div>
             </form>
+            
+          
             	
         </div>
     </div>
