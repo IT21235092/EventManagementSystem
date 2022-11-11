@@ -29,12 +29,12 @@ public class bookeventServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		
-		
 		if(session.getAttribute("serDetails") == null) {
 			
 			/* boolean isTrue; */
 			
 			String type = request.getParameter("type");
+			System.out.println(type);
 			/*
 			 * String name = request.getParameter("name"); int num =
 			 * Integer.parseInt(request.getParameter("num")); String date =
@@ -71,6 +71,8 @@ public class bookeventServlet extends HttpServlet {
 		}
 		
 		else {
+			
+			System.out.println( "hi" );
 			
 			HashMap<String,String> hm1 =  (HashMap<String, String>) session.getAttribute("serDetails");
 			request.setAttribute("serDetails", hm1);

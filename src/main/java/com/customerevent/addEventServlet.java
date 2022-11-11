@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet("/addEventServlet")
 public class addEventServlet extends HttpServlet {
@@ -22,6 +23,9 @@ public class addEventServlet extends HttpServlet {
 		int num = Integer.parseInt(request.getParameter("num"));
 		String date = request.getParameter("edate");
 		int cid = Integer.parseInt(request.getParameter("cid"));
+		
+		HttpSession session = request.getSession();
+		session.removeAttribute("serDetails");
 		
 		boolean isTrue;
 		
