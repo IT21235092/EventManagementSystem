@@ -115,7 +115,7 @@ public class bookVendorServlet extends HttpServlet {
 		
 		
 		
-		RequestDispatcher dis = request.getRequestDispatcher("JSP/Home.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher("JSP/Paymentform.jsp");
 		dis.forward(request, response);
 
 	}

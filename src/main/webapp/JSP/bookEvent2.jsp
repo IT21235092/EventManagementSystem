@@ -45,6 +45,7 @@
     </head>
 
     <body>
+    <body onload="document.frm.reset();">
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
@@ -124,7 +125,7 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form action="${pageContext.request.contextPath}/eventvenInsert" method="post">
+      <form action="${pageContext.request.contextPath}/eventvenInsert" method="post" name="frm">
         <h1> Book Event </h1>
         <fieldset>  
         
@@ -205,7 +206,17 @@
             
           	<input type="hidden" id="faid" name="faid" value="<%= session.getAttribute("faid") %>">
       
+         	<% 
          	
+         	int tot = 85000;
+         	
+         
+         	
+        	
+         	
+         	
+         	out.print("Total Price: Rs. " +tot+ "/=");
+         	%>
           
           
          </fieldset> 

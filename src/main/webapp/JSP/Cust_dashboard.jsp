@@ -1,6 +1,39 @@
 <%@ page language="java" session="true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+    
+    %>
+     
+     
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,6 +48,19 @@
     </head>
     
     <body>
+    
+    <% String message = (String)request.getAttribute("alertMsg");
+    	if(message != null){%>
+    		<script type="text/javascript">
+    		var msg = "<%=message%>";
+    		alert(msg);
+			</script>
+    	<% }
+    
+    
+    %>
+    
+    
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
@@ -116,26 +162,68 @@
                 <div class="recent-sale box">
                     <div class = "title">Pending Event</div>
                     
+                     <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
+                     
+                    <div>
                     
+            
+                    
+                    <%
+                    
+                    try{
+                    	
+                    	con = DriverManager.getConnection(url, user, pass);
+                  	 	stmt = con.createStatement();
+                  	 	
+                  	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and status = 'Complete' and Event_Date > curdate()";
+                    	
+                  	 	rs = stmt.executeQuery(sql);
+                  	 	
+                  	 	while(rs.next()){ 
+                  	 		%>
+                  	 		
+                  	 		<p><b>Event</b></p>
+                  	 		<%=rs.getString("Name") %><br><br>
+           					<p><b>Event Type</b></p>
+           					<%=rs.getString("Type") %><br><br>
+           					<p><b>Number of Guests</b></p>
+           					<%=rs.getInt("No_of_guests") %><br><br>
+           					<p><b>Date</b></p>
+           					<%=rs.getString("Event_date") %><br><br>
+           					<p><b>Total Expenses</b></p>
+           					<%=rs.getDouble("Total_price") %><br><br><%
+           					
+           					try{
+              
+                  	 		String sql2 = "select v.Org_Name, a.Price from event e, advertisement a, event_add ea, vendor v, customer c where e.event_id = ea.Event_ID and ea.Ad_ID = a.Ad_ID and a.Vendor_ID = v.Vendor_ID and e.Cust_ID = c.Cust_ID and e.Event_ID = '"+rs.getInt("Event_Id")+"';";
+                  	 		
+                  	 		rs1 = stmt.executeQuery(sql2);
+                  	 		
+                  	 		while(rs1.next()){%>
+                  	 			
+                  	 			<%= rs1.getString("Org_name") %> 
+                  	 			<%out.print("\t"); %>
+                  	 			<%= rs1.getDouble("Price") %>
+                  	 			
+                  	 		<% }
+           					}
+           					catch(Exception e){}
+                  	 		
+                  	 	}
+                    	
+                    }
+                    catch(Exception e){}
+                    
+                
+                    %>
+               
+                    </div>
+                    
+                    </div>
                 </div>
-                <!-- right-side -->
-                <div class="top-vendor box">
-                    <div class = "title">Event History</div>
-                    <ul>
-                        <li>
-                            <a href = "#">
-                              <img src = "../Images/color.png" alt = "">
-                              <span class="product-name">Gucci Women's Bag</span>
-                              
-                              <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
-                            </a>
-                            <span class="price">$14.66</span>
-                        </li>
-                    </ul>
-                </div>
+                
             </div>
-            </div>
-            <a href="${pageContext.request.contextPath}/JSP/bookEvent.jsp"><button class="addEvent">Add Event</button></a>
+            <a href="${pageContext.request.contextPath}/checkEvent"><button class="addEvent">Add Event</button></a>
         
     </section>
    

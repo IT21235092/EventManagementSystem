@@ -14,6 +14,8 @@
         <title> Customer Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
     </head>
 
     <body>
@@ -32,7 +34,7 @@
             </a>
         </li>
         <li>
-            <a href="Cust_Feedback.jsp" class="colored">
+            <a href="${pageContext.request.contextPath}/getFeedback" class="colored">
                 <i class='bx bxs-edit colored'></i>
                 <span class="links_name">Feedback</span>
             </a>
@@ -47,6 +49,17 @@
     </div>
 
     <!-- --------------------------Main section------------------------------ -->
+    
+    <% String message = (String)request.getAttribute("alertMsg");
+    	if(message != null){%>
+    		<script type="text/javascript">
+    		var msg = "<%=message%>";
+    		alert(msg);
+			</script>
+    	<% }
+    
+    
+    %>
 
     <!-- JavaScript -->
     <script>
@@ -97,6 +110,7 @@
             <div class="event-boxes">
                 <div class="recent-sale box">
                     <div class = "title">Your Feedback</div>
+                    <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add a new feedback until pending event is completed.</i></div>
                     <br><br>
                     
                     
@@ -163,7 +177,7 @@
         </div>
     </section>
    
-   <a href="${pageContext.request.contextPath}/JSP/AddFeedback.jsp"><input type="button" value="Add Feedback"></a>
+   <a href="${pageContext.request.contextPath}/checkFeedback"><input type="button" value="Add Feedback"></a>
     </body>
 
 </html>

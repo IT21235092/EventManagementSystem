@@ -732,4 +732,10 @@ nav .profile-details .admin-name
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
+th, td {
+  text-align:center;
+  padding:5px;
+  background: rgb(201,198,255);
+  background: linear-gradient(90deg, rgba(201,198,255,0.20258525773590685) 0%, rgba(230,230,255,0.20258525773590685) 51%, rgba(151,237,255,0.20258525773590685) 100%);
+}
 

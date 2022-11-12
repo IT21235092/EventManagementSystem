@@ -57,7 +57,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "insert into event values(0,'"+name+"','"+num+"', '"+type+"', '"+date+"',85000,'"+cid+"')";
+			String sql = "insert into event values(0,'"+name+"','"+num+"', '"+type+"', '"+date+"',85000,'"+cid+"', 'Incomplete')";
 			
 			int rs = stmt.executeUpdate(sql);
 			
@@ -423,9 +423,77 @@ public class EventDBUtil {
 			
 		}
 		
+	
+		return isSuccess;
+	}
+	
+	public static boolean checkEvent(int cid) {
+		
+		boolean isSuccess = false;
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "select * from event where cust_id = '"+cid+"' and event_date > curdate() and Status = 'Complete'";
+			rs = stmt.executeQuery(sql);
+					
+					
+			if(rs.next() == true) {
+				
+				isSuccess = true;
+				
+			}
+			else {
+				isSuccess = false;
+			}
+			
+			
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
 		
 		
 		
 		return isSuccess;
 	}
+	
+	public static boolean paymentValid(String eid) {
+		
+		int ConvEid = Integer.parseInt(eid); 
+		
+		boolean isSuccess = false;
+		
+		try {
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "Update event set status = 'Complete' where Event_id = '"+ConvEid+"'";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				
+				isSuccess = true;
+			}
+			else {
+				isSuccess = false;
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return isSuccess;
+		
+		
+		
+	}
+	
 }
