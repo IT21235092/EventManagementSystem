@@ -336,7 +336,7 @@ nav .profile-details .admin-name
 .home-section .home-content
 {
   position:relative;
-  padding-top: 100px;
+  padding-top: 60px;
 }
 
 
@@ -424,7 +424,7 @@ nav .profile-details .admin-name
 {
   background-color: #ffc233;
   color:#ffe8b3;
-  padding: 8px;
+ padding: 8px;
   margin-left: 7%;
 }
 
@@ -660,7 +660,7 @@ nav .profile-details .admin-name
    {
     width: 100%;
     margin-bottom: 15px;
-
+	padding: 8px;
    }
 }
 

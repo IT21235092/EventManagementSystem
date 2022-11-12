@@ -113,7 +113,7 @@
     <!-- -----------------------------------Content-------------------------------------------- -->
     
      <div class="container">
-    <div class="title">Create an Advertisement</div>
+    <div class="title">Edit Advertisement</div>
     <div class="content">
       <form action= "http://localhost:8080/EventManagementSystem/updatead" method="post">
         <div class="ad-details">

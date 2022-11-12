@@ -42,7 +42,7 @@ public class VendorLogin extends HttpServlet {
 			session.setAttribute("username", arr.get(1));
 			session.setAttribute("Id", arr.get(0));
 			
-			RequestDispatcher dis = request.getRequestDispatcher("JSP/Vendor_dashboard.jsp");
+			RequestDispatcher dis = request.getRequestDispatcher("ServiceServlet.java");
 			dis.forward(request, response);	
 		}
 		else
