@@ -104,11 +104,11 @@
   
   <script type="text/javascript">
     document.getElementById("myButton1").onclick = function () {
-        location.href = "JSP/CLoginSignup.jsp";
+        location.href = "${pageContext.request.contextPath}/JSP/CLoginSignup.jsp";
     };
     
     document.getElementById("myButton2").onclick = function () {
-        location.href = "JSP/VLoginSignup.jsp";
+        location.href = "${pageContext.request.contextPath}/JSP/VLoginSignup.jsp";
     };
  </script>
 		

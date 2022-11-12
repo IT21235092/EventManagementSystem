@@ -201,7 +201,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword4">Old Password</label>
-                            <input type="password" class="form-control" name = "inputPassword4" id="inputPassword4" />
+                            <input type="password" class="form-control" name = "inputPassword4"  value = '${cus.password}' id="inputPassword4" readonly/>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword5">New Password</label>
