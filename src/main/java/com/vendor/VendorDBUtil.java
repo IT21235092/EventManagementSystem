@@ -44,13 +44,14 @@ public class VendorDBUtil {
 				
 				if(rs > 0)
 				{
+					isSuccess = true;
 					sql = "select * from customer where Username = '"+userName+"'";
 					ResultSet rs1 = stmt.executeQuery(sql);
 					
 					if( rs1.next())
 					{
 						vendorId = rs1.getInt(1);
-						isSuccess = true;
+						
 					}
 					
 					
