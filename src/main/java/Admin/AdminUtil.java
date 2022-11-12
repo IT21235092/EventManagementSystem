@@ -255,4 +255,92 @@ public class AdminUtil {
 		
 	
 	}
+	
+	
+	public static List<CountCustomers> CountCustomers()
+	{
+		ArrayList<CountCustomers> ad = new ArrayList();
+		
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			//fetching
+			
+			String sql3 = "select * from category ";
+			String sql4 = "";
+			int count2=0;
+			
+			ResultSet rs3 = stmt.executeQuery(sql3);
+			
+				while(rs3.next())
+				{
+					String nm= rs3.getNString(1);
+					
+					ty.add(nm);
+					ty.add(rs3.getNString(3));
+					
+					sql4="select * from category_services where Cat_Name = '"+nm+"';";
+					queries.add(sql4);
+				}
+			
+			for (String q : queries)
+			{
+				ResultSet rs4 = stmt.executeQuery(q);
+				
+				try 
+				{
+					String typ[] = new String[6];
+					int count = 0;
+								
+					while(rs4.next())
+					{
+						try 
+						{
+							typ[count] = rs4.getString(2);
+							count++;
+						}
+						catch(Exception e)
+						{
+							e.printStackTrace();
+						}
+					}
+					
+					AdminFetch adf = new AdminFetch(ty.get(count2),ty.get(count2+1),typ);
+					
+					ad.add(adf);
+					
+					count2 += 2;
+				}
+				finally
+				{
+					rs4.close();
+				}
+				
+			}
+			
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ad;
+	}
+	
+	
+	
+	
+	
 }

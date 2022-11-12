@@ -40,7 +40,7 @@ public class AddEventControl extends HttpServlet {
 		String description = request.getParameter("txtarea");
 	
 		Part filePart = request.getPart("event_image");
-		filePart.getSubmittedFileName();
+		//filePart.getSubmittedFileName();
 	
     
         
