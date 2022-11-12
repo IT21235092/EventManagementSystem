@@ -116,7 +116,7 @@
     }
 </script>
 
-<section class="home-section">
+<section class="home-section" >
     <nav>
         <div class="sidebar-button">
             <span class="dashboard">Dashboard</span>
@@ -129,6 +129,8 @@
                 <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
+                  
+                  
                   <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
@@ -248,17 +250,6 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                 <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
-            <label for="modal-btn">Open Modal <i class="uil uil-expand-arrows"></i></label> 		
-            <div class="modal">		
-                <div class="modal-wrap">	
-                    <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-                    <p>Do you want to delete this account ? </p>
-                    <button>Yes</button> 
-                    <br>
-                    <button >No</button>      		
-                </div>	
-            </div>
             </form>
             
           

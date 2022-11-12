@@ -257,10 +257,11 @@ public class AdminUtil {
 	}
 	
 	
-	public static List<CustomerCount> CountCustomers()
+	public static List<Object> CountCustomers()
 	{
+		boolean isSuccess= false;
 		ArrayList<CustomerCount> ad = new ArrayList();
-		
+		ArrayList<Object> ob = new ArrayList();
 		
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
 		String user = "root";
@@ -278,29 +279,27 @@ public class AdminUtil {
 			
 			String sql = "select count(Cust_ID) from customer ";
 			
+			try {
 			
+				ResultSet rs3 = stmt.executeQuery(sql);
+						while(rs3.next())
+						{
+							isSuccess = true;
+							
+							int count=  rs3.getInt(1);
+							
+							ob.add(count);
+							
 			
-			ResultSet rs3 = stmt.executeQuery(sql);
-			
-				while(rs3.next())
-				{
-					int count= rs3.getNString(1);
-					
-					ty.add(nm);
-					ty.add(rs3.getNString(3));
-					
-					sql4="select * from category_services where Cat_Name = '"+nm+"';";
-					queries.add(sql4);
-				}
-			
-		
-					
-					AdminFetch adf = new AdminFetch(ty.get(count2),ty.get(count2+1),typ);
-					
-					ad.add(adf);
-					
-					count2 += 2;
-			
+						
+				
+						}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+				
 				
 		
 		}
@@ -309,7 +308,8 @@ public class AdminUtil {
 			e.printStackTrace();
 		}
 		
-		return ad;
+		ob.add(isSuccess);
+		return ob;
 	}
 	
 	

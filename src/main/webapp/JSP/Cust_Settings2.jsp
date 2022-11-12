@@ -267,12 +267,12 @@
 .profile-dropdown
 			{
 			  left: 75%;
-			  top: 1%;
+			  top: 18%;
 			  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 			  display: inline-block;
 			  position:absolute;
 			  background: #f2f2f2;
-			  width: 22%;
+			  width: 20%;
 			  font-weight: bold;
 			  font-size: 1.3rem;
 			  border-radius: 3px;

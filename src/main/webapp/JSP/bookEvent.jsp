@@ -45,6 +45,7 @@
         <title> Customer Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
     </head>
 
     <body>
@@ -124,11 +125,21 @@
             <div class="sidebar-button">
                 <span class="dashboard">Dashboard</span>
             </div>
-            <div class="profile-details">
-                <img src = "../Images/color.png" alt = "">
-                <span class="admin_name">Kiriharan Mohan</span>
-                <i class='bx bx-chevron-down'></i>
+            <div class="container">
+            <div class="half">
+              <label for="profile2" class="profile-dropdown">
+                <input type="checkbox" id="profile2">
+                <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
+                <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
+                <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
+                <ul>
+                  
+                  
+                  <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                </ul>
+              </label>
             </div>
+          </div>
         </nav>
 
          <!-- Home content -->

@@ -2,15 +2,15 @@ package Admin;
 
 public class CustomerCount 
 {
-	private int CustID;
+	private int count;
 	
-	public CustomerCount(int id)
+	public CustomerCount(int cnt)
 	{
-		this.CustID = id;
+		this.count = cnt;
 	}
 	
-	public int getCustID()
+	public int getCount()
 	{
-		return CustID;
+		return count;
 	}
 }
