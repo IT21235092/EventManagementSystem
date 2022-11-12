@@ -218,21 +218,20 @@
                         	});
 
 
-                        	function validate() {
-                        	  var password1 = $("#inputPassword5").val();
-                        	  var password2 = $("#inputPassword6").val();
-                        	  console.log("hello")
-                        	  console.log(password1);
-                        	  console.log(password1);
+                       	function validate() {
+		                       	  var password1 = $("#inputPassword5").val();
+		                       	  var password2 = $("#inputPassword6").val();
+		                       	  console.log("hello")
+		                       	  console.log(password1);
+		                       	  console.log(password1);
                         	  
                         	  
-                        	 
-                        	    if(password1 == password2) {
-                        	       $("#validate-status").text("Passwords match");        
-                        	    }
-                        	    else {
-                        	       $("#validate-status").text("Passwords do not match");  
-                        	    }
+	                       	    if(password1 == password2) {
+	                       	       $("#validate-status").text("Passwords match");        
+	                       	    }
+	                       	    else {
+	                       	       $("#validate-status").text("Passwords do not match");  
+	                       	    }
                         	    
                         	}
                         </script>
