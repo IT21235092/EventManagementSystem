@@ -47,8 +47,13 @@ public class VendorDBUtil {
 					sql = "select * from customer where Username = '"+userName+"'";
 					ResultSet rs1 = stmt.executeQuery(sql);
 					
-					vendorId = rs1.getInt(1);
-					isSuccess = true;
+					if( rs1.next())
+					{
+						vendorId = rs1.getInt(1);
+						isSuccess = true;
+					}
+					
+					
 				}
 				else
 				{
