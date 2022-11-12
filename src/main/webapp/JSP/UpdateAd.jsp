@@ -17,13 +17,14 @@
     <body>
     
     <%
-		/*int adid = Integer.parseInt(request.getParameter("aid"));
-		int vid = Integer.parseInt(request.getParameter("vid"));
-		float price = Float.parseFloat(request.getParameter("price"));
-		String desc = request.getParameter("des");
-		String atta = request.getParameter("attach");*/
+		String adid = request.getParameter("adId");
+		String vid = request.getParameter("Vendor_ID");
+		String price = request.getParameter("price");
+		String desc = request.getParameter("desc");
+		String atta = request.getParameter("attach");
 	%>
 	
+	<%= vid %>
 	
     <div class="sidebar">
         <div class="logo-details">
@@ -114,7 +115,7 @@
      <div class="container">
     <div class="title">Create an Advertisement</div>
     <div class="content">
-      <form action= "../ad" method="post">
+      <form action= "http://localhost:8080/EventManagementSystem/updatead" method="post">
         <div class="ad-details">
         <div class="input-box">
              <span class="details">Ad ID</span>
@@ -130,7 +131,7 @@
           </div>
           <div class="input-box">
             <span class="details">Description</span>
-            <textarea placeholder="Product details" name="desc" required value= "<%= desc%>"></textarea>
+            <textarea placeholder="Product details" name="desc" required value= ""><%= desc%></textarea>
           </div>
         
           <div class="input-box">

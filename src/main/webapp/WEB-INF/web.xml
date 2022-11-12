@@ -51,10 +51,10 @@
     <url-pattern>/insertV</url-pattern>
 </servlet-mapping>
 
-
+<!-- ===========================================Advertisement=============================================== -->
 <servlet>
 	<servlet-name>Create_Advertisement</servlet-name>
-	<servlet-class>AdvertisementVendor.AdServlet</servlet-class>
+	<servlet-class>Vendor.AdServlet</servlet-class>
 </servlet>
 	
 <servlet-mapping>
@@ -62,6 +62,28 @@
 	<url-pattern>/ad</url-pattern>
 </servlet-mapping>
 
+ <servlet>
+	<servlet-name>Update_Advertisement</servlet-name>
+	<servlet-class>Vendor.UpdateAdvertisement</servlet-class>
+</servlet>
+	
+<servlet-mapping>
+	<servlet-name>Update_Advertisement</servlet-name>
+	<url-pattern>/updatead</url-pattern>
+</servlet-mapping> 
+
+<!--  <servlet>
+	<servlet-name>Delete_Advertisement</servlet-name>
+	<servlet-class>Vendor.DeleteAdvertisementServlet</servlet-class>
+</servlet>
+	
+<servlet-mapping>
+	<servlet-name>Delete_Advertisement</servlet-name>
+	<url-pattern>/delete</url-pattern>
+</servlet-mapping> -->
+
+
+<!-- ============================================================================================================== -->
 <servlet>
 	<servlet-name>EventDelete</servlet-name>
 	<servlet-class>Admin.EventDelete</servlet-class>

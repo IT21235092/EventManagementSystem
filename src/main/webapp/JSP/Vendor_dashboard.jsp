@@ -30,7 +30,7 @@
             </a>
         </li>
         <li>
-            <a href="http://localhost:8090/EventManagementSystem/showAdServlet">
+            <a href="http://localhost:8080/EventManagementSystem/showAdServlet">
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Services</span>
             </a>
@@ -211,16 +211,15 @@
             </div>
             </div>
             
-			<button class="button-50" role="button" onClick = "reDirect()" >Add Advertisement</button>
-			
-			<script>
-			 function reDirect() {
+			<button class="button-50" role="button" ><a href="http://localhost:8080/EventManagementSystem/JSP/Advertisement.jsp">Add Advertisement </a></button>
+		<!-- 	<script>
+			  function reDirect() {
 			        window.location.href= "Advertisement.jsp";  
 			      }
 			
-			
-			</script>
-
+		  onClick = "reDirect()" 
+			</script> 
+ -->
 
 
     </section>

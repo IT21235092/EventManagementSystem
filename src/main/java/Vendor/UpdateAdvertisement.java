@@ -28,6 +28,8 @@ public class UpdateAdvertisement extends HttpServlet {
 		
 		isTrue = AdvertisementDBUtil.UpdateAdvertisement(aid, vid, title, price, desc, attach);
 		
+		System.out.println(aid);
+		
 		if(isTrue == true) {
 			
 			List<Advertisement> adDetails = AdvertisementDBUtil.getAdvertisementDetails(aid);
