@@ -39,6 +39,11 @@ public class AddEventControl extends HttpServlet {
 		String types[] = request.getParameterValues("s1");
 		String description = request.getParameter("txtarea");
 	
+		Part filePart = request.getPart("event_image");
+		filePart.getSubmittedFileName();
+	
+    
+        
 		 // gets absolute path of the web application
         String applicationPath = request.getServletContext().getRealPath("");
         // constructs path of the directory to save uploaded file
