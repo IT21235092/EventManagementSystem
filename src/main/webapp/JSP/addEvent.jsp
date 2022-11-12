@@ -206,10 +206,6 @@
         </div>
         <ul class="nav-list">
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
-        <li>
             <a href="${pageContext.request.contextPath}/JSP/admin_dashboard.jsp" >
                 <i class='bx bxs-dashboard '></i>
                 <span class="links_name">Dashboard</span>
@@ -231,18 +227,6 @@
             <a href="#">
                 <i class='bx bxs-user'></i>
                 <span class="links_name">Vendors</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-cog' ></i>
-                <span class="links_name">Settings</span>
             </a>
         </li>
         </ul>

@@ -291,4 +291,30 @@ public class CustomerDBUtil{
 		
 		return isSuccess;
 	}
+	
+	
+	public static boolean deleteCustomer(int id)
+	{
+		boolean isSuccess = true;
+		
+		try
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "delete from customer where Cust_ID = '"+id+"'";
+		    int rs = stmt.executeUpdate(sql);
+		    
+		    if ( rs > 0)
+		    {
+		    	isSuccess = true;
+		    }
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return isSuccess;
+	}
 }

@@ -223,12 +223,6 @@
                 <span class="links_name">Vendors</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
-            </a>
-        </li>
         </ul>
     </div>
 
