@@ -38,6 +38,10 @@ public class CustomerLogin extends HttpServlet {
 		if ( isSuccess == true)
 		{
 			HttpSession session = request.getSession();
+			if ( arr.get(3).equals("Admin"))
+			{
+				
+			}
 			session.setAttribute("customerType", arr.get(3));
 			session.setAttribute("username", arr.get(1));
 			session.setAttribute("Id", arr.get(0));

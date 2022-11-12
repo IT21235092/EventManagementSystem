@@ -28,6 +28,7 @@ public class CustomerDBUtil{
 		ArrayList<Object> arr = new ArrayList<>();
 		con = DBConnect.getConnection();
 		
+		
 		Statement stmtCheck = con.createStatement();
 		String sqlCheck = "select * from customer where Username = '"+userName+"'";
 		String sqlCheck2 = "select * from customer where Email = '"+email+"'";
@@ -147,8 +148,28 @@ public class CustomerDBUtil{
 		String custType = "";
 		boolean isSuccess = false, isOrg = false;
 		ArrayList<Object> arr = new ArrayList<Object>();
-		
 		con = DBConnect.getConnection();
+		
+		if ( email.equals("eventrra@gmail.com"))
+		{
+			String sql = "select * from admin where Email ='"+email+"' and password = '" +password+ "'";
+			rs = stmt.executeQuery(sql);
+			
+			if(rs.next())
+			{
+				custId = rs.getInt(1);
+				Username = rs.getString(2);
+				isSuccess = true;
+				custType = "Admin";
+			}
+			
+			arr.add(custId);
+			arr.add(Username);
+			arr.add(isSuccess);
+			arr.add(custType);
+		}
+		
+		
 		
 		try
 		{
