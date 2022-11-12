@@ -18,7 +18,7 @@ public class DeleteAdvertisementServlet extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int id = Integer.parseInt(request.getParameter("aid"));
+		int id = Integer.parseInt(request.getParameter("delete"));
 		boolean isTrue;
 		
 		isTrue = AdvertisementDBUtil.deleteAdvertisement(id);

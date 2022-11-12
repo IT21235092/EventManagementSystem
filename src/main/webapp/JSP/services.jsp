@@ -4,14 +4,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/dashboard-style.css">
+        <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/CSS/services.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
         <title> Vendor Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-         <link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
+        <link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
     </head>
 
     <body>
@@ -104,7 +104,9 @@
         </section>
 
         <!--  Display details  -->
-	    <h1>Your Advertisements</h1>
+        <div class="heading">
+	    	<h1>Your Advertisements</h1>
+	    </div>
 	    <br><br>
 	        
         <table>
@@ -133,6 +135,8 @@
         <c:set var= "attach" value="${adv.attach}}"/>
         <c:set var= "sts" value="${adv.sts}}"/>
         
+        
+            
         <tbody>
         <tr>
             <td>${adv.adId}</td>
@@ -142,8 +146,50 @@
             <td>${adv.desc}</td>
             <td>${adv.attach}</td>
             <td>${adv.sts}</td>
-            <td><input type="submit" name="update" value="Edit"></td>
-            <td><input type="submit" name="delete" value="Delete"></td>
+            <td> 
+            
+             <c:url value="http://localhost:8080/EventManagementSystem/JSP/UpdateAd.jsp" var="UpdateAd">
+            <c:param name="adId" value="${adv.adId}"/>
+            <c:param name="Vendor_ID" value="${adv.getVendor_ID()}"/>
+            <c:param name="title" value="${adv.title}"/>
+            <c:param name="price" value="${adv.price}"/>
+            <c:param name="desc" value="${adv.desc}"/>
+            <c:param name="attach" value="${adv.attach}"/>
+            <c:param name="stat" value="${adv.sts}"/>
+           
+           <h1>${Ad_ID}</h1>
+            </c:url>
+            
+            
+<!--             <a href="http://localhost:8080/EventManagementSystem/JSP/UpdateAd.jsp"><input type="submit" name="update" value="Edit"></a></td> -->
+
+<a href="${UpdateAd}"><input type="submit" name="update" value="Edit"></a></td>
+
+            <td>
+            <form action="DeleteAdvertisementServlet" method="post">
+            <input type="hidden" name="delete" value= "${adv.adId}">
+            <input type="submit" name="del" value= "DELETE">
+            </form>
+            </td>
+            
+           
+           
+            
+      
+            
+             <c:url value="DeleteAd.jsp" var="DeleteAd">
+            <c:param name="Ad_ID" value="${Ad_ID}"/>
+            <c:param name="vid" value="${Vendor_ID}"/>
+            <c:param name="title" value="${Title}"/>
+            <c:param name="price" value="${Price}"/>
+            <c:param name="desc" value="${Description}"/>
+            <c:param name="attach" value="${Attachment}"/>
+            <c:param name="stat" value="${Status}"/>
+           
+            </c:url>
+            
+            
+            
         </tr>
         </tbody>
         </c:forEach>
@@ -152,7 +198,6 @@
     </body>
     
      <style>
-     
 			.profile-dropdown
 			{
 			  left: 75%;
@@ -278,14 +323,6 @@
 			  clear: both;
 			}
 			
-			h1 {
-			  text-align: center;
-			  font-size: 3rem;
-			  color: rgba(0, 0, 0, 0.5);
-			  text-transform: uppercase;
-			  margin: 2rem 0 0;
-			  letter-spacing: 0.5rem;
-			}
 			
 			.container {
 			  width: 80%;
@@ -301,49 +338,6 @@
 			  display: table;
 			  clear: both;
 			}
-			
-			table
-			{
-				border-spacing: 1; 
-				border-collapse: collapse; 
-				background:white;
-				border-radius:6px;
-				overflow:hidden;
-				max-width:800px; 
-				width:100%;
-				margin:0 auto;
-				position:relative;
-				
-			}
-			
-			tbody th, td {
- 				 padding-left:8px;
-			}
-			
-			tbody tr {
-				height:48px; 
-				border-bottom:1px solid #E3F1D5 ;
-			}
-			
-			thead tr { 
-			    height:60px;
-			    background:DarkSlateGrey;
-			    font-size:16px;
-			    color: white;
-  			}
-  			
-  			tbody td {
-  				text-align: center;
-  				color: black;
-  				font-weight: 500;
-  				background: LightGrey;
-  			}
-  			
-  			tbody input {
-  				padding: 4px;
-  				background-color: black;
-  				color: white;
-  			}
   			
   	</style>
 
