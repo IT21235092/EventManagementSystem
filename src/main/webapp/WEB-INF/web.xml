@@ -274,5 +274,15 @@
 	<url-pattern>/pay</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>ServicesServlet</servlet-name>
+	<servlet-class>com.vendor.ServicesServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>ServicesServlet</servlet-name>
+	<url-pattern>/services1</url-pattern>
+</servlet-mapping> 
+
 </web-app>
 

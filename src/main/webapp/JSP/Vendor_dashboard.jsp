@@ -115,7 +115,7 @@
                 
                     <div class="left-side">
                         <div class="box-topic">Total Customers</div>
-                        <div class="number">40876</div>
+                        <div class="number"><%out.println(request.getAttribute("VenCount")); %></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
