@@ -28,6 +28,7 @@ public class CustomerLogin extends HttpServlet {
 			arr = CustomerDBUtil.validate(email, password);
 			request.setAttribute("username", arr.get(1));
 			isSuccess = (boolean) arr.get(2);
+			System.out.println( isSuccess);
 			
 		}
 		catch(Exception e)
@@ -38,15 +39,24 @@ public class CustomerLogin extends HttpServlet {
 		if ( isSuccess == true)
 		{
 			HttpSession session = request.getSession();
-			if ( arr.get(3).equals("Admin"))
-			{
-				
-			}
-			session.setAttribute("customerType", arr.get(3));
 			session.setAttribute("username", arr.get(1));
 			session.setAttribute("Id", arr.get(0));
-			RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_dashboard.jsp");
-			dis.forward(request, response);	
+			
+			if ( arr.get(3).equals("Admin"))
+			{
+				RequestDispatcher dis = request.getRequestDispatcher("/CountCustomerServlet");
+				dis.forward(request, response);	
+			}
+			else
+			{
+				session.setAttribute("customerType", arr.get(3));
+				
+				RequestDispatcher dis = request.getRequestDispatcher("JSP/Cust_dashboard.jsp");
+				dis.forward(request, response);	
+			}
+			
+	
+			
 		}
 		else
 		{

@@ -130,7 +130,7 @@
             </div>
             <div class="profile-details">
                 <img src = "${pageContext.request.contextPath}/Images/default-img.jpg" alt = "">
-                <span class="admin_name">Kiriharan Mohan</span>
+                <span class="admin_name"><%out.println(session.getAttribute("username")); %></span>
                 <div class = "dropdown">
                 	<i class='bx bx-chevron-down dropdown'></i>
 		                 <div class="dropdown-content">

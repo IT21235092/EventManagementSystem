@@ -150,60 +150,75 @@ public class CustomerDBUtil{
 		ArrayList<Object> arr = new ArrayList<Object>();
 		con = DBConnect.getConnection();
 		
+		
 		if ( email.equals("eventrra@gmail.com"))
 		{
-			String sql = "select * from admin where Email ='"+email+"' and password = '" +password+ "'";
-			rs = stmt.executeQuery(sql);
-			
-			if(rs.next())
+			try
 			{
-				custId = rs.getInt(1);
-				Username = rs.getString(2);
-				isSuccess = true;
-				custType = "Admin";
+				stmt = con.createStatement();
+				String sql = "select * from Admin where Email ='"+email+"' and password = '"+password+"' ";
+				rs = stmt.executeQuery(sql);
+				
+				if(rs.next())
+				{
+					custId = rs.getInt(1);
+					System.out.println(custId);
+					Username = rs.getString(2);
+					isSuccess = true;
+					custType = "Admin";	
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
 			}
 			
 			arr.add(custId);
 			arr.add(Username);
 			arr.add(isSuccess);
 			arr.add(custType);
-		}
-		
-		
-		
-		try
-		{
 			
-			stmt = con.createStatement();
-			String sql = "select * from customer where Email ='"+email+"' and password = '" +password+ "'";
-			rs = stmt.executeQuery(sql);
-			
-			if(rs.next())
-			{
-				custId = rs.getInt(1);
-				Username = rs.getString(2);
-				isOrg = rs.getBoolean(7);
-				isSuccess = true;
-			}
+			return arr;
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		
-		
-		arr.add(custId);
-		arr.add(Username);
-		arr.add(isSuccess);
-		
-		if ( isOrg == true)
-			custType = "Org";
 		else
-			custType = "Cus";
+		{
+			try
+			{
+				
+				stmt = con.createStatement();
+				String sql = "select * from customer where Email ='"+email+"' and password = '" +password+ "'";
+				rs = stmt.executeQuery(sql);
+				
+				if(rs.next())
+				{
+					custId = rs.getInt(1);
+					Username = rs.getString(2);
+					isOrg = rs.getBoolean(7);
+					isSuccess = true;
+				}
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+			
+			arr.add(custId);
+			arr.add(Username);
+			arr.add(isSuccess);
+			
+			if ( isOrg == true)
+				custType = "Org";
+			else
+				custType = "Cus";
+			
+			arr.add(custType);
+			
+			return arr;
+		}
 		
-		arr.add(custType);
 		
-		return arr;
+	
 	}
 
 	public static List<Customer> getCustomerDetails(int id)
