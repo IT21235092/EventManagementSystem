@@ -243,6 +243,36 @@
 	<url-pattern>/addService5</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>CheckEventServlet</servlet-name>
+	<servlet-class>com.customerevent.CheckEventServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>CheckEventServlet</servlet-name>
+	<url-pattern>/checkEvent</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>CheckFeedbackServlet</servlet-name>
+	<servlet-class>com.customerevent.CheckFeedbackServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>CheckFeedbackServlet</servlet-name>
+	<url-pattern>/checkFeedback</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>PaymentServlet</servlet-name>
+	<servlet-class>com.customerevent.PaymentServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>PaymentServlet</servlet-name>
+	<url-pattern>/pay</url-pattern>
+</servlet-mapping>
 
 </web-app>
 

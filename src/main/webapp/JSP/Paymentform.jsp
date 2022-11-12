@@ -1,5 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+    
+    %>
+     
 <!DOCTYPE html>
 <html>
     <head>
@@ -100,6 +135,8 @@
        
     </section>
     
+    <input type="hidden" value = "<%= session.getAttribute("eid") %>" id = "eid" name="eid">
+    
         <div class="container1 p-0">
         <div class="card px-4">
             <p class="h8 py-3">Payment Details</p>
@@ -107,32 +144,61 @@
                 <div class="col-12">
                     <div class="d-flex flex-column">
                         <p class="text mb-1">Person Name</p>
-                        <input class="form-control mb-3" type="text" placeholder="Name" value="Barry Allen">
+                        <input id="one" class="form-control mb-3" type="text" placeholder="Name" value="God Kiriharan" required >
                     </div>
                 </div>
                 <div class="col-12">
                     <div class="d-flex flex-column">
                         <p class="text mb-1">Card Number</p>
-                        <input class="form-control mb-3" type="text" placeholder="1234 5678 435678">
+                        <input id="two" class="form-control mb-3" type="text" placeholder="1234 5678 435678" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="d-flex flex-column">
                         <p class="text mb-1">Expiry</p>
-                        <input class="form-control mb-3" type="text" placeholder="MM/YYYY">
+                        <input id="three" class="form-control mb-3" type="text" placeholder="MM/YYYY" required>
                     </div>
                 </div>
                 <div class="col-6">
                     <div class="d-flex flex-column">
                         <p class="text mb-1">CVV/CVC</p>
-                        <input class="form-control mb-3 pt-2 " type="password" placeholder="***">
+                        <input id="four" class="form-control mb-3 pt-2 " type="password" placeholder="***" required>
                     </div>
                 </div>
                 <div class="col-12">
+                <a href="${pageContext.request.contextPath}/pay" style= "text-decoration:none;">
                     <div class="btn btn-primary mb-3">
-                        <span class="ps-3">Pay $243</span>
+                        <span class="ps-3">
+                        <%
+                        try{
+                        	
+                        	
+                        	con = DriverManager.getConnection(url, user, pass);
+                      	 	stmt = con.createStatement();
+                      	 	
+                      	 	String sql = "select total_price from event where event_id = '"+ session.getAttribute("eid") +"'";
+                        	
+                      	 	rs = stmt.executeQuery(sql);
+                      	 	
+                      	 	while(rs.next()){
+                      	 		
+                      	 		out.print("Pay Rs. " +rs.getDouble("total_price"));
+             
+                      	 	}
+                        	
+                        	
+                        }catch(Exception e){
+                        	e.printStackTrace();
+                        }
+                        
+   
+                        
+                        %>
+
+                        </span>
                         <span class="fas fa-arrow-right"></span>
                     </div>
+                </a>    
                 </div>
             </div>
         </div>

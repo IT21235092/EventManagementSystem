@@ -409,11 +409,12 @@ nav .profile-details .admin-name
   justify-content: space-between;
   padding: 30px;
   width:1000px;
+  
 }
 
 .home-section .event-boxes .recent-sale
 {
-	margin-left: 150px;
+	margin-left: 400px;
   width: 900px;
   background: #fff;
   resize:none;

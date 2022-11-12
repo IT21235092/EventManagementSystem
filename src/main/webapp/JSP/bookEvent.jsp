@@ -1,5 +1,40 @@
 <%@ page language="java" session = "true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+     
+     
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+    
+    %>
+    
+    
 <!DOCTYPE html>
 <html>
     <head>
@@ -13,6 +48,7 @@
     </head>
 
     <body>
+    <body onload="document.frm.reset();">
     <div class="sidebar">
         <div class="logo-details">
         <!-- ***************LOGO************* -->
@@ -98,7 +134,7 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form action="../addEvent" method="post">
+      <form name ="frm" action="../addEvent" method="post">
         <h1> Book Event </h1>
         
         <fieldset>
@@ -107,9 +143,34 @@
           
           <label for="type">Select Event type:</label>
   		  <select name="type" id="type" class="txt" required>
-    		<option value="Wedding">Wedding</option>
-    		<option value="Birthday">Birthday Party</option>
-   			<option value="Concert">Concert</option>
+  		  <%
+  		  
+  		  try{
+  			  
+  			con = DriverManager.getConnection(url, user, pass);
+      	 	stmt = con.createStatement();
+      	 	
+      	 	String sql = "select Cat_name from category";
+      	 	
+      	 	rs = stmt.executeQuery(sql);
+      	 	
+      	 	while(rs.next()){%>
+      	 		
+      	 		<option value="<%= rs.getString("Cat_name") %>"><%= rs.getString("Cat_name") %></option>
+      	 		
+      	 	<% }
+      	 	
+      	 	
+  			  
+  			  
+  		  }catch(Exception e){
+  			  e.printStackTrace();
+  		  }
+  		  
+  		  
+  		  
+  		  %>
+    		
   		  </select>
         
           <label for="name">Event Name:</label>
