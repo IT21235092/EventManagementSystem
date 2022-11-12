@@ -233,7 +233,7 @@
 	  display: inline-block;
 	  position:absolute;
 	  background: #f2f2f2;
-	  width: 22%;
+	  width: 20%;
 	  font-weight: bold;
 	  font-size: 1.3rem;
 	  border-radius: 3px;

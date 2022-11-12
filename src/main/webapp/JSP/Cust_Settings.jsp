@@ -116,7 +116,7 @@
     }
 </script>
 
-<section class="home-section">
+<section class="home-section" >
     <nav>
         <div class="sidebar-button">
             <span class="dashboard">Dashboard</span>
@@ -129,6 +129,8 @@
                 <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
+                  
+                  
                   <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
@@ -199,7 +201,7 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label for="inputPassword4">Old Password</label>
-                            <input type="password" class="form-control" name = "inputPassword4" id="inputPassword4" />
+                            <input type="password" class="form-control" name = "inputPassword4"  value = '${cus.password}' id="inputPassword4" readonly/>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword5">New Password</label>
@@ -248,20 +250,27 @@
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">Save Changes</button>
-                 <input class="modal-btn" type="checkbox" id="modal-btn" name="modal-btn"/>
-            <label for="modal-btn">Open Modal <i class="uil uil-expand-arrows"></i></label> 		
-            <div class="modal">		
-                <div class="modal-wrap">	
-                    <img src="https://cdn-icons-png.flaticon.com/512/1047/1047711.png" alt="cookies-img" />
-                    <p>Do you want to delete this account ? </p>
-                    <button>Yes</button> 
-                    <br>
-                    <button >No</button>      		
-                </div>	
-            </div>
+                <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'; window.scrollTo(10,50);" class="btn btn-primary delete">Delete Account</a>
             </form>
             
-          
+             <div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></a>
+				  <h2>Delete your Account?</h2>
+				  <button class="button-50" role="button" id = "myButton1" >Yes</button>
+				  <button class="button-50" role="button" id = "myButton2" >No</button>
+				  </div>
+			  <div id="fade" class="black_overlay"></div>
+			  
+			  <script type="text/javascript">
+			    
+			    document.getElementById("myButton1").onclick = function () {
+			        location.href = "DeleteCustomer";
+			    };
+			    
+			    document.getElementById("myButton2").onclick = function () {
+			        location.href = "InitialSettings1";
+			    };
+			  </script> 
+			    
             	
         </div>
     </div>
@@ -281,6 +290,94 @@
 
 <style>
 
+.black_overlay {
+		  display: none;
+		  position: absolute;
+		  top: 0%;
+		  left: 0%;
+		  width: 430%;
+		  height: 100%;
+		  background-color: black;
+		  z-index: 1001;
+		  -moz-opacity: 0.8;
+		  opacity: .80;
+		  filter: alpha(opacity=80);
+		  margin-left: -25%;
+		}
+		
+		
+		.white_content {
+		  display: none;
+		  position: absolute;
+		  top: 25%;
+		  left: 30%;
+		  width: 70%;
+		  height: 25%;
+		  padding: 16px;
+		  background-color: white;
+		  z-index: 1002;
+		  overflow: auto;
+		  border-radius: 8px;
+		  text-align:center;
+		}
+		
+		/* CSS */
+		.button-50 {
+		  appearance: button;
+		  background-color: #000;
+		  background-image: none;
+		  border: 1px solid #000;
+		  border-radius: 4px;
+		  box-shadow: #fff 4px 4px 0 0,#000 4px 4px 0 1px;
+		  box-sizing: border-box;
+		  color: #fff;
+		  cursor: pointer;
+		  display: inline-block;
+		  font-family: ITCAvantGardeStd-Bk,Arial,sans-serif;
+		  font-size: 14px;
+		  font-weight: 400;
+		  line-height: 20px;
+		  margin: 60px 40px 10px 0;
+		  overflow: visible;
+		  padding: 12px 40px;
+		  text-align: center;
+		  text-transform: none;
+		  touch-action: manipulation;
+		  user-select: none;
+		  -webkit-user-select: none;
+		  vertical-align: middle;
+		  white-space: nowrap;
+		}
+
+		.button-50:focus {
+		  text-decoration: none;
+		}
+		
+		.button-50:hover {
+		  text-decoration: none;
+		}
+		
+		.button-50:active {
+		  box-shadow: rgba(0, 0, 0, .125) 0 3px 5px inset;
+		  outline: 0;
+		}
+		
+		.button-50:not([disabled]):active {
+		  box-shadow: #fff 2px 2px 0 0, #000 2px 2px 0 1px;
+		  transform: translate(2px, 2px);
+		}
+		
+		@media (min-width: 768px) {
+		  .button-50 {
+		    padding: 12px 50px;
+		  }
+		}
+	
+
+.delete
+{
+  margin-left: 10%;
+}
 .profile-dropdown
 			{
 			  left: 75%;

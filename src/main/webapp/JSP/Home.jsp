@@ -104,18 +104,18 @@
   
   <script type="text/javascript">
     document.getElementById("myButton1").onclick = function () {
-        location.href = "CLoginSignup.jsp";
+        location.href = "${pageContext.request.contextPath}/JSP/CLoginSignup.jsp";
     };
     
     document.getElementById("myButton2").onclick = function () {
-        location.href = "VLoginSignup.jsp";
+        location.href = "${pageContext.request.contextPath}/JSP/VLoginSignup.jsp";
     };
  </script>
 		
   <header >
     <div class="navbar">
             <div class = "logo">
-                <img src = "../Images/logo.png">
+                <img src = "${pageContext.request.contextPath}/Images/logo.png">
             </div>
                     <nav>
                         <ul>
@@ -135,7 +135,7 @@
             
     <div class="container">
         <video autoplay muted loop autoplay class="backv">
-            <source src="../Images/vdd.mp4" type="video/mp4">
+            <source src="${pageContext.request.contextPath}/Images/vdd.mp4" type="video/mp4">
         </video>
             <div class="overlay"></div>
     </div>

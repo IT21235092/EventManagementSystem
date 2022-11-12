@@ -44,7 +44,7 @@ public class CustomerLogin extends HttpServlet {
 			
 			if ( arr.get(3).equals("Admin"))
 			{
-				RequestDispatcher dis = request.getRequestDispatcher("/CountCustomerServlet");
+				RequestDispatcher dis = request.getRequestDispatcher("CountCustomerServelet");
 				dis.forward(request, response);	
 			}
 			else
