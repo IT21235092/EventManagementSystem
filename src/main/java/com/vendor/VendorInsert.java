@@ -59,7 +59,7 @@ public class VendorInsert extends HttpServlet {
 				response.setContentType("text/html");
 				PrintWriter pw=response.getWriter();
 				pw.println("<script type=\"text/javascript\">");
-				pw.println("alert('The userName "+arr.get(0)+" has already been taken. Try another username ');");
+				pw.println("alert('The userName "+arr.get(1)+" has already been taken. Try another username ');");
 				pw.println("</script>");
 				RequestDispatcher rd=request.getRequestDispatcher("JSP/VLoginSignup.jsp");
 				rd.include(request, response);
