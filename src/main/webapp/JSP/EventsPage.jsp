@@ -7,9 +7,9 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>About Us || EVENTRRA</title>
+        <title>EVENTS</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../CSS/About_Us.css">
+        <link rel="stylesheet" href="../CSS/eventspage.css">
         <script src="https://kit.fontawesome.com/dbed6b6114.js""></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         
@@ -127,9 +127,9 @@
                     <nav>
                         <ul>
                             <li> <a href="Home.jsp" class="navItem">HOME</a></li>
-                            <li> <a href="EventsPage.jsp"class="navItem">EVENTS</a></li>
+                            <li> <a href="#"class="navItem">EVENTS</a></li>
                             <li> <a href="Gallery1.jsp"class="navItem">GALLERY</a></li>
-                            <li> <a href="#" class="navItem">ABOUT US</a></li>
+                            <li> <a href="About_Us.jsp" class="navItem">ABOUT US</a></li>
                             <li> <a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class = "navItem">SIGN IN</a></li>
                         </ul>
                     </nav>
@@ -142,36 +142,15 @@
 					</div>
         </div> 
 </header>
-        <section>
-            <div class = "image">
-               <img src="https://cdn.pixabay.com/photo/2017/08/26/23/37/business-2684758__340.png">
-            </div>
-
-            <div class = "content">
-                <h2>About Us</h2>
-                <span><!-- line here --></span>
-                <p>
-                In a period where we are progressively overwhelmed with data and it's trying to get a message over, 'EVENTRRA' adopts an insightful and aesthetic strategy to create critical encounters that work up feelings, discussions, and shareable minutes.
-
-'EVENTRRA' has some expertise in delivering inventive, advanced, and bleeding-edge events, utilizing a center conviction that narrating drives our innovative methodology. Established by pioneers in the diversion and event generation industry with broad specialized aptitude.
-                </p>
-                
-                <ul class = "icons">
-                    <li>
-                        <i class = "fa fa-twitter"></i>
-                    </li>
-                    <li>
-                        <i class = "fa fa-facebook"></i>
-                    </li>
-                    <li>
-                        <i class = "fa fa-github"></i>
-                    </li>
-                    <li>
-                        <i class = "fa fa-pinterest"></i>
-                    </li>
-                </ul>
-            </div>
-        </section><br><br>
+       
+        
+      
+        
+        
+        
+            
+       
+        <br><br>
         
          <footer>
     <img class="logo1" src="../Images/logo.png" >

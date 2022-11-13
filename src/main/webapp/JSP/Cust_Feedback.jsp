@@ -38,7 +38,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/bookevent.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/Feedback.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
@@ -162,7 +162,7 @@
            
                
                 
-                <form action="${pageContext.request.contextPath}/addFeedback" method="post" >
+                <form action="${pageContext.request.contextPath}/addFeedback" method="post" class="frm1">
         <h1> Give us your Feedback! </h1>
         
         <fieldset>
@@ -225,10 +225,10 @@
         
         
        </form>
-                 <div class="event-boxes">
+                 <div class="event-boxes" style="margin-left:200px;width:1500px;">
                  <div class="recent-sale box">
            
-                    <div class = "title">Your Feedback</div>
+                    <div class = "title" style="text-align:center;">Your Feedback</div>
                     <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add feedback related to a pending event.</i></div>
                     <br><br>
                     
@@ -236,11 +236,12 @@
                     <table>
                     
                     <tr>
-                    
-                    <th style="width:500px;">Feedback</th>
+                    <th style="width:500px;">Event</th>
+                    <th style="width:200px;">Date</th>
+                    <th style="width:700px;">Feedback</th>
                     <th style="width:100px;">Rating</th>
-                    <th style="width:300px;width:100px;;"></th>
-                    <th style="width:300px;width:100px;"></th>
+                    <th style="width:100px;"></th>
+                    <th style="width:100px;"></th>
                     
                     
                     </tr>
@@ -256,24 +257,31 @@
                     <c:param name="fid" value="${fid}"/>
                     <c:param name="description" value="${description}"/>
                     <c:param name="rating" value="${rating}"/>
+                    
                     </c:url>
         			
         			<tr>
         			
+        			<td>${fee.event}</td>
+        			<td>${fee.date}</td>
         			<td>${fee.description}</td>
         			
         			<td style="text-align:center;">${fee.rating}</td>
         			
         			<td style="text-align:center;">
-        			<a href="${fupdate}">
+        			<a href="${fupdate}" style="text-decoration:none;">
+        			<div class="btn">
         			<button>Edit</button>
+        			</div>
         			</a>
         			</td>
         			
         			<td style="text-align:center;">
         			<form method="get" action="${pageContext.request.contextPath}/deleteFeedback">
         			<input type="hidden"  id = "fid" name="fid" value="${fee.fid}">
+        			<div class="btn">
         			<button type="submit">Delete</button>
+        			</div>
         			</form>
         			</td>
         			
@@ -473,6 +481,10 @@
 			  margin-left: 70%;
 			}
 
+
+.btn{
+	width:200px;
+}
 
 
 </style>

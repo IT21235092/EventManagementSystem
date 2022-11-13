@@ -1,6 +1,8 @@
 package com.customerevent;
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,19 +13,21 @@ import javax.servlet.http.HttpServletResponse;
 public class ChangeStatusServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
-	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		int eid = Integer.parseInt(request.getParameter("eid"));
+		int evnt = Integer.parseInt(request.getParameter("evnt"));
 		
 		try {
 			
-			if(EventDBUtil.setEventStatus(eid) == true) {
+			if(EventDBUtil.setEventStatus(evnt) == true) {
 				
+				response.sendRedirect("http://localhost:8080/EventManagementSystem/JSP/Cust_dashboard.jsp");  
 				
 			}
 			
 			else {
-				
+				RequestDispatcher dis = request.getRequestDispatcher("/JSP/Cust_dashboard.jsp");
+				dis.forward(request, response);
 			}
 			
 			

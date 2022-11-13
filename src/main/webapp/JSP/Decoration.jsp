@@ -152,7 +152,8 @@
         			
         			<div class="grid-item">
         			<input type="radio" id = "aid" value="<%= rs.getInt("Ad_ID")%>" name="aid" required>
-        			<%= rs.getString("Org_name")%><br>
+        			<div class="title"><%= rs.getString("Title") %></div><br>
+        			<b><%= rs.getString("Org_name")%></b><br>
         			<%= rs.getDouble("Price")%><br>
         			<%= rs.getString("Description")%><br>
         			<%= rs.getString("Location")%>

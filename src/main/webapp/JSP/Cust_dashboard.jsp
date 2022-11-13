@@ -30,6 +30,7 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		ResultSet rs1 = null;
+		ResultSet rs2 = null;
     
     %>
      
@@ -75,7 +76,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/JSP/AddFeedback.jsp">
+            <a href="http://localhost:8080/EventManagementSystem/getFeedback">
                 <i class='bx bxs-edit'></i>
                 <span class="links_name">Feedback</span>
             </a>
@@ -92,16 +93,7 @@
     <!-- --------------------------Main section------------------------------ -->
 
     <!-- JavaScript -->
-    
-    <script>
-    
-    <script>
-    function myFunction() {
-      confirm("Proceed only if your Event is Completed!");
-    }
-   
-
-    </script>
+ 
    
     
     
@@ -198,7 +190,8 @@
                   	 	
                   	 	while(rs.next()){ 
                   	 		%>
-                  	 		<input type = "hidden" id ="eid" name="eid" value="<%=rs.getInt("Event_Id") %>">
+                  	 		<form action="${pageContext.request.contextPath}/status" method="post" onSubmit="return confirm('Proceed only if your event has been Completed.') ">
+                  	 		<input type = "hidden" id ="evnt" name="evnt" value="<%=rs.getInt("Event_Id") %>">
                   	 		<p><b>Event</b></p>
                   	 		<%=rs.getString("Name") %><br><br>
            					<p><b>Event Type</b></p>
@@ -208,8 +201,8 @@
            					<p><b>Date</b></p>
            					<%=rs.getString("Event_date") %><br><br>
            					<p><b>Expenses</b></p>
-           					Total - Rs. <%=rs.getDouble("Total_price") %><br><br>
-           					Fixed Services - Rs.85000<br>
+           					<p><u>Total - Rs. <%=rs.getDouble("Total_price") %></u></p><br><br>
+           					<i>Fixed Services - Rs.240000</i><br>
            					<%
            					
            					try{
@@ -220,17 +213,18 @@
                   	 		
                   	 		while(rs1.next()){%>
                   	 			
-                  	 			<%= rs1.getString("Org_name") %> 
+                  	 			<i><%= rs1.getString("Org_name") %> 
                   	 			<%out.print("\t  - Rs."); %>
-                  	 			<%= rs1.getDouble("Price") %>
-                  	 			<br>
+                  	 			<%= rs1.getDouble("Price") %></p></i>
+                  	 			
                   	 			 
                   	 		<% }
            					}
            					catch(Exception e){}%>
            					<br><br>
-           					<a href="${pageContext.request.contextPath}/status"><button class="button-30" onclick="myFunction();" >Event Completed!</button></a>
+           					<button type = "submit" class="button-30" >Event Completed!</button>
            					<br><br>
+           					</form>
                   	 	<%}
                     	
                     }
@@ -268,16 +262,16 @@
                   	 	
                   	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and Status = 1";
                     	
-                  	 	rs = stmt.executeQuery(sql);
+                  	 	rs2 = stmt.executeQuery(sql);
                   	 	
-                  	 	while(rs.next()){%>
+                  	 	while(rs2.next()){%>
                     	
                     		<tr>
                     		
-                    		<td><%=rs.getString("Name") %></td>
-                    		<td><%=rs.getString("Event_date") %></td>
-                    		<td>Rs. <%=rs.getString("Total_Price") %></td>
-                    		<td><%=rs.getString("No_of_guests") %></td>
+                    		<td><%=rs2.getString("Name") %></td>
+                    		<td><%=rs2.getString("Event_date") %></td>
+                    		<td>Rs. <%=rs2.getString("Total_Price") %></td>
+                    		<td><%=rs2.getString("No_of_guests") %></td>
                     		
                     		
                     		</tr>

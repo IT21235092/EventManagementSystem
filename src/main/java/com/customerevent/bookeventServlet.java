@@ -30,7 +30,7 @@ public class bookeventServlet extends HttpServlet {
 		
 		String type = request.getParameter("type");
 		
-		
+		session.removeAttribute("price");
 	
 		
 		

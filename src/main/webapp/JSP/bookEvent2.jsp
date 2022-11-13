@@ -32,7 +32,7 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-    
+		
     %>
    
 	
@@ -158,9 +158,9 @@
           
           <label><b>Fixed services:</b></label>
           <ul>
-          	<li>Venue - Rs. 55000</li>
+          	<li>Venue - Rs. 200000</li>
           	<li>Sound and Lighting - Rs. 30000</li>
-          	
+          	<li>Euipment - Rs. 10000</li>
           </ul>
           
           <br>
@@ -215,7 +215,7 @@
       
          	<% 
          	
-         	Double tot = 85000.0;
+         	Double tot = 240000.0;
          	
          	
          	
