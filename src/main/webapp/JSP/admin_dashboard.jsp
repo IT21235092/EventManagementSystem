@@ -307,7 +307,7 @@
                 </div>
                 <div class="box">
                     <div class="left-side">
-                        <div class="box-topic">Events Pending</div>
+                        <div class="box-topic">Ongoing Events</div>
                         <div class="number"><%out.println(request.getAttribute("countEvent1"));%></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
@@ -330,7 +330,7 @@
                 <div class="box">
                     <div class="left-side">
                         <div class="box-topic">Total Profit</div>
-                        <div class="number">1000</div>
+                        <div class="number">$<%out.println(request.getAttribute("profit"));%></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
@@ -367,7 +367,7 @@
                         <ul class="details">
                             <li class = "topic">Sales</li>
                              <c:forEach var = "data" items = "${Statistics}">
-                            <li><a href = "">${data.getTotPrice()}</a></li>
+                            <li><a href = "">$${data.getTotPrice()}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -376,13 +376,14 @@
                 <div class="top-vendor box">
                     <div class = "title">Top Vendors</div>
                     <ul>
+                         <c:forEach var = "data" items = "${topVendors}">
                         <li>
                             <a href = "#">
-                              <img src = "../Images/color.png" alt = "">
-                              <span class="product-name">Gucci Women's Bag</span>
+                              <span class="product-name">${data.getOrg_Name() }</span>
                             </a>
-                            <span class="price">$14.66</span>
+                            <span class="price">${data.getTotalProfit()}</span>
                         </li>
+                         </c:forEach>
                     </ul>
                 </div>
             </div>

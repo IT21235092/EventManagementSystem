@@ -417,18 +417,22 @@ public class EventDBUtil {
 			rs = stmt.executeQuery(sql);
 					
 					
-			if(rs.next() == true) {
+			if(rs.next() == true) 
+			{
 				
 				isSuccess = true;
 				
 			}
-			else {
+			else
+			{
 				isSuccess = false;
 			}
 			
 			
 			
-		}catch(Exception e) {
+		}
+		catch(Exception e)
+		{
 			e.printStackTrace();
 		}
 		
@@ -437,6 +441,83 @@ public class EventDBUtil {
 		return isSuccess;
 	}
 	
+	
+	public static Double calculateProfit(String aid)
+	{
+		Double adminProfit = 0.0;
+		Double vendorProfit = 0.0;
+		int vid = 0;
+		int adId = Integer.parseInt(aid);
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "select Vendor_ID, Price from advertisement where Ad_ID = '"+adId+"'";
+			rs = stmt.executeQuery(sql);
+					
+					
+			if(rs.next() == true) 
+			{
+				vid = rs.getInt(0);
+				vendorProfit  = rs.getDouble(1);
+				adminProfit = 0.1*vendorProfit;
+				vendorProfit = 0.9*vendorProfit;
+				
+				String sql2 = "Update vendor set Total_Profit = Total_Profit + '"+vendorProfit+"' where Vendor_ID = '"+vid+"'";
+				int rs1 = stmt.executeUpdate(sql2);
+				
+				if ( rs1 > 0)
+				{
+					return adminProfit;
+				}
+				else
+				{
+					adminProfit = 0.0;
+				}
+				
+			}
+			
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		
+		return adminProfit;
+	}
+	
+	
+	public static void addAdminProfit(Double adminProfit)
+	{
+		try 
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "Update admin"+ "Set Total_Profit = Total_Profit + '"+adminProfit+"'" + "where Admin_ID = 1";
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0)
+			{
+				System.out.println( "Success" );
+			}
+			else
+			{
+				System.out.println( "Unsuccess" );
+			}
+						
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
 	
 	
 }

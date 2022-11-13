@@ -4,10 +4,10 @@ public class Event {
 	
 	private String Event_Date;
 	private String name;
-	private boolean status;
+	private String status;
 	private double totPrice;
 	
-	public Event(String event_Date, String name, boolean status, double totPrice) {
+	public Event(String event_Date, String name, String status, double totPrice) {
 		super();
 		Event_Date = event_Date;
 		this.name = name;
@@ -32,11 +32,11 @@ public class Event {
 		this.name = name;
 	}
 
-	public boolean isStatus() {
+	public String isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

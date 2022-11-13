@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.vendor.Vendor;
+
 public class AdminUtil {
 	
 	public static boolean chck;
@@ -280,6 +282,7 @@ public class AdminUtil {
 			String sql1 = "select count(Cust_ID) from customer ";
 			String sql2 = "select count(Event_ID) from event where Status = True";
 			String sql3 = "select count(Event_ID) from event where Status = False";
+			String sql4 = "select Total_Profit from admin";
 			
 			
 			try {
@@ -304,13 +307,19 @@ public class AdminUtil {
 				
 				while(rs5.next())
 				{
-					isSuccess = true;
 					int eventCount2 = rs5.getInt(1);
 					ob.add(eventCount2);
 				}
 				
+				ResultSet rs6 = stmt.executeQuery(sql4);
 				
-				
+				while(rs6.next())
+				{
+					isSuccess = true;
+					double profit = rs6.getDouble(1);
+					ob.add(profit);
+				}
+			
 			}
 			catch(Exception e)
 			{
@@ -332,7 +341,6 @@ public class AdminUtil {
 	
 	public static List<Event> calcStatistics()
 	{
-		boolean isSuccess= false;
 		ArrayList<Event> data = new ArrayList();
 		
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
@@ -352,15 +360,22 @@ public class AdminUtil {
 			try 
 			{
 				ResultSet rs = stmt.executeQuery(sql);
+				String actualStatus = "";
 				
 				while(rs.next())
 				{
 					String date = rs.getString(1);
 					String name = rs.getString(2);
 					boolean status = rs.getBoolean(3);
+					
+					if (status == true)
+						actualStatus = "Complete";
+					else
+						actualStatus = "Ongoing";
+							
 					double totPrice = rs.getDouble(4);
 					
-					Event e = new Event(date, name, status, totPrice);
+					Event e = new Event(date, name, actualStatus, totPrice);
 					data.add(e);
 				}
 	
@@ -386,7 +401,58 @@ public class AdminUtil {
 	}
 	
 	
-	
+	public static List<Vendor> calTopVendors()
+	{
+		ArrayList<Vendor> ven = new ArrayList<Vendor>();
+		
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			String sql = "select Org_Name, Total_Profit from vendor order by Total_Profit DESC LIMIT 6";
+			
+			try 
+			{
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				if ( rs.next())
+				{
+					String orgName = rs.getString(1);
+					Double totProfit = rs.getDouble(2);
+					System.out.println( orgName );
+					
+					Vendor v = new Vendor(orgName, totProfit);
+					ven.add(v);
+		
+				}
+				
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+				
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return ven;
+		
+	}
 	
 	
 }

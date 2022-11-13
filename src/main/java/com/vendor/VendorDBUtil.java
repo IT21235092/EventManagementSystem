@@ -9,9 +9,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.customer.Customer;
+import com.customer.DBConnect;
 
 public class VendorDBUtil {
 	
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	private static ResultSet rs1 = null;
 	
 	public static ArrayList insertVendor(String org_name, String userName , String email, String phone, String pswd,String types, String  address) throws SQLException
 	{
@@ -39,7 +44,7 @@ public class VendorDBUtil {
 		
 				Statement stmt = con.createStatement();
 				
-				String sql = "insert into Vendor values(0,'"+org_name+"', '"+userName+"', '"+pswd+"','"+email+"', NULL,'"+phone+"', '"+types+"','"+address+"')";
+				String sql = "insert into Vendor values(0,'"+org_name+"', '"+userName+"', '"+pswd+"','"+email+"', NULL,'"+phone+"', '"+types+"','"+address+"', 0)";
 				int rs = stmt.executeUpdate(sql);
 				System.out.println(rs);
 				
@@ -184,6 +189,31 @@ public class VendorDBUtil {
 		return isSuccess;
 	}
 	
+	
+	public static boolean deleteVendor(int id)
+	{
+		boolean isSuccess = true;
+		
+		try
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			String sql = "delete from vendor where Vendor_ID = '"+id+"'";
+		    int rs = stmt.executeUpdate(sql);
+		    
+		    if ( rs > 0)
+		    {
+		    	isSuccess = true;
+		    }
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return isSuccess;
+	}
 
 
 
