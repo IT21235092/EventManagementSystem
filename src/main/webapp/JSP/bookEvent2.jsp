@@ -32,8 +32,6 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		
-		
-		
     
     %>
    

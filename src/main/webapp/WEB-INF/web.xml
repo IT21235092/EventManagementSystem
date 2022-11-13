@@ -304,5 +304,15 @@
 	<url-pattern>/session2</url-pattern>
 </servlet-mapping>
 
+<servlet>
+	<servlet-name>ChangeStatusServlet</servlet-name>
+	<servlet-class>com.customerevent.ChangeStatusServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>ChangeStatusServlet</servlet-name>
+	<url-pattern>/status</url-pattern>
+</servlet-mapping>
+
 </web-app>
 

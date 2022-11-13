@@ -75,7 +75,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/getFeedback">
+            <a href="${pageContext.request.contextPath}/JSP/AddFeedback.jsp">
                 <i class='bx bxs-edit'></i>
                 <span class="links_name">Feedback</span>
             </a>
@@ -92,6 +92,16 @@
     <!-- --------------------------Main section------------------------------ -->
 
     <!-- JavaScript -->
+    
+    <script>
+    
+    <script>
+    function myFunction() {
+      confirm("Proceed only if your Event is Completed!");
+    }
+   
+
+    </script>
    
     
     
@@ -155,14 +165,7 @@
  				</div> --%>
         </nav>
         
-        <script>
-        	function logout() {
-        		var txt;
-        		if (confirm("Are you sure you want to log out?")) {
-        			txt = "You logged out";
-        		}
-        	}
-        </script>
+      
         
         
 
@@ -173,7 +176,7 @@
             <!-- event-content -->
             <div class="event-boxes">
             
-                <div class="recent-sale box" style = "width:500px;margin-left:50px;height:700px">
+                <div class="recent-sale box" style = "width:500px;margin-left:40px;height:700px">
                     <div class = "title">Pending Event</div>
                     
                      <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
@@ -226,7 +229,7 @@
            					}
            					catch(Exception e){}%>
            					<br><br>
-           					<a href="#"><button class="button-30" onclick="">Event Completed</button></a>
+           					<a href="${pageContext.request.contextPath}/status"><button class="button-30" onclick="myFunction();" >Event Completed!</button></a>
            					<br><br>
                   	 	<%}
                     	
@@ -235,11 +238,68 @@
                     
                 
                     %>
+                   
                     <br><br>
                
                     </div>
-                    
+                  
                     </div>
+                    
+                    
+                    <div class="recent-sales" style = "width:750px;height:700px;background-color:white;">
+                    <div class = "title">Event History</div>
+                    <br>
+                    
+                    <table style="width:700px;">
+                    <tr style="margin-bottom:10px;">
+                    <th style="width:200px;">Event</th>
+                    <th style="width:80px;">Date</th>
+                    <th style="width:120px;">Total Expenses</th>
+                    <th style="width:50px;">Number of Guests</th>
+                    </tr>
+   
+                    
+                    <%
+                    
+                    try{
+                    	
+                    	con = DriverManager.getConnection(url, user, pass);
+                  	 	stmt = con.createStatement();
+                  	 	
+                  	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and Status = 1";
+                    	
+                  	 	rs = stmt.executeQuery(sql);
+                  	 	
+                  	 	while(rs.next()){%>
+                    	
+                    		<tr>
+                    		
+                    		<td><%=rs.getString("Name") %></td>
+                    		<td><%=rs.getString("Event_date") %></td>
+                    		<td>Rs. <%=rs.getString("Total_Price") %></td>
+                    		<td><%=rs.getString("No_of_guests") %></td>
+                    		
+                    		
+                    		</tr>
+                    	
+                    	
+                  	 	<% }
+                    }catch(Exception e){
+                    	
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    %>
+                    
+                    </table>
+                   
+                    </div>
+                    
+                    
                 </div>
                 
             </div>
@@ -414,8 +474,20 @@
 			  clear: both;
 			}
 			
+			.recent-sales
+			{
+			margin-right:20px;
+  			background: #fff;
+  			border-radius: 12px;
+  			box-sizing: 0 5px 10px rgba(0,0,0,0.1);
+  			padding: 20px;
+  			margin-left:10px;
+			}
 			
-
+			.recent-sales .title{
+				 font-size: 24px;
+  				font-weight: 500;
+			}
 
 .button-30 {
   align-items: center;

@@ -2,12 +2,43 @@
     pageEncoding="ISO-8859-1"%>
      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		
+    
+    %>
+     
   
      
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/Feedback.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/CSS/bookevent.css">
         <!-- Boxicons CDN Link -->
         <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
         <meta charset = "UTF-8">
@@ -128,10 +159,77 @@
 
         <div class="home-content">
             <!-- event-content -->
-            <div class="event-boxes">
-                <div class="recent-sale box">
+           
+               
+                
+                <form action="${pageContext.request.contextPath}/addFeedback" method="post" >
+        <h1> Give us your Feedback! </h1>
+        
+        <fieldset>
+        
+          <label for="type">Select Event:</label>
+  		  <select name="eid" id="eid" class="txt" required>
+  		  <%
+  		  
+  		  try{
+  			  
+  			con = DriverManager.getConnection(url, user, pass);
+      	 	stmt = con.createStatement();
+      	 	
+      	 	String sql = "select * from event where status = 1 and Cust_ID = '"+session.getAttribute("Id")+"'";
+      	 	
+      	 	rs = stmt.executeQuery(sql);
+      	 	
+      	 	while(rs.next()){%>
+      	 		
+      	 		<option  value="<%= rs.getInt("Event_Id") %>"><%= rs.getString("name") %></option>
+      	 		
+      	 		
+      	 	<% }
+      	 	
+      	 	
+  			  
+  			  
+  		  }catch(Exception e){
+  			  e.printStackTrace();
+  		  }
+  		  
+  		  
+  		  
+  		  %>
+    		
+  		  </select>
+         
+			         
+        
+          <label for="feedback">Your Feedback:</label>
+          <textarea id="feedback" name="feedback" placeholder="We would love to hear your thoughts, suggestions, concerns or problems with anything so we can improve" style="resize:none" maxlength="150" required></textarea>
+        
+          <label for="rating">Rate our Service:</label>
+          <input type="number" id="rating" name="rating" required min="1" max="5" >
+          
+          <label for="img">Upload Image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
+          
+          
+          
+          
+          
+        <br>
+          
+          
+        </fieldset>
+     
+        
+        <button type="submit">Submit</button>
+        
+        
+       </form>
+                 <div class="event-boxes">
+                 <div class="recent-sale box">
+           
                     <div class = "title">Your Feedback</div>
-                    <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add a new feedback until pending event is completed.</i></div>
+                    <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add feedback related to a pending event.</i></div>
                     <br><br>
                     
                     
@@ -198,7 +296,6 @@
         </div>
     </section>
    
-   <a href="${pageContext.request.contextPath}/checkFeedback"><input type="button" value="Add Feedback"></a>
     </body>
     
     

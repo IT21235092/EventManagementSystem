@@ -15,7 +15,7 @@ public class FeedbackDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
-	public static boolean insertFeedback(String feedback, int rating, int cid) {
+	public static boolean insertFeedback(String feedback, int rating, int cid, int eid) {
 		
 		
 		
@@ -26,7 +26,7 @@ public class FeedbackDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "insert into feedback values(0,'"+feedback+"','"+rating+"', NULL, '"+cid+"')";
+			String sql = "insert into feedback values(0,'"+feedback+"','"+rating+"', NULL, '"+cid+"', '"+eid+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			
