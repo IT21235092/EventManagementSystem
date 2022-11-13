@@ -24,7 +24,7 @@ public class DeleteAdvertisementServlet extends HttpServlet {
 		isTrue = AdvertisementDBUtil.deleteAdvertisement(id);
 		
 		if (isTrue == true) {
-			RequestDispatcher dispatcher = request.getRequestDispatcher("success.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("showAdServlet");
 			dispatcher.forward(request, response);
 		}
 		else {

@@ -35,7 +35,9 @@ public class UpdateAdvertisement extends HttpServlet {
 			List<Advertisement> adDetails = AdvertisementDBUtil.getAdvertisementDetails(aid);
 			request.setAttribute("adDetails", adDetails);
 			
-			RequestDispatcher dis = request.getRequestDispatcher("success.jsp");
+			
+			
+			RequestDispatcher dis = request.getRequestDispatcher("showAdServlet");
 			dis.forward(request, response);
 		}
 		else {

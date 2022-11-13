@@ -134,7 +134,7 @@
                 <span><h5><% out.println(session.getAttribute("username").toString()); %></h5></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
-                  <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                  <li><a href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp" onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
             </div>
@@ -151,6 +151,15 @@
 				    <a href="#">Log out</a>
  				</div> --%>
         </nav>
+        
+        <script>
+        	function logout() {
+        		var txt;
+        		if (confirm("Are you sure you want to log out?")) {
+        			txt = "You logged out";
+        		}
+        	}
+        </script>
         
         
 
