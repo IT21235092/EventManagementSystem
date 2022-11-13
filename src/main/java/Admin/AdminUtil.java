@@ -7,26 +7,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.customer.DBConnect;
 import com.vendor.Vendor;
 
 public class AdminUtil {
 	
 	public static boolean chck;
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	private static ResultSet rs1 = null;
 	
 	public static boolean AddEvent(String name, String typs[], String desc)
 	{
 		boolean isSuccess =false;
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
-		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "insert into category values('"+name+"',NULL,'"+desc+"',1)";
 			
@@ -77,17 +77,13 @@ public class AdminUtil {
 		ArrayList<String> ty = new ArrayList();
 		ArrayList<String> queries = new ArrayList();
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
-		
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			//fetching
 			
@@ -157,17 +153,12 @@ public class AdminUtil {
 	public static boolean deleteEvent(String name)
 	{
 		//boolean isSuccess = false;
-		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
+	
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql6 = "delete from category where Cat_Name = '"+name+"' ";
 			
@@ -195,16 +186,11 @@ public class AdminUtil {
 	{
 		boolean isSuccess =false;
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "update category set Description = '"+desc+"'"
 					+"where Cat_Name ='"+name+"'";
@@ -214,9 +200,7 @@ public class AdminUtil {
 			String sql2 = "insert into category_services values";
 			
 			
-			
-			
-			
+		
 			
 			for(int i = 0 ; i<typs.length ; i++)
 			{
@@ -264,17 +248,11 @@ public class AdminUtil {
 		boolean isSuccess= false;
 		ArrayList<Object> ob = new ArrayList();
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
-		
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			//fetching
 			
@@ -342,17 +320,12 @@ public class AdminUtil {
 	{
 		ArrayList<Event> data = new ArrayList();
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
 		
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "select Event_Date, c.Username, e.Status, e.Total_Price from event e, Customer c where e.Cust_ID = c.Cust_ID Order by Event_Date desc LIMIT 6";
 			
@@ -404,17 +377,12 @@ public class AdminUtil {
 	{
 		ArrayList<Vendor> ven = new ArrayList<Vendor>();
 		
-		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
+	
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "select Org_Name, Total_Profit from vendor order by Total_Profit DESC LIMIT 6";
 			
