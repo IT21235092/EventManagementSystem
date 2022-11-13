@@ -22,10 +22,11 @@ public class InsertFeedback extends HttpServlet {
 		int rating = Integer.parseInt(request.getParameter("rating"));
 		HttpSession session = request.getSession();
 		int cid = Integer.parseInt(session.getAttribute("Id").toString());
+		int eid = Integer.parseInt(request.getParameter("eid"));
 		
 		boolean isTrue;
 		
-		isTrue = FeedbackDBUtil.insertFeedback(feedback, rating, cid);
+		isTrue = FeedbackDBUtil.insertFeedback(feedback, rating, cid, eid);
 		
 		if(isTrue == true) {
 			

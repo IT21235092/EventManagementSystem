@@ -413,7 +413,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "select * from event where cust_id = '"+cid+"' and event_date > curdate()";
+			String sql = "select * from event where cust_id = '"+cid+"' and status = 0";
 			rs = stmt.executeQuery(sql);
 					
 					
@@ -518,6 +518,39 @@ public class EventDBUtil {
 		}
 		
 	}
+	
+	public static boolean setEventStatus(int eid) {
+		
+		boolean isSuccess = false;
+		
+		
+		try {
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "update event Status = 1 where event_id = '"+eid+"' ";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				
+				isSuccess = true;
+			}
+			else {
+				isSuccess = false;
+			}
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return isSuccess;
+		
+	}
+	
 	
 	
 }

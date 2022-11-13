@@ -144,7 +144,7 @@
         	  con = DriverManager.getConnection(url, user, pass);
         	  stmt = con.createStatement();
         	  
-        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Decoration'";
+        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Decoration' and Status = 1";
         		rs = stmt.executeQuery(sql5);
         		
         		while(rs.next()) {

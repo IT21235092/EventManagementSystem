@@ -33,19 +33,14 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/showAdServlet">
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Services</span>
             </a>
         </li>
+        
         <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
-            </a>
-        </li>
-        <li>
-            <a href="#"  class = "colored">
+            <a href="http://localhost:8080/EventManagementSystem/InitialSettings2"  class = "colored">
                 <i class='bx bx-cog colored' ></i>
                 <span class="links_name">Settings</span>
             </a>
