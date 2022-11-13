@@ -1,14 +1,13 @@
 package com.vendor;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.customer.Customer;
+
 import com.customer.DBConnect;
 
 import Admin.Event;
@@ -20,13 +19,13 @@ public class VendorDBUtil {
 	private static ResultSet rs = null;
 	private static ResultSet rs1 = null;
 	
-	public static ArrayList insertVendor(String org_name, String userName , String email, String phone, String pswd,String types, String  address) throws SQLException
+	public static ArrayList<Object> insertVendor(String org_name, String userName , String email, String phone, String pswd,String types, String  address) throws SQLException
 	{
 		
 		boolean isSuccess = false;
 		int vendorId = 0;
-		ArrayList arr = new ArrayList<>();
-		Connection con = ConnectDatabase.getConnection();
+		ArrayList<Object> arr = new ArrayList<>();
+		con = DBConnect.getConnection();
 		
 		Statement stmtCheck = con.createStatement();
 		String sqlCheck = "select * from vendor where Username = '"+userName+"'";
@@ -87,15 +86,15 @@ public class VendorDBUtil {
 		
 	}
 	
-	public static ArrayList validate(String email, String password) throws SQLException
+	public static ArrayList<Object> validate(String email, String password) throws SQLException
 	{
 		
 		String Username = "";
 		int vendor_Id = 0;
 		boolean isSuccess = false;
-		ArrayList arr = new ArrayList();
+		ArrayList<Object> arr = new ArrayList<Object>();
 		
-		Connection con = ConnectDatabase.getConnection();
+	    con = DBConnect.getConnection();
 		
 		try
 		{
@@ -126,11 +125,11 @@ public class VendorDBUtil {
 	
 	public static List<Vendor> getVendorDetails(int id)
 	{
-		ArrayList<Vendor> ven = new ArrayList();
+		ArrayList<Vendor> ven = new ArrayList<Vendor>();
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
+			con = DBConnect.getConnection();
 			Statement stmt = con.createStatement();
 			String sql = "select * from vendor where Vendor_ID = '"+id+"'";
 			ResultSet rs = stmt.executeQuery(sql);
@@ -171,7 +170,7 @@ public class VendorDBUtil {
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
+			 con = DBConnect.getConnection();
 			Statement stmt = con.createStatement();
 			String sql = "update vendor SET Username = '"+username+"', Password = '"+password+"', Email = '"+email+"', Contact_no = '"+contact+"', Org_Name = '"+organization+"', Location = '"+Location+"', Type = '"+types+"' where Vendor_ID = '"+id+"'";
 			int rs = stmt.executeUpdate(sql);
@@ -224,7 +223,7 @@ public class VendorDBUtil {
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
+			con = DBConnect.getConnection();
 			Statement stmt = con.createStatement();
 			
 			String sql1 = "select count(e.Cust_ID)"
@@ -294,13 +293,13 @@ public class VendorDBUtil {
 	
 	public static List<Event> calcStatistics(int id)
 	{
-		ArrayList<Event> data = new ArrayList();
+		ArrayList<Event> data = new ArrayList<Event>();
 		
 	
 		
 		try
 		{
-			Connection con = ConnectDatabase.getConnection();
+			 con = DBConnect.getConnection();
 			Statement stmt = con.createStatement();
 			
 			String sql = "select Event_Date, c.Username, e.Status, v.Total_Profit from event e, Customer c, event_add ed, advertisement ad, vendor v where e.Cust_ID = c.Cust_ID and e.Event_ID = ed.Event_ID and ed.Ad_ID = ad.Ad_ID and ad.Vendor_ID = v.Vendor_ID and ad.Vendor_ID  = '"+id+"' Order by Event_Date desc";

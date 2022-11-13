@@ -2,9 +2,6 @@ package com.customer;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ScheduledFuture;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -31,7 +28,7 @@ public class Settings1 extends HttpServlet {
 		String contact = request.getParameter("phone");
 		String password = request.getParameter("inputPassword4");
 		String newPassword = request.getParameter("inputPassword5");
-		String confirmPassword = request.getParameter("inputPassword6");
+		//String confirmPassword = request.getParameter("inputPassword6");
 		
 		
 	    if ( newPassword != null)

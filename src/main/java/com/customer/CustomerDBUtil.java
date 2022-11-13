@@ -1,14 +1,12 @@
 package com.customer;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vendor.ConnectDatabase;
 
 public class CustomerDBUtil{
 	
@@ -222,7 +220,7 @@ public class CustomerDBUtil{
 
 	public static List<Customer> getCustomerDetails(int id)
 	{
-		ArrayList<Customer> cus = new ArrayList();
+		ArrayList<Customer> cus = new ArrayList<Customer>();
 		
 		try
 		{
