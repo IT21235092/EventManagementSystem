@@ -23,21 +23,15 @@
         </div>
         <ul class="nav-list">
         <li>
-            <a href="${pageContext.request.contextPath}/JSP/Vendor_dashboard.jsp" class = "colored" >
-                <i class='bx bxs-dashboard colored'></i>
+           	<a href="http://localhost:8080/EventManagementSystem/services1">
+                <i class='bx bxs-dashboard'></i>
                 <span class="links_name">Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="#">
-                <i class='bx bxs-message-square-add'></i>
+             <a href="http://localhost:8080/EventManagementSystem/showAdServlet" class = "colored" >
+                <i class='bx bxs-message-square-add colored'></i>
                 <span class="links_name">Services</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
             </a>
         </li>
         <li>

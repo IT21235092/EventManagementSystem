@@ -21,7 +21,7 @@ public class CustomerLogin extends HttpServlet {
 		String email = request.getParameter("email");
 		String password = request.getParameter("pswd");
 	    boolean isSuccess = false;
-		ArrayList arr = new ArrayList();
+		ArrayList<Object> arr = new ArrayList<Object>();
 		
 		try 
 		{

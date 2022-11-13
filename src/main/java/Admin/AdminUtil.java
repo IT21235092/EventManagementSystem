@@ -7,24 +7,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.customer.DBConnect;
+import com.vendor.Vendor;
+
 public class AdminUtil {
 	
 	public static boolean chck;
+	private static Connection con = null;
+	private static Statement stmt = null;
+	private static ResultSet rs = null;
+	private static ResultSet rs1 = null;
 	
 	public static boolean AddEvent(String name, String typs[], String desc)
 	{
 		boolean isSuccess =false;
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
-		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "insert into category values('"+name+"',NULL,'"+desc+"',1)";
 			
@@ -75,17 +77,13 @@ public class AdminUtil {
 		ArrayList<String> ty = new ArrayList();
 		ArrayList<String> queries = new ArrayList();
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
-		
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
 			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			//fetching
 			
@@ -155,17 +153,12 @@ public class AdminUtil {
 	public static boolean deleteEvent(String name)
 	{
 		//boolean isSuccess = false;
-		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
+	
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql6 = "delete from category where Cat_Name = '"+name+"' ";
 			
@@ -193,16 +186,11 @@ public class AdminUtil {
 	{
 		boolean isSuccess =false;
 		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			String sql = "update category set Description = '"+desc+"'"
 					+"where Cat_Name ='"+name+"'";
@@ -212,9 +200,7 @@ public class AdminUtil {
 			String sql2 = "insert into category_services values";
 			
 			
-			
-			
-			
+		
 			
 			for(int i = 0 ; i<typs.length ; i++)
 			{
@@ -260,40 +246,57 @@ public class AdminUtil {
 	public static List<Object> CountCustomers()
 	{
 		boolean isSuccess= false;
-		ArrayList<CustomerCount> ad = new ArrayList();
 		ArrayList<Object> ob = new ArrayList();
-		
-		String url = "jdbc:mysql://localhost:3306/event_management_system";
-		String user = "root";
-		String pass = "eventmanagement123";
 		
 		
 		try
 		{
-			Class.forName("com.mysql.jdbc.Driver");
-			
-			Connection con = DriverManager.getConnection(url, user, pass);
-			Statement stmt = con.createStatement();
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
 			
 			//fetching
 			
-			String sql = "select count(Cust_ID) from customer ";
+			String sql1 = "select count(Cust_ID) from customer ";
+			String sql2 = "select count(Event_ID) from event where Status = True";
+			String sql3 = "select count(Event_ID) from event where Status = False";
+			String sql4 = "select Total_Profit from admin";
+			
 			
 			try {
 			
-				ResultSet rs3 = stmt.executeQuery(sql);
-						while(rs3.next())
-						{
-							isSuccess = true;
-							
-							int count=  rs3.getInt(1);
-							
-							ob.add(count);
-							
-			
-						
+				ResultSet rs3 = stmt.executeQuery(sql1);
 				
-						}
+				while(rs3.next())
+				{
+					int cusCount =  rs3.getInt(1);
+					ob.add(cusCount);		
+				}
+				
+				ResultSet rs4 = stmt.executeQuery(sql2);
+				
+				while(rs4.next())
+				{
+					int eventCount1 = rs4.getInt(1);
+					ob.add(eventCount1);
+				}
+				
+				ResultSet rs5 = stmt.executeQuery(sql3);
+				
+				while(rs5.next())
+				{
+					int eventCount2 = rs5.getInt(1);
+					ob.add(eventCount2);
+				}
+				
+				ResultSet rs6 = stmt.executeQuery(sql4);
+				
+				while(rs6.next())
+				{
+					isSuccess = true;
+					double profit = rs6.getDouble(1);
+					ob.add(profit);
+				}
+			
 			}
 			catch(Exception e)
 			{
@@ -313,6 +316,40 @@ public class AdminUtil {
 	}
 	
 	
+	public static List<Event> calcStatistics()
+	{
+		ArrayList<Event> data = new ArrayList();
+		
+		
+		
+		try
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "select Event_Date, c.Username, e.Status, e.Total_Price from event e, Customer c where e.Cust_ID = c.Cust_ID Order by Event_Date desc LIMIT 6";
+			
+			try 
+			{
+				ResultSet rs = stmt.executeQuery(sql);
+				String actualStatus = "";
+				
+				while(rs.next())
+				{
+					String date = rs.getString(1);
+					String name = rs.getString(2);
+					boolean status = rs.getBoolean(3);
+					
+					if (status == true)
+						actualStatus = "Complete";
+					else
+						actualStatus = "Ongoing";
+							
+					double totPrice = rs.getDouble(4);
+					
+					Event e = new Event(date, name, actualStatus, totPrice);
+					data.add(e);
+				}
 	
 	public static List<VendorApprove> approveVendor()
 	{
@@ -357,6 +394,13 @@ public class AdminUtil {
 			
 			
 				}
+		
+				
+				
+				
+			
+				
+				
 		
 		}
 		catch(Exception e)

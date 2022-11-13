@@ -35,12 +35,7 @@
                 <span class="links_name">Services</span>
             </a>
         </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
-            </a>
-        </li>
+        
         <li>
             <a href="http://localhost:8080/EventManagementSystem/InitialSettings2">
                 <i class='bx bx-cog' ></i>
@@ -148,6 +143,11 @@
     </body>
     
      <style>
+     
+     		body {
+     			background-image: url('../Images/back.jpeg');
+     		}
+     		
 			.profile-dropdown
 			{
 			  left: 75%;

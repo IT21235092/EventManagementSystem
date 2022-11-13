@@ -26,6 +26,8 @@ public class addEventServlet extends HttpServlet {
 		String date = session.getAttribute("edate").toString();
 		String cid = session.getAttribute("Id").toString();
 		String price = session.getAttribute("price").toString();
+		Double adminProfit = 0.0;
+		Double calculatedProfit = 0.0;
 		
 		// photos
 		String paid = session.getAttribute("paid").toString(); 
@@ -45,37 +47,46 @@ public class addEventServlet extends HttpServlet {
 		
 		session.removeAttribute("serDetails");
 		
-		boolean isTrue;
 		
 		try {
 			
 			int eid = EventDBUtil.insertEvent(type, name, num, date, cid, price );
 			
-			if(eid > 0) {
+			if(eid > 0) 
+			{
+				adminProfit += 240000;
 				
 				if (paid.toString() != null) {
 					
-					try {
+					try 
+					{
 						EventDBUtil.insertEventVendor(eid, paid);
+						calculatedProfit = EventDBUtil.calculateProfit(paid);
+						adminProfit += calculatedProfit;
 						
-						
-					}catch(Exception e) {
-						
+					}
+					catch(Exception e) 
+					{
+						e.printStackTrace();
 					}
 
 				}
 
 				
-				if(maid.toString() != null) {
+				if(maid.toString() != null)
+				{
 					
-					try {
+					try
+					{
 						
 						EventDBUtil.insertEventVendor1(eid,maid);
-						
-						
-						
-					}catch(Exception e) {
-						
+						calculatedProfit = EventDBUtil.calculateProfit(maid);
+						adminProfit += calculatedProfit;
+					
+					}
+					catch(Exception e) 
+					{
+						e.printStackTrace();
 					}
 				  
 				 
@@ -86,9 +97,13 @@ public class addEventServlet extends HttpServlet {
 					try {
 						
 						EventDBUtil.insertEventVendor2(eid,daid);
+						calculatedProfit = EventDBUtil.calculateProfit(daid);
+						adminProfit += calculatedProfit;
 						
-					}catch(Exception e) {
-						
+					}
+					catch(Exception e) 
+					{
+						e.printStackTrace();
 					}
 					  
 					  
@@ -100,20 +115,29 @@ public class addEventServlet extends HttpServlet {
 					try {
 						
 						EventDBUtil.insertEventVendor3(eid,iaid);
+						calculatedProfit = EventDBUtil.calculateProfit(iaid);
+						adminProfit += calculatedProfit;
 						
 						
-					}catch(Exception e) {
 						
+					}
+					catch(Exception e)
+					{
+						e.printStackTrace();
 					}
 					  
 					 
 				}
 				
-				if(faid.toString() != null) {
+				if(faid.toString() != null) 
+				{
 					
 					try {
 						
 						EventDBUtil.insertEventVendor4(eid,faid);
+						calculatedProfit = EventDBUtil.calculateProfit(faid);
+						adminProfit += calculatedProfit;
+						
 						
 						
 					}catch(Exception e) {
@@ -124,7 +148,7 @@ public class addEventServlet extends HttpServlet {
 					 
 				}
 				
-				
+			EventDBUtil.addAdminProfit(adminProfit);
 				
 				response.sendRedirect("http://localhost:8080/EventManagementSystem/JSP/Cust_dashboard.jsp");  
 			}

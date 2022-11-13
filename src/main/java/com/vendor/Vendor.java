@@ -11,6 +11,7 @@ public class Vendor {
 	private String Contact_no;
 	private String Type;
 	private String Location;
+	private double totalProfit;
 	
 	public Vendor(int id, String org_Name, String username, String password, String email, String dp, String contact_no, String type, String location) 
 	{
@@ -24,6 +25,20 @@ public class Vendor {
 		this.Contact_no = contact_no;
 		this.Type = type;
 		this.Location = location;
+	}
+
+	public Vendor(String Org_Name, double totalProfit)
+	{
+		this.Org_Name = Org_Name;
+		this.totalProfit = totalProfit;
+	}
+	
+	public double getTotalProfit() {
+		return totalProfit;
+	}
+
+	public void setTotalProfit(double totalProfit) {
+		this.totalProfit = totalProfit;
 	}
 
 	public int getId() {

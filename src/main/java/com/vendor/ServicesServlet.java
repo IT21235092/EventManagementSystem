@@ -1,10 +1,7 @@
 package com.vendor;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +9,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+
+import Admin.Event;
 
 /**
  * Servlet implementation class ServicesServlet
@@ -23,31 +24,41 @@ public class ServicesServlet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 
-		System.out.println("count");
+    boolean isSuccess = false;
+    
+    HttpSession session = request.getSession();
+    int venId = Integer.parseInt(session.getAttribute("Id").toString());
+    ArrayList <Object> cnt = new ArrayList<>();
+    ArrayList <Event> statistics = new ArrayList<Event>();
+		
 	try
 	{
-		Connection con = ConnectDatabase.getConnection();
-		Statement stmt = con.createStatement();
+		
+		cnt = (ArrayList<Object>) VendorDBUtil.CountData(venId);
+		statistics = (ArrayList<Event>) VendorDBUtil.calcStatistics(venId);
+		isSuccess = (boolean) cnt.get(4);
 	
-    
-    String sql = "select count(e.Cust_ID) from advertisement a,customer c,event e,event_add ed,vendor v where a.Ad_ID=ed.Ad_ID and e.Event_ID=ed.Event_ID and v.Vendor_ID=a.Vendor_ID group by v.Vendor_ID";
-    
-    ResultSet rs = stmt.executeQuery(sql);
-    
-    
-    while(rs.next())
-    {
-    	String count = rs.getString(1);
-    	request.setAttribute("VenCount", count);
-    	
-    }
-    
-    		
-	
-	}catch(Exception e)
+	}
+	catch(Exception e)
 	{
 		System.out.println(e);
 		e.printStackTrace();
+	}
+	
+	
+	if(isSuccess==true)
+	{
+		int cusCount = (int) cnt.get(0);
+		int eventCount1 = (int) cnt.get(1);
+		int eventCount2 = (int) cnt.get(2);
+		double profit = (double) cnt.get(3);
+		request.setAttribute("countCus", cusCount);
+		request.setAttribute("countEvent1", eventCount1);
+		request.setAttribute("countEvent2", eventCount2);
+		request.setAttribute("profit", profit);
+		request.setAttribute("Statistics", statistics);
+//		request.setAttribute("topVendors", topVendors);
+		
 	}
 	
 	RequestDispatcher rd = request.getRequestDispatcher("JSP/Vendor_dashboard.jsp");

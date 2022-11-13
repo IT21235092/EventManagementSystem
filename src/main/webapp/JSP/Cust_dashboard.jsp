@@ -30,6 +30,7 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		ResultSet rs1 = null;
+		ResultSet rs2 = null;
     
     %>
      
@@ -75,7 +76,7 @@
             </a>
         </li>
         <li>
-            <a href="${pageContext.request.contextPath}/getFeedback">
+            <a href="http://localhost:8080/EventManagementSystem/getFeedback">
                 <i class='bx bxs-edit'></i>
                 <span class="links_name">Feedback</span>
             </a>
@@ -92,6 +93,7 @@
     <!-- --------------------------Main section------------------------------ -->
 
     <!-- JavaScript -->
+ 
    
     
     
@@ -155,14 +157,7 @@
  				</div> --%>
         </nav>
         
-        <script>
-        	function logout() {
-        		var txt;
-        		if (confirm("Are you sure you want to log out?")) {
-        			txt = "You logged out";
-        		}
-        	}
-        </script>
+      
         
         
 
@@ -173,7 +168,7 @@
             <!-- event-content -->
             <div class="event-boxes">
             
-                <div class="recent-sale box" style = "width:500px;margin-left:50px;height:700px">
+                <div class="recent-sale box" style = "width:500px;margin-left:40px;height:700px">
                     <div class = "title">Pending Event</div>
                     
                      <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
@@ -195,7 +190,8 @@
                   	 	
                   	 	while(rs.next()){ 
                   	 		%>
-                  	 		<input type = "hidden" id ="eid" name="eid" value="<%=rs.getInt("Event_Id") %>">
+                  	 		<form action="${pageContext.request.contextPath}/status" method="post" onSubmit="return confirm('Proceed only if your event has been Completed.') ">
+                  	 		<input type = "hidden" id ="evnt" name="evnt" value="<%=rs.getInt("Event_Id") %>">
                   	 		<p><b>Event</b></p>
                   	 		<%=rs.getString("Name") %><br><br>
            					<p><b>Event Type</b></p>
@@ -205,8 +201,8 @@
            					<p><b>Date</b></p>
            					<%=rs.getString("Event_date") %><br><br>
            					<p><b>Expenses</b></p>
-           					Total - Rs. <%=rs.getDouble("Total_price") %><br><br>
-           					Fixed Services - Rs.85000<br>
+           					<p><u>Total - Rs. <%=rs.getDouble("Total_price") %></u></p><br><br>
+           					<i>Fixed Services - Rs.240000</i><br>
            					<%
            					
            					try{
@@ -217,17 +213,18 @@
                   	 		
                   	 		while(rs1.next()){%>
                   	 			
-                  	 			<%= rs1.getString("Org_name") %> 
+                  	 			<i><%= rs1.getString("Org_name") %> 
                   	 			<%out.print("\t  - Rs."); %>
-                  	 			<%= rs1.getDouble("Price") %>
-                  	 			<br>
+                  	 			<%= rs1.getDouble("Price") %></p></i>
+                  	 			
                   	 			 
                   	 		<% }
            					}
            					catch(Exception e){}%>
            					<br><br>
-           					<a href="#"><button class="button-30" onclick="">Event Completed</button></a>
+           					<button type = "submit" class="button-30" >Event Completed!</button>
            					<br><br>
+           					</form>
                   	 	<%}
                     	
                     }
@@ -235,11 +232,68 @@
                     
                 
                     %>
+                   
                     <br><br>
                
                     </div>
-                    
+                  
                     </div>
+                    
+                    
+                    <div class="recent-sales" style = "width:750px;height:700px;background-color:white;">
+                    <div class = "title">Event History</div>
+                    <br>
+                    
+                    <table style="width:700px;">
+                    <tr style="margin-bottom:10px;">
+                    <th style="width:200px;">Event</th>
+                    <th style="width:80px;">Date</th>
+                    <th style="width:120px;">Total Expenses</th>
+                    <th style="width:50px;">Number of Guests</th>
+                    </tr>
+   
+                    
+                    <%
+                    
+                    try{
+                    	
+                    	con = DriverManager.getConnection(url, user, pass);
+                  	 	stmt = con.createStatement();
+                  	 	
+                  	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and Status = 1";
+                    	
+                  	 	rs2 = stmt.executeQuery(sql);
+                  	 	
+                  	 	while(rs2.next()){%>
+                    	
+                    		<tr>
+                    		
+                    		<td><%=rs2.getString("Name") %></td>
+                    		<td><%=rs2.getString("Event_date") %></td>
+                    		<td>Rs. <%=rs2.getString("Total_Price") %></td>
+                    		<td><%=rs2.getString("No_of_guests") %></td>
+                    		
+                    		
+                    		</tr>
+                    	
+                    	
+                  	 	<% }
+                    }catch(Exception e){
+                    	
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    %>
+                    
+                    </table>
+                   
+                    </div>
+                    
+                    
                 </div>
                 
             </div>
@@ -414,8 +468,20 @@
 			  clear: both;
 			}
 			
+			.recent-sales
+			{
+			margin-right:20px;
+  			background: #fff;
+  			border-radius: 12px;
+  			box-sizing: 0 5px 10px rgba(0,0,0,0.1);
+  			padding: 20px;
+  			margin-left:10px;
+			}
 			
-
+			.recent-sales .title{
+				 font-size: 24px;
+  				font-weight: 500;
+			}
 
 .button-30 {
   align-items: center;

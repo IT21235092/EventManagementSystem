@@ -15,7 +15,7 @@ public class FeedbackDBUtil {
 	private static Statement stmt = null;
 	private static ResultSet rs = null;
 	
-	public static boolean insertFeedback(String feedback, int rating, int cid) {
+	public static boolean insertFeedback(String feedback, int rating, int cid, int eid) {
 		
 		
 		
@@ -26,7 +26,7 @@ public class FeedbackDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "insert into feedback values(0,'"+feedback+"','"+rating+"', NULL, '"+cid+"')";
+			String sql = "insert into feedback values(0,'"+feedback+"','"+rating+"', NULL, '"+cid+"', '"+eid+"')";
 			
 			int rs = stmt.executeUpdate(sql);
 			
@@ -60,7 +60,7 @@ public class FeedbackDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "select * from feedback where cust_Id = '"+cid+"'";
+			String sql = "select * from feedback f , event e where e.event_Id = f.event_Id and f.cust_Id = '"+cid+"'";
 			rs = stmt.executeQuery(sql);
 			
 			while(rs.next()) {
@@ -69,8 +69,10 @@ public class FeedbackDBUtil {
 				int cusid = rs.getInt(5);
 				String description = rs.getString(2);
 				int rating = rs.getInt(3);
+				String event = rs.getString(8);
+				String date = rs.getString(11);
 				
-				feedback f = new feedback(fid, cusid, description, rating);
+				feedback f = new feedback(fid, cusid, description, rating, event, date);
 				
 				fee.add(f);
 			

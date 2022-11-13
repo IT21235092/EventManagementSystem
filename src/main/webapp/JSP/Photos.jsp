@@ -146,7 +146,7 @@
         	  con = DriverManager.getConnection(url, user, pass);
         	  stmt = con.createStatement();
         	  
-        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Photos'";
+        	  String sql5 = "select * from advertisement a, Vendor v where v.Vendor_ID = a.Vendor_ID and v.Type = 'Photos'and Status = 1";
         		rs = stmt.executeQuery(sql5);
         		
         		while(rs.next()) {
@@ -156,19 +156,14 @@
         			
         			
         			<input type="radio" id = "aid" value="<%= rs.getInt("Ad_ID")%>" name="aid" required>
-        			<%= rs.getString("Org_name")%><br>
+        			<div class="title"><%= rs.getString("Title") %></div><br>
+        			<b><%= rs.getString("Org_name")%></b><br>
         			<%= rs.getDouble("Price")%><br>
         			<%= rs.getString("Description")%><br>
         			<%= rs.getString("Location")%>
         			<input  type = "hidden" id="price" name="price" value="<%= rs.getDouble("Price") %>">
         			
-        			
-        			
-    				
-    				
-        			
-        			
-        			
+        		
         	    
         	    </div>
         		 <% } 

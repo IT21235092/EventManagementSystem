@@ -4,6 +4,7 @@ public class CustomerCount
 {
 	private int count;
 	
+	
 	public CustomerCount(int cnt)
 	{
 		this.count = cnt;
@@ -13,4 +14,6 @@ public class CustomerCount
 	{
 		return count;
 	}
+	
+	
 }

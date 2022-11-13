@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.customer.CustomerDBUtil;
-
 @WebServlet("/VendorInsert")
 public class VendorInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -28,7 +26,7 @@ public class VendorInsert extends HttpServlet {
 		String types = request.getParameter("types");
 		String address = request.getParameter("address");
 		HttpSession session = request.getSession();
-		ArrayList arr = new ArrayList<>();
+		ArrayList<Object> arr = new ArrayList<>();
 		
 		
 		boolean isSuccess = false;

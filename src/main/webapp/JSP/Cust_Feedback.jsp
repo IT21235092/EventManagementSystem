@@ -2,6 +2,37 @@
     pageEncoding="ISO-8859-1"%>
      <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
      
+     <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		
+    
+    %>
+     
   
      
 <!DOCTYPE html>
@@ -128,21 +159,89 @@
 
         <div class="home-content">
             <!-- event-content -->
-            <div class="event-boxes">
-                <div class="recent-sale box">
-                    <div class = "title">Your Feedback</div>
-                    <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add a new feedback until pending event is completed.</i></div>
+           
+               
+                
+                <form action="${pageContext.request.contextPath}/addFeedback" method="post" class="frm1">
+        <h1> Give us your Feedback! </h1>
+        
+        <fieldset>
+        
+          <label for="type">Select Event:</label>
+  		  <select name="eid" id="eid" class="txt" required>
+  		  <%
+  		  
+  		  try{
+  			  
+  			con = DriverManager.getConnection(url, user, pass);
+      	 	stmt = con.createStatement();
+      	 	
+      	 	String sql = "select * from event where status = 1 and Cust_ID = '"+session.getAttribute("Id")+"'";
+      	 	
+      	 	rs = stmt.executeQuery(sql);
+      	 	
+      	 	while(rs.next()){%>
+      	 		
+      	 		<option  value="<%= rs.getInt("Event_Id") %>"><%= rs.getString("name") %></option>
+      	 		
+      	 		
+      	 	<% }
+      	 	
+      	 	
+  			  
+  			  
+  		  }catch(Exception e){
+  			  e.printStackTrace();
+  		  }
+  		  
+  		  
+  		  
+  		  %>
+    		
+  		  </select>
+         
+			         
+        
+          <label for="feedback">Your Feedback:</label>
+          <textarea id="feedback" name="feedback" placeholder="We would love to hear your thoughts, suggestions, concerns or problems with anything so we can improve" style="resize:none" maxlength="150" required></textarea>
+        
+          <label for="rating">Rate our Service:</label>
+          <input type="number" id="rating" name="rating" required min="1" max="5" >
+          
+          <label for="img">Upload Image:</label>
+          <input type="file" id="img" name="img" accept="image/*">
+          
+          
+          
+          
+          
+        <br>
+          
+          
+        </fieldset>
+     
+        
+        <button type="submit">Submit</button>
+        
+        
+       </form>
+                 <div class="event-boxes" style="margin-left:200px;width:1500px;">
+                 <div class="recent-sale box">
+           
+                    <div class = "title" style="text-align:center;">Your Feedback</div>
+                    <div style ="size:1px; color:red; text-align:center;"><i>*Note: You cannot add feedback related to a pending event.</i></div>
                     <br><br>
                     
                     
                     <table>
                     
                     <tr>
-                    
-                    <th style="width:500px;">Feedback</th>
+                    <th style="width:500px;">Event</th>
+                    <th style="width:200px;">Date</th>
+                    <th style="width:700px;">Feedback</th>
                     <th style="width:100px;">Rating</th>
-                    <th style="width:300px;width:100px;;"></th>
-                    <th style="width:300px;width:100px;"></th>
+                    <th style="width:100px;"></th>
+                    <th style="width:100px;"></th>
                     
                     
                     </tr>
@@ -158,24 +257,31 @@
                     <c:param name="fid" value="${fid}"/>
                     <c:param name="description" value="${description}"/>
                     <c:param name="rating" value="${rating}"/>
+                    
                     </c:url>
         			
         			<tr>
         			
+        			<td>${fee.event}</td>
+        			<td>${fee.date}</td>
         			<td>${fee.description}</td>
         			
         			<td style="text-align:center;">${fee.rating}</td>
         			
         			<td style="text-align:center;">
-        			<a href="${fupdate}">
+        			<a href="${fupdate}" style="text-decoration:none;">
+        			<div class="btn">
         			<button>Edit</button>
+        			</div>
         			</a>
         			</td>
         			
         			<td style="text-align:center;">
         			<form method="get" action="${pageContext.request.contextPath}/deleteFeedback">
         			<input type="hidden"  id = "fid" name="fid" value="${fee.fid}">
+        			<div class="btn">
         			<button type="submit">Delete</button>
+        			</div>
         			</form>
         			</td>
         			
@@ -198,7 +304,6 @@
         </div>
     </section>
    
-   <a href="${pageContext.request.contextPath}/checkFeedback"><input type="button" value="Add Feedback"></a>
     </body>
     
     
@@ -376,6 +481,10 @@
 			  margin-left: 70%;
 			}
 
+
+.btn{
+	width:200px;
+}
 
 
 </style>

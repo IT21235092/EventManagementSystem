@@ -3,7 +3,6 @@ package com.customer;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -27,7 +26,7 @@ public class CustomerInsert extends HttpServlet {
 		String email = request.getParameter("email");
 		String contact = request.getParameter("phone");
 		String password = request.getParameter("pswd");
-		ArrayList arr = new ArrayList<>();
+		ArrayList<Object> arr = new ArrayList<>();
 		
 		
 		boolean isSuccess = false;

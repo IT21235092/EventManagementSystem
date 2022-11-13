@@ -33,6 +33,16 @@ public class SetSessionServlet extends HttpServlet {
 		session.setAttribute("num", num);
 		session.setAttribute("edate", edate);
 		
+		session.removeAttribute("pp");
+		session.removeAttribute("paid");
+		session.removeAttribute("mp");
+		session.removeAttribute("maid");
+		session.removeAttribute("dp");
+		session.removeAttribute("daid");
+		session.removeAttribute("ip");
+		session.removeAttribute("iaid");
+		session.removeAttribute("fp");
+		session.removeAttribute("faid");
 		
 		
 		RequestDispatcher dis = request.getRequestDispatcher("/bookeventServlet");

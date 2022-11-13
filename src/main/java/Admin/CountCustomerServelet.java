@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.vendor.Vendor;
+
 
 @WebServlet("/CountCustomerServelet")
 public class CountCustomerServelet extends HttpServlet {
@@ -20,13 +22,17 @@ public class CountCustomerServelet extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		boolean isSuccess = false;
-		ArrayList <Object> cnt = new ArrayList();
+		ArrayList <Object> cnt = new ArrayList<>();
+		ArrayList <Event> statistics = new ArrayList<Event>();
+		ArrayList <Vendor> topVendors = new ArrayList<Vendor>();
 		try 
 		{
 			cnt = (ArrayList<Object>) AdminUtil.CountCustomers();
-			isSuccess = (boolean) cnt.get(1);
+			statistics = (ArrayList<Event>) AdminUtil.calcStatistics();
+			topVendors = (ArrayList<Vendor>) AdminUtil.calTopVendors();
+			 
+			isSuccess = (boolean) cnt.get(4);
 	
-				
 		}
 		catch(Exception e)
 		{
@@ -36,8 +42,17 @@ public class CountCustomerServelet extends HttpServlet {
 		
 		if(isSuccess==true)
 		{
-			int count = (int) cnt.get(0);
-			request.setAttribute("CountCus", count);
+			int cusCount = (int) cnt.get(0);
+			int eventCount1 = (int) cnt.get(1);
+			int eventCount2 = (int) cnt.get(2);
+			double profit = (double) cnt.get(3);
+			request.setAttribute("countCus", cusCount);
+			request.setAttribute("countEvent1", eventCount1);
+			request.setAttribute("countEvent2", eventCount2);
+			request.setAttribute("profit", profit);
+			request.setAttribute("Statistics", statistics);
+			request.setAttribute("topVendors", topVendors);
+			
 		}
 		
 		RequestDispatcher dis = request.getRequestDispatcher("JSP/admin_dashboard.jsp");

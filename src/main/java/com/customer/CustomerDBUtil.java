@@ -1,14 +1,12 @@
 package com.customer;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.vendor.ConnectDatabase;
 
 public class CustomerDBUtil{
 	
@@ -33,7 +31,6 @@ public class CustomerDBUtil{
 		String sqlCheck = "select * from customer where Username = '"+userName+"'";
 		String sqlCheck2 = "select * from customer where Email = '"+email+"'";
 		ResultSet rsCheck = stmtCheck.executeQuery(sqlCheck);
-		System.out.println("Hello");
 		
 		// Validating inserted details
 		if (rsCheck.next())
@@ -223,7 +220,7 @@ public class CustomerDBUtil{
 
 	public static List<Customer> getCustomerDetails(int id)
 	{
-		ArrayList<Customer> cus = new ArrayList();
+		ArrayList<Customer> cus = new ArrayList<Customer>();
 		
 		try
 		{

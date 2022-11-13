@@ -413,20 +413,133 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "select * from event where cust_id = '"+cid+"' and event_date > curdate()";
+			String sql = "select * from event where cust_id = '"+cid+"' and status = 0";
 			rs = stmt.executeQuery(sql);
 					
 					
-			if(rs.next() == true) {
+			if(rs.next() == true) 
+			{
 				
 				isSuccess = true;
 				
 			}
-			else {
+			else
+			{
 				isSuccess = false;
 			}
 			
 			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		
+		return isSuccess;
+	}
+	
+	
+	public static Double calculateProfit(String aid)
+	{
+		Double adminProfit = 0.0;
+		Double vendorProfit = 0.0;
+		int vid = 0;
+		int adId = Integer.parseInt(aid);
+		
+		try {
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "select Vendor_ID, Price from advertisement where Ad_ID = '"+adId+"'";
+			rs = stmt.executeQuery(sql);
+					
+					
+			if(rs.next() == true) 
+			{
+				vid = rs.getInt(1);
+				vendorProfit  = rs.getDouble(2);
+				adminProfit = 0.1*vendorProfit;
+				vendorProfit = 0.9*vendorProfit;
+				
+				String sql2 = "Update vendor set Total_Profit = Total_Profit + '"+vendorProfit+"' where Vendor_ID = '"+vid+"'";
+				int rs1 = stmt.executeUpdate(sql2);
+				
+				if ( rs1 > 0)
+				{
+					return adminProfit;
+				}
+				else
+				{
+					adminProfit = 0.0;
+				}
+				
+			}
+			
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		
+		return adminProfit;
+	}
+	
+	
+	public static void addAdminProfit(Double adminProfit)
+	{
+		try 
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "Update admin set Total_Profit = Total_Profit + '"+adminProfit+"' where Admin_ID = 1";
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0)
+			{
+				System.out.println( "Success" );
+			}
+			else
+			{
+				System.out.println( "Unsuccess" );
+			}
+						
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public static boolean setEventStatus(int eid) {
+		
+		boolean isSuccess = false;
+		
+		
+		try {
+			
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "update event  set Status = 1 where event_id = '"+eid+"' ";
+			
+			int rs = stmt.executeUpdate(sql);
+			
+			if(rs > 0) {
+				
+				isSuccess = true;
+			}
+			else {
+				isSuccess = false;
+			}
 			
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -435,6 +548,7 @@ public class EventDBUtil {
 		
 		
 		return isSuccess;
+		
 	}
 	
 	
