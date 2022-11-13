@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
 
-    <body>
+    <body style = "background-image: url('../Images/back.jpeg');">
     
     <%
  		String adid = request.getParameter("adId");
@@ -34,30 +34,22 @@
             <i class='bx bx-menu' id="btn" ></i>
         </div>
         <ul class="nav-list">
+        
         <li>
-            <i class='bx bx-search' ></i>
-            <input type="text" placeholder="Search...">
-        </li>
-        <li>
-            <a href="#" class = "colored" >
-                <i class='bx bxs-dashboard colored'></i>
+            <a href="${pageContext.request.contextPath}/JSP/Vendor_dashboard.jsp">
+                <i class='bx bxs-dashboard'></i>
                 <span class="links_name">Dashboard</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/showAdServlet" class='colored'>             
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Services</span>
             </a>
         </li>
+        
         <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/InitialSettings2">
                 <i class='bx bx-cog' ></i>
                 <span class="links_name">Settings</span>
             </a>

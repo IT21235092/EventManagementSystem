@@ -24,7 +24,7 @@
         </div>
         <ul class="nav-list">
         <li>
-            <a href="#" class = "colored" >
+            <a href="http://localhost:8080/EventManagementSystem/JSP/Vendor_dashboard.jsp" class = "colored" >
                 <i class='bx bxs-dashboard colored'></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -33,12 +33,6 @@
             <a href="http://localhost:8080/EventManagementSystem/showAdServlet">
                 <i class='bx bxs-message-square-add'></i>
                 <span class="links_name">Services</span>
-            </a>
-        </li>
-        <li>
-            <a href="#">
-                <i class='bx bx-message-dots' ></i>
-                <span class="links_name">ChatBox</span>
             </a>
         </li>
         <li>
@@ -412,7 +406,7 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  left:80%;
+  left:5%;
 }
 
 .button-86::after,
