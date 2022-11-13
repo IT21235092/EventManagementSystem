@@ -459,8 +459,8 @@ public class EventDBUtil {
 					
 			if(rs.next() == true) 
 			{
-				vid = rs.getInt(0);
-				vendorProfit  = rs.getDouble(1);
+				vid = rs.getInt(1);
+				vendorProfit  = rs.getDouble(2);
 				adminProfit = 0.1*vendorProfit;
 				vendorProfit = 0.9*vendorProfit;
 				
@@ -499,7 +499,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "Update admin"+ "Set Total_Profit = Total_Profit + '"+adminProfit+"'" + "where Admin_ID = 1";
+			String sql = "Update admin set Total_Profit = Total_Profit + '"+adminProfit+"' where Admin_ID = 1";
 			int rs = stmt.executeUpdate(sql);
 			
 			if(rs > 0)
