@@ -1,4 +1,4 @@
-<%@ page language="java" session = "true" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java"  contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
     <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -31,6 +31,9 @@
 		Statement stmt = null;
 		ResultSet rs = null;
 		ResultSet rs1 = null;
+		
+		
+		session.removeAttribute("serDetails");
     
     %>
     
@@ -154,7 +157,7 @@
          <!-- Home content -->
                <div class="row">
     <div class="col-md-12">
-      <form name ="frm" action="../addEvent" method="post">
+      <form name ="frm" action="../session" method="post">
         <h1> Book Event </h1>
         
         <fieldset>
@@ -194,13 +197,13 @@
   		  </select>
         
           <label for="name">Event Name:</label>
-          <input type="text" id="name" name="name" class="txt" required>
+          <input type="text" id="name" name="name" class="txt" required scope='session'>
         
           <label for="number">Number of Guests:</label>
-          <input type="number" id="num" name="num" required min="30" max="400">
+          <input type="number" id="num" name="num" required min="30" max="400" scope='session'>
        
           <label for="date">Event Date:</label>
-          <input type="date" id="edate" name="edate" required  >
+          <input type="date" id="edate" name="edate" required scope='session' >
           
           <input type="hidden" id="cid" name="cid" value="<%= session.getAttribute("Id") %>" >
           

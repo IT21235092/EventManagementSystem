@@ -33,7 +33,6 @@ public class CustomerDBUtil{
 		String sqlCheck = "select * from customer where Username = '"+userName+"'";
 		String sqlCheck2 = "select * from customer where Email = '"+email+"'";
 		ResultSet rsCheck = stmtCheck.executeQuery(sqlCheck);
-		System.out.println("Hello");
 		
 		// Validating inserted details
 		if (rsCheck.next())

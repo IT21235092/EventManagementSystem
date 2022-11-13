@@ -277,23 +277,40 @@ public class AdminUtil {
 			
 			//fetching
 			
-			String sql = "select count(Cust_ID) from customer ";
+			String sql1 = "select count(Cust_ID) from customer ";
+			String sql2 = "select count(Event_ID) from event where Status = True";
+			String sql3 = "select count(Event_ID) from event where Status = False";
+			
 			
 			try {
 			
-				ResultSet rs3 = stmt.executeQuery(sql);
-						while(rs3.next())
-						{
-							isSuccess = true;
-							
-							int count=  rs3.getInt(1);
-							
-							ob.add(count);
-							
-			
-						
+				ResultSet rs3 = stmt.executeQuery(sql1);
 				
-						}
+				while(rs3.next())
+				{
+					int cusCount =  rs3.getInt(1);
+					ob.add(cusCount);		
+				}
+				
+				ResultSet rs4 = stmt.executeQuery(sql2);
+				
+				while(rs4.next())
+				{
+					int eventCount1 = rs4.getInt(1);
+					ob.add(eventCount1);
+				}
+				
+				ResultSet rs5 = stmt.executeQuery(sql3);
+				
+				while(rs5.next())
+				{
+					isSuccess = true;
+					int eventCount2 = rs5.getInt(1);
+					ob.add(eventCount2);
+				}
+				
+				
+				
 			}
 			catch(Exception e)
 			{
@@ -310,6 +327,62 @@ public class AdminUtil {
 		
 		ob.add(isSuccess);
 		return ob;
+	}
+	
+	
+	public static List<Event> calcStatistics()
+	{
+		boolean isSuccess= false;
+		ArrayList<Event> data = new ArrayList();
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			String sql = "select Event_Date, c.Username, e.Status, e.Total_Price from event e, Customer c where e.Cust_ID = c.Cust_ID LIMIT 6";
+			
+			try 
+			{
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while(rs.next())
+				{
+					String date = rs.getString(1);
+					String name = rs.getString(2);
+					boolean status = rs.getBoolean(3);
+					double totPrice = rs.getDouble(4);
+					
+					Event e = new Event(date, name, status, totPrice);
+					data.add(e);
+				}
+	
+				
+				
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+				
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return data;
 	}
 	
 	

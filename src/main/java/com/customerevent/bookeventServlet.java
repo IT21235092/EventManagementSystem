@@ -28,12 +28,17 @@ public class bookeventServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		
+		String type = request.getParameter("type");
+		
+		
+	
+		
 		
 		if(session.getAttribute("serDetails") == null) {
 			
 			
 			
-			String type = request.getParameter("type");
+			
 			System.out.println(type);
 			
 			

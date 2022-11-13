@@ -151,12 +151,13 @@
         		%>
         			
         			<div class="grid-item">
-        			<input type="radio" id="aid" name="vendor" required>
+        			<input type="radio" id = "aid" value="<%= rs.getInt("Ad_ID")%>" name="aid" required>
         			<%= rs.getString("Org_name")%><br>
         			<%= rs.getDouble("Price")%><br>
         			<%= rs.getString("Description")%><br>
         			<%= rs.getString("Location")%>
         			
+        			<input  type = "hidden" id="price" name="price" value="<%= rs.getDouble("Price") %>">
         			<input  type = "hidden" id="eid" name="eid" value="<%= session.getAttribute("eid") %>">
         	    
         	    </div>
