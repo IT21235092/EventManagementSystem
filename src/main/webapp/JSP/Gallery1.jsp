@@ -159,33 +159,33 @@
 <h1>Gallery</h1>
 </div>
 <div class="container-all">
-<div class="container">
- <a href="Gallery2.jsp"> <img src="https://bit.ly/2PvlS8Z" alt="">
+<div class="container" style="width:30%;">
+ <a href="Gallery2.jsp"> <img src="https://upload.wikimedia.org/wikipedia/commons/2/21/Couple_at_a_wedding_ceremony_in_Indonesia.jpg" alt="" >
    <span class="title">Weddings</span>
   <span class="text">Wedding practices in different cultures A wedding is a ceremony where two people are united in marriage.</span> </a>
 </div>
-<div class="container">
-    <a href="Gallery2.jsp"><img src="https://bit.ly/2PXNumM" alt=""> 
+<div class="container" style="width:35.5%;">
+    <a href="Gallery3.jsp"><img src="https://www.incimages.com/uploaded_files/image/1920x1080/getty_499517325_111832.jpg" alt=""> 
   <span class="title">Conference</span>
   <span class="text">A convention, in the sense of a meeting, is a gathering of individuals who meet at an arranged place and time in order to discuss or engage in some common interest.</span>
 </a></div>
-<div class="container">
-    <a href="Gallery2.jsp"> <img src="https://bit.ly/2KbUszm" alt=""> 
+<div class="container" style="width:33.15%;">
+    <a href="Gallery4.jsp"> <img src="https://i.guim.co.uk/img/media/dd2344a2c6897c9751eff292f01810a020d05257/0_339_5568_3341/master/5568.jpg?width=620&quality=45&dpr=2&s=none" alt=""> 
    <span class="title">Concerts</span>
   <span class="text">MA concert is a live music performance in front of an audience. The performance may be by a single musician, sometimes then called a recital, or by a musical ensemble, such as an orchestra, choir, or band.</span>
 </a></div>
-<div class="container">
-    <a href="Gallery2.jsp"><img src="https://bit.ly/2FnhYul" alt=""> 
+<div class="container" style="width:33%;">
+    <a href="Gallery5.jsp"><img src="https://miro.medium.com/max/1400/0*7XaqUbDceRfrONAW.png" alt=""> 
    <span class="title">Birthdays</span>
   <span class="text">A birthday is the anniversary of the birth of a person, or figuratively of an institution. Birthdays of people are celebrated in numerous cultures</span>
 </a></div>
-<div class="container">
-    <a href="Gallery2.jsp"> <img src="https://bit.ly/2FznWrU" alt=""> 
+<div class="container" style="width:30%; margin-top:-20.5%;">
+    <a href="Gallery6.jsp"> <img src="https://imageio.forbes.com/specials-images/imageserve/882906386/A-new-survey-indicates-more-organizations-are-holding-holiday-parties-this-year-/960x0.jpg?format=jpg&width=960" alt=""> 
    <span class="title">Parties</span>
   <span class="text">A party is a gathering of people who have been invited by a host for the purposes of socializing, conversation, recreation, or as part of a festival or other commemoration or celebration of a special occasion.</span>
 </a></div>
-<div class="container">
-    <a href="Gallery2.jsp"> <img src="https://bit.ly/2zd3HLf" alt=""> 
+<div class="container" style="width:35%; margin-top:-20.5%;  left:0%;">
+    <a href="Gallery7.jsp"> <img src="https://www.consciousjourneys.com/wp-content/uploads/2016/03/esala-6.jpg" alt=""> 
    <span class="title">Festivals</span>
   <span class="text">A festival is an event ordinarily celebrated by a community and centering on some characteristics aspect of that community and its religion or cultures.</span>
 </a></div>

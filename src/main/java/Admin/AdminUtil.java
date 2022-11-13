@@ -314,6 +314,200 @@ public class AdminUtil {
 	
 	
 	
+	public static List<VendorApprove> approveVendor()
+	{
+		ArrayList<VendorApprove> ad = new ArrayList();
+		
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			//fetching
+			
+			String sql3 = "select * from advertisement where Status = 0";
+			
+			
+			ResultSet rs3 = stmt.executeQuery(sql3);
+			
+				while(rs3.next())
+				{
+					int vendorID = rs3.getInt(2);
+					int addID = rs3.getInt(1);
+					String name = rs3.getNString(3);
+					double price = rs3.getDouble(4);
+					String desc = rs3.getNString(5);
+					int status = rs3.getInt(7);
+					
+					
+				
+		
+					VendorApprove app = new VendorApprove(vendorID,addID,name,price,desc,status);
+					
+					ad.add(app);
+					
+			
+			
+				}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ad;
+	}
+	
+	
+	public static boolean ApproveVendorAdd(int id)
+	{
+		boolean isSuccess =false;
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		System.out.println(id);
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			String sql = "update advertisement set status = 1 where Ad_ID ='"+id+"'";
+			
+			
+		
+			int rs = stmt.executeUpdate(sql);
+			
+		
+			
+			
+			if(rs>0)
+			{
+				isSuccess = true;
+			}
+			else
+			{
+				isSuccess = false;
+			}
+			
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return isSuccess;
+		
+	
+	}
+	
+	
+	public static boolean RejectAdvertisement(int id)
+	{
+		//boolean isSuccess = false;
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			String sql6 = "delete from advertisement where Ad_ID = '"+id+"' ";
+			
+			int rs6 =stmt.executeUpdate(sql6);
+			
+			if(rs6 > 0)
+			{
+				chck = true;
+			}
+			else
+			{
+				chck = false;
+			}
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return chck;
+	}
+	
+	
+	
+	
+	
+	public static List<FeedbackFetch> fetchFeedback()
+	{
+		ArrayList<FeedbackFetch> ad = new ArrayList();
+		
+		
+		String url = "jdbc:mysql://localhost:3306/event_management_system";
+		String user = "root";
+		String pass = "eventmanagement123";
+		
+		
+		try
+		{
+			Class.forName("com.mysql.jdbc.Driver");
+			
+			Connection con = DriverManager.getConnection(url, user, pass);
+			Statement stmt = con.createStatement();
+			
+			//fetching
+			
+			String sql3 = "select * from feedback f, customer c where f.Cust_ID = c.Cust_ID";
+			
+			
+			ResultSet rs3 = stmt.executeQuery(sql3);
+			
+				while(rs3.next())
+				{
+				    int FeedbackID = rs3.getInt(1);
+					String name = rs3.getNString(8);
+					String email = rs3.getNString(10);
+					String desc = rs3.getNString(2);
+					int rating = rs3.getInt(3);
+					
+					
+				System.out.println(name);
+				System.out.println(email);
+		
+					FeedbackFetch app = new FeedbackFetch(FeedbackID,name,email,desc,rating);
+					
+					ad.add(app);
+					
+			
+			
+				}
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return ad;
+	}
 	
 	
 }

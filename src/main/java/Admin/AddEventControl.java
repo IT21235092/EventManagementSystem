@@ -39,23 +39,23 @@ public class AddEventControl extends HttpServlet {
 		String types[] = request.getParameterValues("s1");
 		String description = request.getParameter("txtarea");
 	
-		Part filePart = request.getPart("event_image");
-		//filePart.getSubmittedFileName();
-	
-    
-        
-		 // gets absolute path of the web application
-        String applicationPath = request.getServletContext().getRealPath("");
-        // constructs path of the directory to save uploaded file
-        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
-		
-		
-		 // creates the save directory if it does not exists
-        File fileSaveDir = new File(uploadFilePath);
-        if (!fileSaveDir.exists()) {
-            fileSaveDir.mkdirs();
-        }
-        System.out.println("Upload File Directory="+fileSaveDir.getAbsolutePath());
+//		Part filePart = request.getPart("event_image");
+//		//filePart.getSubmittedFileName();
+//	
+//    
+//        
+//		 // gets absolute path of the web application
+//        String applicationPath = request.getServletContext().getRealPath("");
+//        // constructs path of the directory to save uploaded file
+//        String uploadFilePath = applicationPath + File.separator + UPLOAD_DIR;
+//		
+//		
+//		 // creates the save directory if it does not exists
+//        File fileSaveDir = new File(uploadFilePath);
+//        if (!fileSaveDir.exists()) {
+//            fileSaveDir.mkdirs();
+//        }
+//        System.out.println("Upload File Directory="+fileSaveDir.getAbsolutePath());
        
 		
 		boolean isTrue;

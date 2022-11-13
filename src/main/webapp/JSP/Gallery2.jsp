@@ -160,98 +160,98 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400&display=swap" rel="stylesheet">
 <div class="cont2">
-	<h1>Gallery</h1>
+	<h1>Weddings</h1>
 	</div>
 <div class="gallery">
    
 
 	<div class="gallery__column">
-		<a href="https://unsplash.com/@jeka_fe" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/_cvwXhGqG-o/300x300" alt="Portrait by Jessica Felicio" class="gallery__image">
+				<img src="https://hips.hearstapps.com/hmg-prod/images/paris-hilton-wedding-photo-credit-jose-villashutterstock-1636744956.jpg?resize=980:*" alt="Portrait by Jessica Felicio" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Jessica Felicio</figcaption>
 			</figure>
 		</a>
 
-		<a href="https://unsplash.com/@oladimeg" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/AHBvAIVqk64/300x500" alt="Portrait by Oladimeji Odunsi" class="gallery__image">
+				<img src="https://ktla.com/wp-content/uploads/sites/4/2021/06/wedding.jpg?w=960&h=540&crop=1" alt="Portrait by Oladimeji Odunsi" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Oladimeji Odunsi</figcaption>
 			</figure>
 		</a>
 
-		<a href="https://unsplash.com/@a2eorigins" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/VLPLo-GtrIE/300x300" alt="Portrait by Alex Perez" class="gallery__image">
+				<img src="https://www.washingtonian.com/wp-content/uploads/2022/09/img_M_J_wedding_preview-28-cropped.jpg" alt="Portrait by Alex Perez" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Alex Perez</figcaption>
 			</figure>
 		</a>
 	</div>
 	
 	<div class="gallery__column">
-		<a href="https://unsplash.com/@noahbuscher" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/AR7aumwKr2s/300x300" alt="Portrait by Noah Buscher" class="gallery__image">
+				<img src="https://www.3wisemen.co.nz/media/wysiwyg/FormalWedding_Image4.1.png" alt="Portrait by Noah Buscher" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Noah Buscher</figcaption>
 			</figure>
 		</a>
 		
-		<a href="https://unsplash.com/@von_co" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/dnL6ZIpht2s/300x300" alt="Portrait by Ivana Cajina" class="gallery__image">
+				<img src="https://www.3wisemen.co.nz/media/wysiwyg/SmartCasual_Image4.png" alt="Portrait by Ivana Cajina" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Ivana Cajina</figcaption>
 			</figure>
 		</a>
 
-		<a href="https://unsplash.com/@samburriss" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/tV_1sC603zA/300x500" alt="Portrait by Sam Burriss" class="gallery__image">
+				<img src="https://people.com/thmb/GpXSMHXb3IoptBtPEy5hgWWLfEY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(619x404:621x406):format(webp)/haley-ferguson-wedding-3-770b527a20864b91a9ed996d4f1603dc.jpg" alt="Portrait by Sam Burriss" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Sam Burriss</figcaption>
 			</figure>
 		</a>
 	</div>
 	
 	<div class="gallery__column">
-		<a href="https://unsplash.com/@marilezhava" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
 				<img src="https://source.unsplash.com/Xm9-vA_bhm0/300x500" alt="Portrait by Mari Lezhava" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Mari Lezhava</figcaption>
 			</figure>
 		</a>
 		
-		<a href="https://unsplash.com/@ethanhaddox" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/NTjSR3zYpsY/300x300" alt="Portrait by Ethan Haddox" class="gallery__image">
+				<img src="https://images.squarespace-cdn.com/content/v1/59814e04f14aa15c5c9a262c/1590621452141-RH3426UFKFOF54QCSFSM/Emily+Hugo+bride+celebrating+with+bouquet+and+confetti++%E2%80%93+Christchuch+Weddings?format=750w" alt="Portrait by Ethan Haddox" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Ethan Haddox</figcaption>
 			</figure>
 		</a>
 
-		<a href="https://unsplash.com/@mr_geshani" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/2JH8d3ChNec/300x300" alt="Portrait by Amir Geshani" class="gallery__image">
+				<img src="https://people.com/thmb/-wcmUePWGZ3zqDRT1prkZPx-TBQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():focal(629x209:631x211):format(webp)/haley-ferguson-wedding-6-8a8ee9124dc340078e2154cfa52a0a64.jpg" alt="Portrait by Amir Geshani" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Amir Geshani</figcaption>
 			</figure>
 		</a>
 	</div>
 	
 	<div class="gallery__column">
-		<a href="https://unsplash.com/@frxgui" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/FQhLLehm4dk/300x300" alt="Portrait by Guilian Fremaux" class="gallery__image">
+				<img src="https://namakwari.co.za/wp-content/uploads/2020/04/Namakwari-Website-Photo-Sizing-4.jpg" alt="Portrait by Guilian Fremaux" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Guilian Fremaux</figcaption>
 			</figure>
 		</a>
 
-		<a href="https://unsplash.com/@majestical_jasmin" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/OQd9zONSx7s/300x300" alt="Portrait by Jasmin Chew" class="gallery__image">
+				<img src="https://adelaidepopupweddings.com.au/wp-content/uploads/Gallery-3.jpg" alt="Portrait by Jasmin Chew" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Jasmin Chew</figcaption>
 			</figure>
 		</a>
 		
-		<a href="https://unsplash.com/@dimadallacqua" target="_blank" class="gallery__link">
+		<a href="#" target="_blank" class="gallery__link">
 			<figure class="gallery__thumb">
-				<img src="https://source.unsplash.com/XZkEhowjx8k/300x500" alt="Portrait by Dima DallAcqua" class="gallery__image">
+				<img src="https://cdn.shopify.com/s/files/1/0136/1081/1451/products/159_c3034b2f-ea97-4126-a0eb-583e5a98c4c8_1024x1024@2x.jpg?v=1554441630" alt="Portrait by Dima DallAcqua" class="gallery__image">
 				<figcaption class="gallery__caption">Portrait by Dima DallAcqua</figcaption>
 			</figure>
 		</a>

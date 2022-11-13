@@ -92,7 +92,7 @@
     
     </style>
 </head>
-<body>
+<body style="overflow-x: hidden;">
 
    
   <div id="light" class="white_content"><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'"></a>
@@ -133,7 +133,7 @@
     
     <section>
             
-    <div class="container">
+    <div class="container" >
         <video autoplay muted loop autoplay class="backv">
             <source src="${pageContext.request.contextPath}/Images/vdd.mp4" type="video/mp4">
         </video>
@@ -142,14 +142,7 @@
     <h2 id="text">Lets make your events colorful</h2>    
     
     
-    <form method="post">
-        <label></label>
-        <div class="sbox">
-        <input type="text" class="search-txt" name="search" placeholder="Search">
-        <input type="submit" name="submit" value="Go" id="nm">
-        <ion-icon name="search-outline"></ion-icon>
-        </div>	
-        </form>
+   
 
         <div class="para">
             <h2>UNPARALLELED, STRESS-FREE</h2><br>
@@ -211,7 +204,7 @@
                         <div class="slide-text">From a show stopping engagement celebration to an <br>epic surprise birthday party, you dream it and we'll make<br> it a reality.
 
                         </div>
-                        <div class="slide-more"><a href="#">SEE GALLERY</a></div>
+                        <div class="slide-more"><a href="http://localhost:8080/EventManagementSystem/JSP/Gallery1.jsp">SEE GALLERY</a></div>
                     </div>	
                 </div>
                
@@ -266,7 +259,7 @@ window.onscroll = function() {
  
  </section>
 
- <footer>
+ <footer style="top:270vh;">
     <img class="logo1" src="../Images/logo.png" >
     <p id="cprt">Copyright © 2022 Eventrra. Website design & management by Team 1.</p>
     <div class="social-container">

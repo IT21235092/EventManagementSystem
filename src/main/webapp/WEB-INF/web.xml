@@ -51,7 +51,7 @@
     <url-pattern>/insertV</url-pattern>
 </servlet-mapping>
 
-<!-- ===========================================Advertisement=============================================== -->
+
 <servlet>
 	<servlet-name>Create_Advertisement</servlet-name>
 	<servlet-class>Vendor.AdServlet</servlet-class>
@@ -284,6 +284,7 @@
 	<url-pattern>/services1</url-pattern>
 </servlet-mapping> 
 
+
 <servlet>
 	<servlet-name>SetSessionServlet</servlet-name>
 	<servlet-class>com.customerevent.SetSessionServlet</servlet-class>
@@ -303,6 +304,34 @@
 	<servlet-name>SetSession2</servlet-name>
 	<url-pattern>/session2</url-pattern>
 </servlet-mapping>
+
+
+
+<servlet>
+    <servlet-name>Approve</servlet-name>
+    <servlet-class>Admin.ApprovedAddsServelet</servlet-class>
+</servlet>
+
+
+<servlet-mapping>
+    <servlet-name>Approve</servlet-name>
+    <url-pattern>/Approve</url-pattern>
+</servlet-mapping>
+
+
+<servlet>
+	<servlet-name>RejectAdd</servlet-name>
+	<servlet-class>Admin.RejectAdd</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>RejectAdd</servlet-name>
+	<url-pattern>/reject</url-pattern>
+</servlet-mapping>
+
+
+
+
 
 </web-app>
 

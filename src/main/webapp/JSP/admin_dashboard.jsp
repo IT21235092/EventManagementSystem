@@ -212,13 +212,13 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/FeedbackServelet">
                 <i class='bx bx-star'></i>
                 <span class="links_name">Reviews</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/ApproveVendorServelet">
                 <i class='bx bxs-user'></i>
                 <span class="links_name">Vendors</span>
             </a>

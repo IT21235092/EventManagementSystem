@@ -206,7 +206,7 @@
         </div>
         <ul class="nav-list">
         <li>
-            <a href="${pageContext.request.contextPath}/JSP/admin_dashboard.jsp" >
+            <a href="http://localhost:8080/EventManagementSystem/CountCustomerServelet"" >
                 <i class='bx bxs-dashboard '></i>
                 <span class="links_name">Dashboard</span>
             </a>
@@ -218,13 +218,13 @@
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/FeedbackServelet">
                 <i class='bx bx-star'></i>
                 <span class="links_name">Reviews</span>
             </a>
         </li>
         <li>
-            <a href="#">
+            <a href="http://localhost:8080/EventManagementSystem/ApproveVendorServelet">
                 <i class='bx bxs-user'></i>
                 <span class="links_name">Vendors</span>
             </a>
