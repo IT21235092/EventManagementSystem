@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" session = "true" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
     
@@ -122,12 +122,21 @@
                 <span><h5>Hello</h5></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
-                  <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                  <li><a href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp" onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
             </div>
           </div>
             
+            <script>
+        	function logout() {
+        		var txt;
+        		if (confirm("Are you sure you want to log out?")) {
+        			txt = "You logged out";
+        		}
+        	}
+        </script>
+        </nav>
 
          <!-- Home content -->
          
@@ -135,7 +144,33 @@
        
     </section>
     
-    <input type="hidden" value = "<%= session.getAttribute("eid") %>" id = "eid" name="eid">
+    		<input type="hidden" id = "cid" name="cid" value = "<%= session.getAttribute("Id") %>" >
+          
+    		<input type="hidden" id="name" name="name" value= "<%=session.getAttribute("name") %>">
+    		<input type="hidden" id="num" name="num" value=  "<%=session.getAttribute("num") %>">
+    		<input type="hidden" id="edate" name="edate" value= "<%=session.getAttribute("edate") %>" >
+    		<input type="hidden" id="type" name="type" value= "<%=session.getAttribute("type") %>">
+    		<input type="hidden" id="price" name="price" value= "<%=session.getAttribute("price") %>">
+   
+    
+    		<input type="hidden" id="paid" name="paid" value="<%=session.getAttribute("paid") %>">
+    		
+          	
+          	<input type="hidden" id="maid" name="maid" value="<%=session.getAttribute("maid") %>">
+          
+          
+          	
+          	<input type="hidden" id="daid" name="daid" value="<%=session.getAttribute("daid") %>">
+          	
+          
+          	
+            <input type="hidden" id="iaid" name="iaid" value="<%=session.getAttribute("iaid") %>">
+            
+          
+            
+          	<input type="hidden" id="faid" name="faid" value= "<%=session.getAttribute("faid") %>">
+          	
+      
     
         <div class="container1 p-0">
         <div class="card px-4">
@@ -166,36 +201,9 @@
                     </div>
                 </div>
                 <div class="col-12">
-                <a href="${pageContext.request.contextPath}/pay" style= "text-decoration:none;">
+                <a href="${pageContext.request.contextPath}/addEvent" style= "text-decoration:none;">
                     <div class="btn btn-primary mb-3">
-                        <span class="ps-3">
-                        <%
-                        try{
-                        	
-                        	
-                        	con = DriverManager.getConnection(url, user, pass);
-                      	 	stmt = con.createStatement();
-                      	 	
-                      	 	String sql = "select total_price from event where event_id = '"+ session.getAttribute("eid") +"'";
-                        	
-                      	 	rs = stmt.executeQuery(sql);
-                      	 	
-                      	 	while(rs.next()){
-                      	 		
-                      	 		out.print("Pay Rs. " +rs.getDouble("total_price"));
-             
-                      	 	}
-                        	
-                        	
-                        }catch(Exception e){
-                        	e.printStackTrace();
-                        }
-                        
-   
-                        
-                        %>
-
-                        </span>
+                        <span class="ps-3">Pay Rs.<%= request.getParameter("price") %></span>
                         <span class="fas fa-arrow-right"></span>
                     </div>
                 </a>    

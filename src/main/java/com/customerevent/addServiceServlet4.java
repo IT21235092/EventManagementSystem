@@ -20,13 +20,14 @@ public class addServiceServlet4 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int aid = Integer.parseInt(request.getParameter("aid"));
-		
+		Double price = Double.parseDouble(request.getParameter("price") );
 		
 		String type = (String) request.getAttribute("Type");
 
 		HttpSession session = request.getSession();
 		
-		request.removeAttribute("paid");
+		request.removeAttribute("iaid");
+		request.removeAttribute("ip");
 		
 		HashMap<String,String> hm = new HashMap<>();
 		
@@ -41,13 +42,13 @@ public class addServiceServlet4 extends HttpServlet {
 			value+=" Rs.";
 			value+=  l.get(1);
 			
-			hm.put("Invitation Cards", value);
+			hm.put("Invitation Card", value);
 			
 			session.setAttribute("serDetails", hm);
 	
 			
 			request.getSession().setAttribute("iaid", aid);
-			
+			request.getSession().setAttribute("ip", l.get(1));
 			
 			
 		}

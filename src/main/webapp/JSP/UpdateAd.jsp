@@ -17,8 +17,9 @@
     <body>
     
     <%
-		String adid = request.getParameter("adId");
-		String vid = request.getParameter("Vendor_ID");
+ 		String adid = request.getParameter("adId");
+ 		String vid = request.getParameter("Vendor_ID");
+ 		String title = request.getParameter("title");
 		String price = request.getParameter("price");
 		String desc = request.getParameter("desc");
 		String atta = request.getParameter("attach");
@@ -108,6 +109,14 @@
             </div>
         </nav>
         
+        <script>
+        	function logout() {
+        		var txt;
+        		if (confirm("Are you sure you want to log out?")) {
+        			txt = "You logged out";
+        		}
+        	}
+        </script>
         </section>
         
     <!-- -----------------------------------Content-------------------------------------------- -->
@@ -118,12 +127,8 @@
       <form action= "http://localhost:8080/EventManagementSystem/updatead" method="post">
         <div class="ad-details">
         <div class="input-box">
-             <span class="details">Ad ID</span>
-            <input type="text" name="adid" value="<%= adid %>" readonly>
-          </div>
-          <div class="input-box">
-             <span class="details">Vendor ID</span>
-            <input type="text" name="vid" value="<%= vid %>" readonly>
+            <span class="details">Advertisement Title</span>
+            <input type="text" name="title" placeholder="Enter the title of your ad" required value="<%= title%>">
           </div>
             <div class="input-box">
             <span class="details">Price</span>
@@ -131,7 +136,7 @@
           </div>
           <div class="input-box">
             <span class="details">Description</span>
-            <textarea placeholder="Product details" name="desc" required value= ""><%= desc%></textarea>
+            <textarea placeholder="Product details" name="desc" required><%= desc%></textarea>
           </div>
         
           <div class="input-box">
@@ -139,6 +144,10 @@
             <input type="file" name="attach" value="<%= atta %>">
           </div>
         </div>
+        
+        <input type="text" name="adid" value="<%=adid%>" style="display: none;">
+        <input type="text" name="vid" value="<%=vid %>" style="display: none;">
+        
         <div class="button">
           <input type="submit" value="Submit">
         </div>

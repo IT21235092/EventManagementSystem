@@ -14,12 +14,12 @@
         <title> Customer Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<<<<<<< Updated upstream
+
     
     
-=======
+
         <link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
->>>>>>> Stashed changes
+
     </head>
 
     <body>
@@ -108,12 +108,21 @@
                 <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
                 <label for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
-                  <li><a href="#"><i class="mdi mdi-logout"></i>Logout</a></li>
+                  <li><a href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp" onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
             </div>
           </div>
         </nav>
+        
+        <script>
+        	function logout() {
+        		var txt;
+        		if (confirm("Are you sure you want to log out?")) {
+        			txt = "You logged out";
+        		}
+        	}
+        </script>
 
          <!-- Home content -->
 

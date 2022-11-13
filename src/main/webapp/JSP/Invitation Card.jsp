@@ -157,7 +157,7 @@
         			<%= rs.getString("Description")%><br>
         			<%= rs.getString("Location")%>
         			
-        			
+        			<input  type = "hidden" id="price" name="price" value="<%= rs.getDouble("Price") %>">
         			<input  type = "hidden" id="eid" name="eid" value="<%= session.getAttribute("eid") %>">
         	    
         	    </div>
