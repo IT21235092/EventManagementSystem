@@ -262,7 +262,6 @@ public class AdminUtil {
 	public static List<Object> CountCustomers()
 	{
 		boolean isSuccess= false;
-		ArrayList<CustomerCount> ad = new ArrayList();
 		ArrayList<Object> ob = new ArrayList();
 		
 		String url = "jdbc:mysql://localhost:3306/event_management_system";
@@ -355,7 +354,7 @@ public class AdminUtil {
 			Connection con = DriverManager.getConnection(url, user, pass);
 			Statement stmt = con.createStatement();
 			
-			String sql = "select Event_Date, c.Username, e.Status, e.Total_Price from event e, Customer c where e.Cust_ID = c.Cust_ID LIMIT 6";
+			String sql = "select Event_Date, c.Username, e.Status, e.Total_Price from event e, Customer c where e.Cust_ID = c.Cust_ID Order by Event_Date desc LIMIT 6";
 			
 			try 
 			{

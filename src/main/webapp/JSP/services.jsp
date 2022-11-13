@@ -23,7 +23,7 @@
         </div>
         <ul class="nav-list">
         <li>
-           	<a href="http://localhost:8080/EventManagementSystem/JSP/Vendor_dashboard.jsp">
+           	<a href="http://localhost:8080/EventManagementSystem/services1">
                 <i class='bx bxs-dashboard'></i>
                 <span class="links_name">Dashboard</span>
             </a>

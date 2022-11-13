@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -118,7 +119,7 @@
                 
                     <div class="left-side">
                         <div class="box-topic">Total Customers</div>
-                        <div class="number"><%out.println(request.getAttribute("VenCount")); %></div>
+                        <div class="number"><%out.println(request.getAttribute("countCus")); %></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
@@ -129,7 +130,7 @@
                 <div class="box">
                     <div class="left-side">
                         <div class="box-topic">Orders Pending</div>
-                        <div class="number">1000</div>
+                        <div class="number"><%out.println(request.getAttribute("countEvent1"));%></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
@@ -140,7 +141,7 @@
                 <div class="box">
                     <div class="left-side">
                         <div class="box-topic">Orders Completed</div>
-                        <div class="number">1000</div>
+                        <div class="number"><%out.println(request.getAttribute("countEvent2"));%></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
@@ -151,7 +152,7 @@
                 <div class="box">
                     <div class="left-side">
                         <div class="box-topic">Total Profit</div>
-                        <div class="number">1000</div>
+                        <div class="number"><%out.println(request.getAttribute("profit"));%></div>
                         <div class="indicator">
                             <i class='bx bx-up-arrow-alt' ></i>
                             <span class="text">Up from Yestersday</span>
@@ -168,39 +169,27 @@
                     <div class="event-details">
                         <ul class="details">
                             <li class = "topic">Date</li>
-                            <li><a href = "">02 Jan 2021</a></li>
-                            <li><a href = "">02 Jan 2021</a></li>
-                            <li><a href = "">02 Jan 2021</a></li>
-                            <li><a href = "">02 Jan 2021</a></li>
-                            <li><a href = "">02 Jan 2021</a></li>
-                            <li><a href = "">02 Jan 2021</a></li>
+                            <c:forEach var = "data" items = "${Statistics}">
+                            <li><a href = "">${data.getEvent_Date()}</a></li>
+                            </c:forEach>
                         </ul>
                         <ul class="details">
                             <li class = "topic">Customer</li>
-                            <li><a href = "">Alex Doe</a></li>
-                            <li><a href = "">David Mart</a></li>
-                            <li><a href = "">Roe Parter</a></li>
-                            <li><a href = "">Diana Penty</a></li>
-                            <li><a href = "">Martin Paw</a></li>
-                            <li><a href = "">Doe Alex</a></li>
+                             <c:forEach var = "data" items = "${Statistics}">
+                            <li><a href = "">${data.getName()}</a></li>
+                            </c:forEach>
                         </ul>
                         <ul class="details">
                             <li class = "topic">Status</li>
-                            <li><a href = "">Over</a></li>
-                            <li><a href = "">Pending</a></li>
-                            <li><a href = "">Over</a></li>
-                            <li><a href = "">Pending</a></li>
-                            <li><a href = "">Over</a></li>
-                            <li><a href = "">Pending</a></li>
+                             <c:forEach var = "data" items = "${Statistics}">
+                            <li><a href = "">${data.isStatus()}</a></li>
+                            </c:forEach>
                         </ul>
                         <ul class="details">
                             <li class = "topic">Sales</li>
-                            <li><a href = "">$450</a></li>
-                            <li><a href = "">$450</a></li>
-                            <li><a href = "">$450</a></li>
-                            <li><a href = "">$450</a></li>
-                            <li><a href = "">$450</a></li>
-                            <li><a href = "">$450</a></li>
+                               <c:forEach var = "data" items = "${Statistics}">
+                            <li><a href = "">$${data.getTotPrice()}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>

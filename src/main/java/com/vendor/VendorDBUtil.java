@@ -11,6 +11,8 @@ import java.util.List;
 import com.customer.Customer;
 import com.customer.DBConnect;
 
+import Admin.Event;
+
 public class VendorDBUtil {
 	
 	private static Connection con = null;
@@ -215,6 +217,135 @@ public class VendorDBUtil {
 		return isSuccess;
 	}
 
+	public static List<Object> CountData(int id)
+	{
+		ArrayList<Object> data = new ArrayList<Object>();
+		boolean isSuccess = false;
+		
+		try
+		{
+			Connection con = ConnectDatabase.getConnection();
+			Statement stmt = con.createStatement();
+			
+			String sql1 = "select count(e.Cust_ID)"
+					+ " from advertisement a,customer c,event e,event_add ed,vendor v"
+					+ " where a.Ad_ID=ed.Ad_ID and e.Event_ID=ed.Event_ID and v.Vendor_ID=a.Vendor_ID and c.Cust_ID = e.Cust_ID and v.Vendor_ID = '"+id+"'"
+					+ " group by v.Vendor_ID";
+			String sql2 = "select count(ad.Ad_ID)"
+					+ "from event e, event_add ed, advertisement ad\r\n"
+					+ "where e.Event_ID = ed.Event_ID and ed.Ad_ID = ad.Ad_ID and e.status = 0 and ad.Vendor_ID = '"+id+"'";
+			String sql3 = "select count(ad.Ad_ID)"
+					+ "from event e, event_add ed, advertisement ad\r\n"
+					+ "where e.Event_ID = ed.Event_ID and ed.Ad_ID = ad.Ad_ID and e.status = 1 and ad.Vendor_ID = '"+id+"'";
+			String sql4 = "select Total_Profit from vendor where Vendor_ID = '"+id+"'";
+			
+			try {
+				
+				ResultSet rs3 = stmt.executeQuery(sql1);
+				
+				while(rs3.next())
+				{
+					int cusCount =  rs3.getInt(1);
+					data.add(cusCount);		
+				}
+				
+				ResultSet rs4 = stmt.executeQuery(sql2);
+				
+				while(rs4.next())
+				{
+					int eventCount1 = rs4.getInt(1);
+					data.add(eventCount1);
+				}
+				
+				ResultSet rs5 = stmt.executeQuery(sql3);
+				
+				while(rs5.next())
+				{
+					int eventCount2 = rs5.getInt(1);
+					data.add(eventCount2);
+				}
+				
+				ResultSet rs6 = stmt.executeQuery(sql4);
+				
+				while(rs6.next())
+				{
+					isSuccess = true;
+					double profit = rs6.getDouble(1);
+					data.add(profit);
+				}
+			
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
 
+		data.add(isSuccess);
+		return data;
+		
+	}
+	
+	public static List<Event> calcStatistics(int id)
+	{
+		ArrayList<Event> data = new ArrayList();
+		
+	
+		
+		try
+		{
+			Connection con = ConnectDatabase.getConnection();
+			Statement stmt = con.createStatement();
+			
+			String sql = "select Event_Date, c.Username, e.Status, v.Total_Profit from event e, Customer c, event_add ed, advertisement ad, vendor v where e.Cust_ID = c.Cust_ID and e.Event_ID = ed.Event_ID and ed.Ad_ID = ad.Ad_ID and ad.Vendor_ID = v.Vendor_ID and ad.Vendor_ID  = '"+id+"' Order by Event_Date desc";
+			
+			try 
+			{
+				ResultSet rs = stmt.executeQuery(sql);
+				String actualStatus = "";
+				
+				while(rs.next())
+				{
+					String date = rs.getString(1);
+					String name = rs.getString(2);
+					boolean status = rs.getBoolean(3);
+					
+					if (status == true)
+						actualStatus = "Complete";
+					else
+						actualStatus = "Ongoing";
+							
+					double totPrice = rs.getDouble(4);
+					
+					Event e = new Event(date, name, actualStatus, totPrice);
+					data.add(e);
+				}
+	
+				
+				
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+				
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return data;
+	}
 
 }
