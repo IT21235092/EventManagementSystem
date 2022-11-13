@@ -10,7 +10,7 @@
 
 body
 {
-    background-color: #0202020e;
+    background-image: url('../Images/back.jpeg');
 }
 
 .sidebar
@@ -225,7 +225,7 @@ body
 
 .home-section
 {
-    background: #f5f5f5;
+    
     position: relative;
     height: 100%;
     width: calc(100% - 60px);
@@ -312,7 +312,7 @@ nav .profile-details .admin-name
   width: calc(100% / 4 - 15px);
   display:flex;
   align-items:center;
-  background: #fff;
+ 
   padding: 15px 14px;
   border-radius: 12px;
   justify-content: center;
@@ -413,7 +413,7 @@ nav .profile-details .admin-name
 .home-section .event-boxes .recent-sale
 {
   width: 65%;
-  background: #fff;
+ 
   border-radius: 12px;
   box-sizing: 0 5px 10px rgba(0,0,0,0.1);
   padding: 20px;
@@ -459,7 +459,7 @@ nav .profile-details .admin-name
 {
   width: 35%;
   margin-left: 20px;
-  background: #fff;
+  
   box-shadow: 0 5px 10px rgba(0,0,0,0.1);
   padding: 20px;
   border-radius: 12px;
@@ -739,18 +739,25 @@ form {
   display: grid;
   grid-template-columns: auto;
   width:400px;
-  margin-left:120px;
+  margin-left:40px;
    
 }
 .grid-item {
   
-  
-  padding: 20px;
-  font-size: 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-sizing: 0 5px 10px rgba(0,0,0,0.1);
+  padding: 28px;
+  font-size: 20px;
   text-align: center;
    margin:10px;
-   width:400px;
-  background: rgb(201,198,255);
-  background: linear-gradient(90deg, rgba(201,198,255,0.20258525773590685) 0%, rgba(230,230,255,0.20258525773590685) 51%, rgba(151,237,255,0.20258525773590685) 100%);
-   
+   width:550px;
+   height:fit-content;
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  
+}
+
+.grid-item .title{
+	font-size:25px;
+	font-family:'Trebuchet MS', sans-serif;
 }

@@ -34,6 +34,7 @@
 		
 		
 		session.removeAttribute("serDetails");
+		
     
     %>
     
@@ -203,7 +204,7 @@
           <input type="number" id="num" name="num" required min="30" max="400" >
        
           <label for="date">Event Date:</label>
-          <input type="date" id="edate" name="edate" required  >
+          <input type="date" id="edate" name="edate" required min='2022-11-30' max='2023-11-31' >
           
           <input type="hidden" id="cid" name="cid" value="<%= session.getAttribute("Id") %>" >
           

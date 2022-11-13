@@ -6,9 +6,13 @@ public class feedback {
 	private int cid;
 	private String description;
 	private int rating;
+	private String event;
+	private String date;
 	
-	public feedback(int fid, int cid,String description, int rating) {
+	public feedback(int fid, int cid,String description, int rating, String event, String date) {
 		
+		this.date = date;
+		this.event = event;
 		this.fid = fid;
 		this.cid = cid;
 		this.description = description;
@@ -30,6 +34,16 @@ public class feedback {
 	public int getFid() {
 		return fid;
 	}
+
+	public String getEvent() {
+		return event;
+	}
+
+	public String getDate() {
+		return date;
+	}
+	
+	
 	
 	
 	

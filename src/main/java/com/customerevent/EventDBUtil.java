@@ -529,7 +529,7 @@ public class EventDBUtil {
 			con = DBConnect.getConnection();
 			stmt = con.createStatement();
 			
-			String sql = "update event Status = 1 where event_id = '"+eid+"' ";
+			String sql = "update event  set Status = 1 where event_id = '"+eid+"' ";
 			
 			int rs = stmt.executeUpdate(sql);
 			
