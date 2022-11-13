@@ -284,5 +284,25 @@
 	<url-pattern>/services1</url-pattern>
 </servlet-mapping> 
 
+<servlet>
+	<servlet-name>SetSessionServlet</servlet-name>
+	<servlet-class>com.customerevent.SetSessionServlet</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>SetSessionServlet</servlet-name>
+	<url-pattern>/session</url-pattern>
+</servlet-mapping>
+
+<servlet>
+	<servlet-name>SetSession2</servlet-name>
+	<servlet-class>com.customerevent.SetSession2</servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>SetSession2</servlet-name>
+	<url-pattern>/session2</url-pattern>
+</servlet-mapping>
+
 </web-app>
 

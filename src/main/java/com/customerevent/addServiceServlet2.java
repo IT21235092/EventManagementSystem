@@ -21,6 +21,7 @@ public class addServiceServlet2 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int aid = Integer.parseInt(request.getParameter("aid"));
+		Double price = Double.parseDouble(request.getParameter("price") );
 		
 		
 		String type = (String) request.getAttribute("Type");
@@ -28,6 +29,7 @@ public class addServiceServlet2 extends HttpServlet {
 		HttpSession session = request.getSession();
 		
 		request.removeAttribute("maid");
+		request.removeAttribute("mp");
 		
 		HashMap<String,String> hm = new HashMap<>();
 		
@@ -48,7 +50,7 @@ public class addServiceServlet2 extends HttpServlet {
 	
 			
 			request.getSession().setAttribute("maid", aid);
-			
+			request.getSession().setAttribute("mp", l.get(1));
 			
 			
 			

@@ -18,14 +18,16 @@ public class addServiceServlet3 extends HttpServlet {
 	private static final long serialVersionUID = 1L;
    
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int aid = Integer.parseInt(request.getParameter("aid"));
 		
+		int aid = Integer.parseInt(request.getParameter("aid"));
+		Double price = Double.parseDouble(request.getParameter("price") );
 		
 		String type = (String) request.getAttribute("Type");
 
 		HttpSession session = request.getSession();
 		
 		request.removeAttribute("daid");
+		request.removeAttribute("dp");
 		
 		HashMap<String,String> hm = new HashMap<>();
 		
@@ -46,7 +48,7 @@ public class addServiceServlet3 extends HttpServlet {
 	
 			
 			request.getSession().setAttribute("daid", aid);
-			
+			request.getSession().setAttribute("dp", l.get(1));
 			
 			
 			

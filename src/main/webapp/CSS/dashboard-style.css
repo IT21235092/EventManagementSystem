@@ -360,6 +360,7 @@ nav .profile-details .admin-name
   justify-content: space-between;
   padding: 0px 30px;
   flex-wrap: wrap;
+  
 }
 .home-section .overview-boxes .box-topic
 {
@@ -442,6 +443,7 @@ nav .profile-details .admin-name
   display:flex;
   justify-content:space-between;
   padding: 30px;
+  
 }
 
 
@@ -469,6 +471,7 @@ nav .profile-details .admin-name
   border-radius: 12px;
   box-sizing: 0 5px 10px rgba(0,0,0,0.1);
   padding: 20px;
+  
 }
 
 .home-section .event-boxes .event-details

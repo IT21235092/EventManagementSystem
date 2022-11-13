@@ -92,6 +92,9 @@
     <!-- --------------------------Main section------------------------------ -->
 
     <!-- JavaScript -->
+   
+    
+    
     <script>
         let sidebar = document.querySelector(".sidebar");
         let closeBtn = document.querySelector("#btn");
@@ -166,9 +169,11 @@
          <!-- Home content -->
 
         <div class="home-content">
+         <a href="${pageContext.request.contextPath}/checkEvent"><button class="button-30" style="margin-left:80px;">Add Event</button></a>
             <!-- event-content -->
             <div class="event-boxes">
-                <div class="recent-sale box">
+            
+                <div class="recent-sale box" style = "width:500px;margin-left:50px;height:700px">
                     <div class = "title">Pending Event</div>
                     
                      <Input type="hidden" id="cid" name="cid" value="<%=session.getAttribute("Id")%>">
@@ -184,13 +189,13 @@
                     	con = DriverManager.getConnection(url, user, pass);
                   	 	stmt = con.createStatement();
                   	 	
-                  	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and status = 'Complete' and Event_Date > curdate()";
+                  	 	String sql = "select * from Event where cust_Id = '"+ session.getAttribute("Id") +"'and Status = 0";
                     	
                   	 	rs = stmt.executeQuery(sql);
                   	 	
                   	 	while(rs.next()){ 
                   	 		%>
-                  	 		
+                  	 		<input type = "hidden" id ="eid" name="eid" value="<%=rs.getInt("Event_Id") %>">
                   	 		<p><b>Event</b></p>
                   	 		<%=rs.getString("Name") %><br><br>
            					<p><b>Event Type</b></p>
@@ -199,8 +204,10 @@
            					<%=rs.getInt("No_of_guests") %><br><br>
            					<p><b>Date</b></p>
            					<%=rs.getString("Event_date") %><br><br>
-           					<p><b>Total Expenses</b></p>
-           					<%=rs.getDouble("Total_price") %><br><br><%
+           					<p><b>Expenses</b></p>
+           					Total - Rs. <%=rs.getDouble("Total_price") %><br><br>
+           					Fixed Services - Rs.85000<br>
+           					<%
            					
            					try{
               
@@ -211,20 +218,24 @@
                   	 		while(rs1.next()){%>
                   	 			
                   	 			<%= rs1.getString("Org_name") %> 
-                  	 			<%out.print("\t"); %>
+                  	 			<%out.print("\t  - Rs."); %>
                   	 			<%= rs1.getDouble("Price") %>
-                  	 			
+                  	 			<br>
+                  	 			 
                   	 		<% }
            					}
-           					catch(Exception e){}
-                  	 		
-                  	 	}
+           					catch(Exception e){}%>
+           					<br><br>
+           					<a href="#"><button class="button-30" onclick="">Event Completed</button></a>
+           					<br><br>
+                  	 	<%}
                     	
                     }
                     catch(Exception e){}
                     
                 
                     %>
+                    <br><br>
                
                     </div>
                     
@@ -232,7 +243,9 @@
                 </div>
                 
             </div>
-            <a href="${pageContext.request.contextPath}/checkEvent"><button class="addEvent">Add Event</button></a>
+            
+            
+           
         
     </section>
    
@@ -400,6 +413,54 @@
 			  display: table;
 			  clear: both;
 			}
+			
+			
+
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono",monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
 
 
     

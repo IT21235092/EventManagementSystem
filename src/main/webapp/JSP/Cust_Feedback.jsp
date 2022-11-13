@@ -14,12 +14,12 @@
         <title> Customer Dashboard | Eventrra</title>
         <meta name = "viewport" content = "width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<<<<<<< Updated upstream
+
     
     
-=======
+
         <link href = "https://cdn.jsdelivr.net/npm/@mdi/font@6.9.96/css/materialdesignicons.min.css" rel = "stylesheet">
->>>>>>> Stashed changes
+
     </head>
 
     <body>

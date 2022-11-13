@@ -22,13 +22,14 @@ public class addServiceServlet5 extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		int aid = Integer.parseInt(request.getParameter("aid"));
-		
+		Double price = Double.parseDouble(request.getParameter("price") );
 		
 		String type = (String) request.getAttribute("Type");
 
 		HttpSession session = request.getSession();
 		
-		request.removeAttribute("paid");
+		request.removeAttribute("faid");
+		request.removeAttribute("fp");
 		
 		HashMap<String,String> hm = new HashMap<>();
 		
@@ -49,7 +50,7 @@ public class addServiceServlet5 extends HttpServlet {
 	
 			
 			request.getSession().setAttribute("faid", aid);
-			
+			request.getSession().setAttribute("fp", l.get(1));
 			
 			
 		}
