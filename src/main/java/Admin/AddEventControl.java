@@ -42,7 +42,8 @@ public class AddEventControl extends HttpServlet {
 		Part filePart = request.getPart("event_image");
 		//filePart.getSubmittedFileName();
 	
-    
+		 File f = new File("C:\\Hello\\AnotherFolder\\The File Name.PDF");  
+		 System.out.println(f.getAbsolutePath().substring(f.getAbsolutePath().lastIndexOf("\\")+1));
         
 		 // gets absolute path of the web application
         String applicationPath = request.getServletContext().getRealPath("");

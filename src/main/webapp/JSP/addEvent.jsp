@@ -206,7 +206,7 @@
         </div>
         <ul class="nav-list">
         <li>
-            <a href="${pageContext.request.contextPath}/JSP/admin_dashboard.jsp" >
+            <a href="${pageContext.request.contextPath}/CountCustomerServelet" >
                 <i class='bx bxs-dashboard '></i>
                 <span class="links_name">Dashboard</span>
             </a>

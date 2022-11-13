@@ -307,6 +307,7 @@
 		
 		
 		.white_content {
+		
 		  display: none;
 		  position: absolute;
 		  top: 25%;

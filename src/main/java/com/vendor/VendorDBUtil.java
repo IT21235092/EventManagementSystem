@@ -41,11 +41,12 @@ public class VendorDBUtil {
 				
 				String sql = "insert into Vendor values(0,'"+org_name+"', '"+userName+"', '"+pswd+"','"+email+"', NULL,'"+phone+"', '"+types+"','"+address+"')";
 				int rs = stmt.executeUpdate(sql);
+				System.out.println(rs);
 				
 				if(rs > 0)
 				{
 					isSuccess = true;
-					sql = "select * from customer where Username = '"+userName+"'";
+					sql = "select * from vendor where Username = '"+userName+"'";
 					ResultSet rs1 = stmt.executeQuery(sql);
 					
 					if( rs1.next())
