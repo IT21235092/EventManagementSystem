@@ -207,14 +207,7 @@
         
           <label for="rating">Rate our Service:</label>
           <input type="number" id="rating" name="rating" required min="1" max="5" >
-          
-          <label for="img">Upload Image:</label>
-          <input type="file" id="img" name="img" accept="image/*">
-          
-          
-          
-          
-          
+   
         <br>
           
           

@@ -124,7 +124,7 @@
                         <nav>
                             <ul>
                                 <li> <a href="Home.jsp" class="navItem">HOME</a></li>
-                                <li> <a href="#"class="navItem">EVENTS</a></li>
+                                <li> <a href="EventsPage.jsp"class="navItem">EVENTS</a></li>
                                 <li> <a href="#"class="navItem">GALLERY</a></li>
                                 <li> <a href="About_Us.jsp" class="navItem">ABOUT US</a></li>
                                 <li><a href="javascript:void(0)" onclick="document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'" class="navItem">SIGN IN</a></li>

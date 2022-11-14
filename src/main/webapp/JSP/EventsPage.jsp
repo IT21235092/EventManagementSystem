@@ -1,6 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
+    <%@ page import="com.customerevent.*"%>
+     <%@ page import="java.sql.*"%>
+     <%@page import="java.sql.DriverManager"%>
+	 <%@page import="java.sql.ResultSet"%>
+	 <%@page import="java.sql.Statement"%>
+	 <%@page import="java.sql.Connection"%>
+	
+    <%
+    
+     String url = "jdbc:mysql://localhost:3306/event_management_system";
+	 String user = "root";
+	 String pass = "eventmanagement123";
+	 
+		
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		}
+		catch(Exception e) {
+			System.out.println("Database connection unsuccessful!");
+		}
+		
+		
+    
+     	Connection con = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		ResultSet rs1 = null;
+		ResultSet rs2 = null;
+    
+    %>
+    
 
 <!DOCTYPE html>
 <html>
@@ -142,13 +173,53 @@
 					</div>
         </div> 
 </header>
+		<br><br><br><br><br><br><br><br>
+		<h1>EVENTS</h1>
+  		<br><br>
+  <div class="row">
+  <div class="column">
+    <img src="../Images/img1.jpg" alt="Snow" style="width:90%">
+  </div>
+  <div class="column">
+    <img src="../Images/img2.jpg" alt="Forest" style="width:90%">
+  </div>
+  <div class="column">
+    <img src="../Images/img3.jpg" alt="Mountains" style="width:90%">
+  </div>
+</div>
+		<br><br>
+		
+		
+		
        
-        
+        <%
+                    
+            try{
+                    	
+                   con = DriverManager.getConnection(url, user, pass);
+                   stmt = con.createStatement();
+                  	 	
+                   String sql = "select * from category ";
+                    	
+                   rs = stmt.executeQuery(sql);
+                  	 	
+                   while(rs.next()){ %>
+                   
+                    <h1><%= rs.getString("Cat_Name") %></h1>
+               			<br>
+                	   <div class="tete">
+                	   <%= rs.getString("Description") %>
+                	   
+                	   </div>
+     					<br>
+                   <% }
       
         
+        	}catch(Exception e){
+        		e.printStackTrace();
+        	}
         
-        
-            
+            %>
        
         <br><br>
         
