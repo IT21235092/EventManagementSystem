@@ -220,6 +220,10 @@ public class VendorDBUtil {
 	{
 		ArrayList<Object> data = new ArrayList<Object>();
 		boolean isSuccess = false;
+		int cusCount = 0;
+		int eventCount1 = 0;
+		int eventCount2 = 0;
+		double profit = 0.0;
 		
 		try
 		{
@@ -242,35 +246,34 @@ public class VendorDBUtil {
 				
 				ResultSet rs3 = stmt.executeQuery(sql1);
 				
-				while(rs3.next())
+				if(rs3.next())
 				{
-					int cusCount =  rs3.getInt(1);
-					data.add(cusCount);		
+					cusCount =  rs3.getInt(1);
+							
 				}
 				
 				ResultSet rs4 = stmt.executeQuery(sql2);
 				
-				while(rs4.next())
+				if(rs4.next())
 				{
-					int eventCount1 = rs4.getInt(1);
-					data.add(eventCount1);
+					eventCount1 = rs4.getInt(1);
+					
 				}
 				
 				ResultSet rs5 = stmt.executeQuery(sql3);
 				
-				while(rs5.next())
+				if(rs5.next())
 				{
-					int eventCount2 = rs5.getInt(1);
-					data.add(eventCount2);
+					eventCount2 = rs5.getInt(1);
+					
 				}
 				
 				ResultSet rs6 = stmt.executeQuery(sql4);
 				
-				while(rs6.next())
+				if(rs6.next())
 				{
 					isSuccess = true;
-					double profit = rs6.getDouble(1);
-					data.add(profit);
+					profit = rs6.getDouble(1);
 				}
 			
 			}
@@ -285,7 +288,10 @@ public class VendorDBUtil {
 			e.printStackTrace();
 		}
 		
-
+		data.add(cusCount);
+		data.add(eventCount1);
+		data.add(eventCount2);
+		data.add(profit);
 		data.add(isSuccess);
 		return data;
 		

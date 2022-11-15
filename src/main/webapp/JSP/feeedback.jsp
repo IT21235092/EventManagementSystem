@@ -183,7 +183,18 @@
 							}
 				
 				
-				    
+				    .card {
+							border-radius: 6px ;
+						    position: sticky;
+						    box-shadow: 1px 4px 8px 9px rgba(0, 0, 0, 0.2);
+						    max-width: 70%;
+						   margin: auto;
+						   margin-top: 5%;
+						    text-align: center;
+						    font-family: arial;
+						    background-color: #FFF;
+						    margin-left: 15%;
+  }
 
 
          	

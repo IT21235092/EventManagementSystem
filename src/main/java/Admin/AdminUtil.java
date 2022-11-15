@@ -257,8 +257,8 @@ public class AdminUtil {
 			//fetching
 			
 			String sql1 = "select count(Cust_ID) from customer ";
-			String sql2 = "select count(Event_ID) from event where Status = True";
-			String sql3 = "select count(Event_ID) from event where Status = False";
+			String sql2 = "select count(Event_ID) from event where Status = False";
+			String sql3 = "select count(Event_ID) from event where Status = True";
 			String sql4 = "select Total_Profit from admin";
 			
 			
@@ -350,6 +350,78 @@ public class AdminUtil {
 					Event e = new Event(date, name, actualStatus, totPrice);
 					data.add(e);
 				}
+	
+				
+				
+				
+			}
+			catch(Exception e)
+			{
+				e.printStackTrace();
+			}
+				
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return data;
+	}
+	
+	
+	public static List<Vendor> calTopVendors()
+	{
+		ArrayList<Vendor> ven = new ArrayList<Vendor>();
+		
+	
+		
+		try
+		{
+			con = DBConnect.getConnection();
+			stmt = con.createStatement();
+			
+			String sql = "select Org_Name, Total_Profit from vendor order by Total_Profit DESC LIMIT 6";
+			
+			try 
+			{
+				ResultSet rs = stmt.executeQuery(sql);
+				
+				while ( rs.next())
+				{
+					String orgName = rs.getString(1);
+					Double totProfit = rs.getDouble(2);
+					System.out.println( orgName );
+					
+					Vendor v = new Vendor(orgName, totProfit);
+					ven.add(v);
+		
+				}
+				
+				
+			}
+			catch(Exception e)
+			{
+			e.printStackTrace();
+			}
+				
+				
+		
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		
+		return ven;
+		
+	}
+	
+	
 	
 	public static List<VendorApprove> approveVendor()
 	{
@@ -555,3 +627,7 @@ public class AdminUtil {
 	
 	
 }
+
+	
+	
+

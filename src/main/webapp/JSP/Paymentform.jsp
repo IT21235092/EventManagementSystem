@@ -119,7 +119,7 @@
               <label for="profile2" class="profile-dropdown">
                 <input type="checkbox" id="profile2">
                 <img src="https://cdn0.iconfinder.com/data/icons/avatars-3/512/avatar_hipster_guy-512.png">
-                <span><h5>Hello</h5></span>
+                <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
                   <li><a href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp" onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
@@ -186,7 +186,7 @@
                 <div class="col-12">
                     <div class="d-flex flex-column">
                         <p class="text mb-1">Card Number</p>
-                        <input id="two" class="form-control mb-3" type="text" placeholder="1234 5678 435678" name = "cardNumber"  required>
+                        <input id="two" class="form-control mb-3" type="text" placeholder="xxxx xxxx xxxx xxxx" name = "cardNumber"  required>
                     </div>
                 </div>
                 <div class="col-6">

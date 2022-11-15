@@ -90,7 +90,7 @@
                 <span><h6><% out.println(session.getAttribute("username").toString()); %></h6></span>
                 <label style = "width: 15%;" for="profile2"><i class="mdi mdi-menu"></i></label>
                 <ul>
-                  <li><a href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp" onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
+                  <li><a  onclick="logout()"><i class="mdi mdi-logout"></i>Logout</a></li>
                 </ul>
               </label>
             </div>
@@ -100,9 +100,14 @@
         <script>
         	function logout() {
         		var txt;
-        		if (confirm("Are you sure you want to log out?")) {
+        		if (confirm("Are you sure you want to log out?")== true) {
         			txt = "You logged out";
+        			location.href="http://localhost:8080/EventManagementSystem/JSP/VLoginSignup.jsp";
         		}
+        		else
+        			{
+        			return false;
+        			}
         	}
         </script>
 
@@ -194,19 +199,7 @@
                     </div>
                 </div>
                 <!-- right-side -->
-                <div class="top-vendor box">
-                    <div class = "title">Top Customers</div>
-                    <ul>
-                        <li>
-                            <a href = "#">
-                              <img src = "../Images/color.png" alt = "">
-                              <span class="product-name">Gucci Women's Bag</span>
-                            </a>
-                            <span class="price">$14.66</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            
             </div>
             
 
